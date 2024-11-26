@@ -42,7 +42,7 @@ public class Main implements ModInitializer
 The registers class has many sub classes, each handling dedicated section of registry entry.
 
 ---
-
+---
 > ##### ***`getKey(String name, RegistryKey<? extends Registry<T>> registryKey)`***
 
 This method will return a RegistryKey for the given type. This value is needed for registering anything in the Minecraft registry system (from 1.21.3).
@@ -63,6 +63,7 @@ This sub class handles registering every `block` into the Minecraft's registry s
 In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModBlocks class and you should register the blocks in that class. In the ModBlocks class you can add `import static jiraiyah.register.Registers.Block.*` and by adding this import, you can drop the `Registers.Block.` section from all the examples provided for this sub class.
 
 ---
+---
 > ##### ***`registerSimple(String name, T block)`***
 
 This is the old fasion way of registering a block. To use this method, you should provide an instance of a block that will cover the creation of the settings. 
@@ -74,6 +75,7 @@ CustomBlock SOME_OTHER_BLOCK = Registers.Block.registerSimple("some_other_block"
 ```
 
 ---
+---
 > ##### ***`register(String name)`***
 
 When you want to register a decorative block that has nothing other than the default settings as a block, what you need to do is just register an instance of a vanilla block with default settings. This method will register your block as such a block. 
@@ -83,6 +85,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block");
 ```
 
+---
 ---
 > ##### ***`register(String name, List<Text> tooltips)`***
 
@@ -95,6 +98,7 @@ Block SOME_BLOCK = Registers.Block.register("some_block", tooltips);
 ```
 
 ---
+---
 > ##### ***`register(String name, Block blockCopy)`***
 
 If you want to register a simple block that copies it's settings from another block, you can use this method. The settings for the default block class will be copied from blockCopy parameter. 
@@ -104,6 +108,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN);
 ```
 
+---
 ---
 > ##### ***`register(String name, Block blockCopy, List<Text> tooltips)`***
 
@@ -116,6 +121,7 @@ Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, toolt
 ```
 
 ---
+---
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
 You can use this method to register a simple block with provided custom settings. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
@@ -125,6 +131,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create());
 ```
 
+---
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
@@ -137,6 +144,7 @@ Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings
 ```
 
 ---
+---
 > ##### ***`register(String name, Function<AbstractBlock.Settings, T> factory)`***
 
 When you want to register an instance of a custom block class you can use the provided method with factory as parameter. This method will register the custom block with default settings.
@@ -146,6 +154,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)`***
 
@@ -157,6 +166,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN,
 ```
 
 ---
+---
 > ##### ***`register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)`***
 
 When you want to register an instance of a custom block class with custom properties, you can use the method with factory as parameter. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
@@ -166,6 +176,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create(), CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`registerStair(String name, Block stateBlock, Block copyBlock)`***
 
@@ -177,6 +188,7 @@ CustomBlock SOME_BLOCK = Registers.Block.registerStair("some_stair", ModBlocks.R
 ```
 
 ---
+---
 > ##### ***`registerSlab(String name, Block copyBlock)`***
 
 This is a helper method to register `slab` blocks. This method will call the registerSimple internally.
@@ -186,6 +198,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.registerSlab("some_slab", Blocks.AMETHYST_BLOCK);
 ```
 
+---
 ---
 > ##### ***`registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)`***
 
@@ -197,6 +210,7 @@ CustomBlock SOME_BLOCK = Registers.Block.registerButton("some_button", BlockSetT
 ```
 
 ---
+---
 > ##### ***`registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)`***
 
 This is a helper method to register `pressure plate` blocks. This method will call the registerSimple internally.
@@ -206,6 +220,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.registerPressurePlate("some_plate", BlockSetType.IRON, Blocks.AMETHYST_BLOCK);
 ```
 
+---
 ---
 > ##### ***`registerFence(String name, Block copyBlock)`***
 
@@ -217,6 +232,7 @@ CustomBlock SOME_BLOCK = Registers.Block.registerFence("some_fence", Blocks.AMET
 ```
 
 ---
+---
 > ##### ***`FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)`***
 
 This is a helper method to register `fence gate` blocks. This method will call the registerSimple internally.
@@ -226,6 +242,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.registerFenceGate("some_fence_gate", WoodType.OAK, Blocks.AMETHYST_BLOCK);
 ```
 
+---
 ---
 > ##### ***`registerWall(String name, Block copyBlock)`***
 
@@ -237,6 +254,7 @@ CustomBlock SOME_BLOCK = Registers.Block.registerWall("some_wall", Blocks.AMETHY
 ```
 
 ---
+---
 > ##### ***`registerDoor(String name, BlockSetType blockType, Block copyBlock)`***
 
 This is a helper method to register `door` blocks. This method will call the registerSimple internally.
@@ -246,6 +264,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.registerDoor("some_door", BlockSetType.IRON, Blocks.AMETHYST_BLOCK);
 ```
 
+---
 ---
 > ##### ***`registerTrapdoor(String name, BlockSetType blockType, Block copyBlock)`***
 
