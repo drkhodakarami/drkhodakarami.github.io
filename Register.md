@@ -118,7 +118,7 @@ Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, toolt
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
-You can use this method to register a simple block with provided custom settings. Take not that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
+You can use this method to register a simple block with provided custom settings. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
@@ -128,7 +128,7 @@ Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
-If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call. Take not that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
+If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
@@ -149,21 +149,21 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ---
 > ##### ***`register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)`***
 
-text
+When you want to register an instance of a custom block class with copying the settings of another block, you can use the method with factory as parameter.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, CustomBlock::new);
 ```
 
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)`***
 
-text
+When you want to register an instance of a custom block class with custom properties, you can use the method with factory as parameter. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create(), CustomBlock::new);
 ```
 
 ---
