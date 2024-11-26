@@ -72,6 +72,7 @@ Block SOME_BLOCK = Registers.Block.registerSimple("some_block", new Block(Abstra
 CustomBlock SOME_OTHER_BLOCK = Registers.Block.registerSimple("some_other_block", new CustomBlock(AbstractBlock.Settings.copy(Blocks.STONE).registryKey(someKey));
 ```
 
+---
 > ##### ***`register(String name)`***
 
 When you want to register a decorative block that has nothing other than the default settings as a block, what you need to do is just register an instance of a vanilla block with default settings. This method will register your block as such a block. 
@@ -81,6 +82,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block");
 ```
 
+---
 > ##### ***`register(String name, List<Text> tooltips)`***
 
 If you want a simple block with default settings that will show custom tooltips, you can use this method. This method will register a block as a simple block with default settings but adds the provided tooltips to the block.
@@ -91,6 +93,7 @@ List<Text> tooltips = ... //Create the list of tooltips here.
 Block SOME_BLOCK = Registers.Block.register("some_block", tooltips);
 ```
 
+---
 > ##### ***`register(String name, Block blockCopy)`***
 
 If you want to register a simple block that copies it's settings from another block, you can use this method. The settings for the default block class will be copied from blockCopy parameter. 
@@ -100,6 +103,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN);
 ```
 
+---
 > ##### ***`register(String name, Block blockCopy, List<Text> tooltips)`***
 
 If you want to register a simple block that copies it's settings from another block and add custom tooltips to this block, you can use this method call.
@@ -110,6 +114,7 @@ List<Text> tooltips = ... //Create the list of tooltips here.
 Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, tooltips);
 ```
 
+---
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
 You can use this method to register a simple block with provided custom settings.
@@ -119,6 +124,7 @@ Example usage:
 Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey));
 ```
 
+---
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
 If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call.
@@ -129,6 +135,7 @@ List<Text> tooltips = ... //Create the list of tooltips here.
 Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey), tooltips);
 ```
 
+---
 > ##### ***`register(String name, Function<AbstractBlock.Settings, T> factory)`***
 
 
