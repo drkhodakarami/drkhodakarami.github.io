@@ -99,7 +99,13 @@ Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN);
 
 > ##### ***`register(String name, Block blockCopy, List<Text> tooltips)`***
 
+If you want to register a simple block that copies it's settings from another block and add custom tooltips to this block, you can use this method call.
 
+Example usage:
+```java
+List<Text> tooltips = ... //Create the list of tooltips here.
+Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, tooltips);
+```
 
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
