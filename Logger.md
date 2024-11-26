@@ -75,8 +75,8 @@ this method will simply log the message without any coloring start with the addi
 
 ### logRGB256(String message, int r, int g, int b)
 
-This method will accept red, green, and blue values for any color even outside of the boundaries of the ANSI escape characters for the font's foreground color. It will log the message with the addition of `>>>` at the start of the message.
+This method will accept red, green, and blue values for any color even outside of the boundaries of the ANSI escape characters for the font's foreground color. It will log the message with the addition of `>>>` at the start of the message. The range of values are 0 to 255 for each parameter.
 
 ### logBackRGB256(String message, int rf, int gf, int bf, int rb, int gb, int bb)
 
-This method will accept red, green, and blue values separately for any color even outside of the boundaries of the ANSI escape characters for the font's foreground and the message's background colors. It will log the message with the addition of `>>>` at the start of the message.
+This method will accept red, green, and blue values separately for any color even outside of the boundaries of the ANSI escape characters for the font's foreground and the message's background colors. It will log the message with the addition of `>>>` at the start of the message. The range of values are 0 to 255 for each parameter.
