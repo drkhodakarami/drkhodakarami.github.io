@@ -25,9 +25,10 @@ The class is not a static helper one. You need to create an instance of this cla
 In your main mod initialization class:
 ```java
 public class Main implements ModInitializer
-        
+{
         public static String ModID = "your_mod_id";
         public static Logger LOGGER = new Logger(ModID);
+}
 ```
 
 From this point forward, in any place that you need to log something, you need to `import static project.your_mod_id.Main.LOGGER;` and then calling on REFERENCE instance, you can utilize the methods described bellow. Remember, in this import example, you need to change the project.your_mod_id to fit your project package structure (alternatively, most development softwares give you an option to automatically import the package).
