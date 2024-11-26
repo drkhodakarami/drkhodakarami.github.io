@@ -75,7 +75,13 @@ Block SOME_BLOCK = Registers.Block.register("some_block");
 
 > ##### ***`register(String name, List<Text> tooltips)`***
 
+If you want a simple block with default settings that will show custom tooltips, you can use this method. This method will register a block as a simple block with default settings but adds the provided tooltips to the block.
 
+Example usage:
+```java
+List<Text> tooltips = ... //Create the list of tooltips here.
+Block SOME_BLOCK = Registers.Block.register("some_block", tooltips);
+```
 
 > ##### ***`register(String name, Block blockCopy)`***
 
