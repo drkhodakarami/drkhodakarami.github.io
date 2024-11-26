@@ -16,7 +16,7 @@ Each time you add an escape character that will change the coloring of the strin
 
 ## Logger Class
 
-The class is not a static helper one. You need to create an instance of this class in your project and use that static instance in your project.
+The class is not a static helper one. You need to create an instance of this class in your project and use that static instance in your project. Remember, in the code snippet bellow, the Logger class should reference the <a name=".text-danger">jiraiyah.logger.Logger<\a> and no other Logger class available.
 
 In your main mod initialization class:
 ```java
@@ -26,7 +26,7 @@ public class Main implements ModInitializer
         public static Logger LOGGER = new Logger(ModID);
 ```
 
-From this point forward, in any place that you need to log something, you need to ```import static project.your_mod_id.Main.LOGGER;``` and then calling on REFERENCE instance, you can utilize the methods described bellow.
+From this point forward, in any place that you need to log something, you need to `import static project.your_mod_id.Main.LOGGER;` and then calling on REFERENCE instance, you can utilize the methods described bellow. Remember, in this import example, you need to change the project.your_mod_id to fit your project package structure (alternatively, most development softwares give you an option to automatically import the package).
 
 ### debug flag
 
