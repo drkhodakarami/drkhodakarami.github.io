@@ -33,11 +33,11 @@ public class Main implements ModInitializer
 
 From this point forward, in any place that you need to log something, you need to `import static project.your_mod_id.Main.LOGGER;` and then calling on REFERENCE instance, you can utilize the methods described bellow. Remember, in this import example, you need to change the project.your_mod_id to fit your project package structure (alternatively, most development softwares give you an option to automatically import the package).
 
-#### debug flag
+> ##### ***`debug flag`***
 
 The class methods use a debug flag internally. The debug flag will be set to true only if you are running your mod inside a development environment (for example inside intelliJ IDEA). In other words, when the players add your mod to their game, none of the log messages you send utilizing this class's methods will be seen in the log entries with only one exception, the LogMain method that will log the starting of the mod's initialization phase for your mod. In other words, regardless of where your code is running (from the IDE or a real game instance) the entry for the main mod initialization will always sent to the log file and consol.
 
-##### logMain()
+> ##### ***`logMain()`***
 
 This method will be used only once in your main mod's initialization phase like this:
 
@@ -50,34 +50,34 @@ public void onInitialize(){
 
 The result will be a log entry in your consol with pink color background and yellow font color with this text `>>> Initializing`.
 
-##### log(String message)
+> ##### ***`log(String message)`***
 
 This method will simply log the message with magenta color as the font's foreground color and `>>>` at the strat of the message.
 
-##### log(String message, String foreground)
+> ##### ***`log(String message, String foreground)`***
 
 This method will accept the color for font's foreground side by side the message. It will log the message using the color with the `>>>` at the start of the message.
 
-##### log(String message, String foreground, String background)
+> ##### ***`log(String message, String foreground, String background)`***
 
 This method will accept colors both for font's foreground and message background. It will log the message using the given colors with the `>>>` at the start of the message.
 
-##### logError(String message)
+> ##### ***`logError(String message)`***
 
 This method will send the log message into the consol using `black` as the foreground and `bright red` as the background colors with the `>>>` at the start of the message.
 
-##### logWarning(String message)
+> ##### ***`logWarning(String message)`***
 
 this method will send the log message into the consol using `black` as the foreground and `bright yellow` as the background colors with the `>>>` at the start of the message.
 
-##### logN(String message)
+> ##### ***`logN(String message)`***
 
 this method will simply log the message without any coloring start with the addition of `>>>` at the start of the message.
 
-##### logRGB256(String message, int r, int g, int b)
+> ##### ***`logRGB256(String message, int r, int g, int b)`***
 
 This method will accept red, green, and blue values for any color even outside of the boundaries of the ANSI escape characters for the font's foreground color. It will log the message with the addition of `>>>` at the start of the message. The range of values are 0 to 255 for each parameter.
 
-##### logBackRGB256(String message, int rf, int gf, int bf, int rb, int gb, int bb)
+> ##### ***`logBackRGB256(String message, int rf, int gf, int bf, int rb, int gb, int bb)`***
 
 This method will accept red, green, and blue values separately for any color even outside of the boundaries of the ANSI escape characters for the font's foreground and the message's background colors. It will log the message with the addition of `>>>` at the start of the message. The range of values are 0 to 255 for each parameter.
