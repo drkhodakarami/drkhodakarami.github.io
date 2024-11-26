@@ -41,6 +41,7 @@ public class Main implements ModInitializer
 
 The registers class has many sub classes, each handling dedicated section of registry entry.
 
+
 > ##### ***`getKey(String name, RegistryKey<? extends Registry<T>> registryKey)`***
 
 This method will return a RegistryKey for the given type. This value is needed for registering anything in the Minecraft registry system (from 1.21.3).
@@ -52,6 +53,7 @@ RegistryKey<Block> key = getKey(name, RegistryKeys.BLOCK);
 ```
 
 Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys class.
+
 
 ### Block Sub Class
 
