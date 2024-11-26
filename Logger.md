@@ -26,7 +26,21 @@ public class Main implements ModInitializer
         public static Logger LOGGER = new Logger(ModID);
 ```
 
-From this point forward, in any place that you need to log something, you need to ```import static jiraiyah.uio.Main.LOGGER;``` and then calling on REFERENCE instance, you can utilize the methods described bellow.
+From this point forward, in any place that you need to log something, you need to ```import static project.your_mod_id.Main.LOGGER;``` and then calling on REFERENCE instance, you can utilize the methods described bellow.
 
+### debug flag
 
-### 
+The class methods use a debug flag internally. The debug flag will be set to true only if you are running your mod inside a development environment (for example inside intelliJ IDEA). In other words, when the players add your mod to their game, none of the log messages you send utilizing this class's methods will be seen in the log entries with only one exception, the LogMain method that will log the starting of the mod's initialization phase for your mod. In other words, regardless of where your code is running (from the IDE or a real game instance) the entry for the main mod initialization will always sent to the log file and consol.
+
+### LogMain()
+
+This will be used only once in your main mod's initialization phase like this:
+
+```java
+@Override
+public void onInitialize(){
+        LOGGER.logMain();
+}
+```
+
+The result will be a log entry in your consol with pink color background and yellow font color with this text ">>> Initializing".
