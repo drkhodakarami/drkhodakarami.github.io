@@ -57,6 +57,17 @@ Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys cl
 
 This sub class handles registering every `block` into the Minecraft's registry system.
 
+##### registerSimple(String name, T block)
+##### register(String name)
+##### register(String name, List<Text> tooltips)
+##### register(String name, Block blockCopy)
+##### register(String name, Block blockCopy, List<Text> tooltips)
+##### register(String name, AbstractBlock.Settings settings)
+##### register(String name, AbstractBlock.Settings settings, List<Text> tooltips)
+##### register(String name, Function<AbstractBlock.Settings, T> factory)
+##### register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)
+##### register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)
+
 ### Entities Sub Class
 
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
