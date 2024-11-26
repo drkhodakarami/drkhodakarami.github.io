@@ -169,91 +169,91 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Se
 ---
 > ##### ***`registerStair(String name, Block stateBlock, Block copyBlock)`***
 
-text
+This is a helper method to register `stair` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerStair("some_stair", ModBlocks.RUBY, Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerSlab(String name, Block copyBlock)`***
 
-text
+This is a helper method to register `slab` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerSlab("some_slab", Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)`***
 
-text
+This is a helper method to register `button` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerButton("some_button", BlockSetType.IRON, 40, Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)`***
 
-text
+This is a helper method to register `pressure plate` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerPressurePlate("some_plate", BlockSetType.IRON, Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerFence(String name, Block copyBlock)`***
 
-text
+This is a helper method to register `fence` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerFence("some_fence", Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)`***
 
-text
+This is a helper method to register `fence gate` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerFenceGate("some_fence_gate", WoodType.OAK, Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerWall(String name, Block copyBlock)`***
 
-text
+This is a helper method to register `wall` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerWall("some_wall", Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerDoor(String name, BlockSetType blockType, Block copyBlock)`***
 
-text
+This is a helper method to register `door` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerDoor("some_door", BlockSetType.IRON, Blocks.AMETHYST_BLOCK);
 ```
 
 ---
 > ##### ***`registerTrapdoor(String name, BlockSetType blockType, Block copyBlock)`***
 
-text
+This is a helper method to register `trap door` blocks. This method will call the registerSimple internally.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlock SOME_BLOCK = Registers.Block.registerTrapdoor("some_trap_door", BlockSetType.IRON, Blocks.AMETHYST_BLOCK);
 ```
 
 ### Entities Sub Class
