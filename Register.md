@@ -34,3 +34,21 @@ public class Main implements ModInitializer
         }
 }
 ```
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, every registring of Items, Blocks, Block Entities, or any other entry into Minecraft's registry system, should happen after this call for the init method on Registers. If you mess things up for the order of operation, the default value for the Mod ID will be `default` and not only you will get warnings or errors about missing stuff in the consol, also the models and textures will not work properly any more.
+</div>
+
+The registers class has many sub classes, each handling dedicated section of registry entry.
+
+### getKey(String name, RegistryKey<? extends Registry<T>> registryKey)
+
+This method will return a RegistryKey for the given type. This value is needed for registering anything in the Minecraft registry system (from 1.21.3).
+
+You can get any registry key like this:
+
+```java
+RegistryKey<Block> key = getKey(name, RegistryKeys.BLOCK);
+```
+
+Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys class.
