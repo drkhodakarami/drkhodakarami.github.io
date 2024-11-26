@@ -61,8 +61,9 @@ In the use cases provided here, we are addressing the methods with complete clas
 
 > ##### ***`registerSimple(String name, T block)`***
 
-This is the old fasion way of registering a block. To use this method, you should provide an instance of a block that will cover the creation of the settings. Example usage:
+This is the old fasion way of registering a block. To use this method, you should provide an instance of a block that will cover the creation of the settings. 
 
+Example usage:
 ```java
 Block SOME_BLOCK = Registers.Block.registerSimple("some_block", new Block(AbstractBlock.Settings.creat().registryKey(someKey));
 CustomBlock SOME_OTHER_BLOCK = Registers.Block.registerSimple("some_other_block", new CustomBlock(AbstractBlock.Settings.copy(Blocks.STONE).registryKey(someKey));
@@ -70,7 +71,9 @@ CustomBlock SOME_OTHER_BLOCK = Registers.Block.registerSimple("some_other_block"
 
 > ##### ***`register(String name)`***
 
-When you want to register a decorative block that has nothing other than the default settings as a block, what you need to do is just register an instance of a vanilla block with default settings. This method will register your block as such a block. Example usage:
+When you want to register a decorative block that has nothing other than the default settings as a block, what you need to do is just register an instance of a vanilla block with default settings. This method will register your block as such a block. 
+
+Example usage:
 ```java
 Block SOME_BLOCK = Registers.Block.register("some_block");
 ```
@@ -87,7 +90,12 @@ Block SOME_BLOCK = Registers.Block.register("some_block", tooltips);
 
 > ##### ***`register(String name, Block blockCopy)`***
 
+If you want to register a simple block that copies it's settings from another block, you can use this method. The settings for the default block class will be copied from blockCopy parameter. 
 
+Example usage:
+```java
+Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN);
+```
 
 > ##### ***`register(String name, Block blockCopy, List<Text> tooltips)`***
 
