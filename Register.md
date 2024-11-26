@@ -55,32 +55,32 @@ Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys cl
 
 ### Block Sub Class
 
-This sub class handles registering every block into the Minecraft's registry system.
+This sub class handles registering every `block` into the Minecraft's registry system.
 
 ### Entities Sub Class
 
-This sub class handles registering every entity (including block entity) into the Minecraft's registry system.
+This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
 ### Item Sub Class
 
-This sub class handles registering every item into the Minecraft's registry system.
+This sub class handles registering every `item` into the Minecraft's registry system.
 
 ### BlockItem Sub Class
 
-This sub class handles registering every block item into the Minecraft's registry system.
+This sub class handles registering every `block item` into the Minecraft's registry system.
 
 ### Recipe Sub Class
 
-This sub class handles registering every custom recipe into the Minecraft's registry system.
+This sub class handles registering every custom `recipe` into the Minecraft's registry system.
 
 ### ComponentType Sub Class
 
-This sub class handles registering every custom data component type into the Minecraft's registry system.
+This sub class handles registering every custom `data component` type into the Minecraft's registry system.
 
 ### StatusEffect Sub Class
 
-This sub class handles registering every custom status effect into the Minecraft's registry system.
+This sub class handles registering every custom `status effect` into the Minecraft's registry system.
 
 ### Datagen Sub Class
 
-This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to datagen.
+This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to `datagen`.
