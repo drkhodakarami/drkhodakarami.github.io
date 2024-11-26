@@ -23,7 +23,8 @@ In your main mod initialization class:
 public class Main implements ModInitializer
         
         public static String ModID = "your_mod_id";
-        public static Logger LOGGER = new Logger(ModID);```
+        public static Logger LOGGER = new Logger(ModID);
+```
 
 From this point forward, in any place that you need to log something, you need to ```import static jiraiyah.uio.Main.LOGGER;``` and then calling on REFERENCE instance, you can utilize the methods described bellow.
 
