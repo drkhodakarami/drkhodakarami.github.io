@@ -13,3 +13,17 @@ These libraries include:
 - Ji Fluid: The wrapper around the fluid API provided by fabric for Minecraft Modding.
 - Ji Energy: The wrapper around the Energy API provided by Tech Reborn Team for Fabric MC
 - Ji Machina: This library uses the wrappers provided by JInventory, JiFluid, and JiEnergy to add more abstraction on top for most of the advanced block entity use cases.
+
+## Latest Versions:
+
+|Library    |Version        |
+|-----------|---------------|
+|JiLogger   |               |
+|JiRegister |               |
+|JiConfig   |               |
+|JiReference|1.1.0          |
+|JiraLib    |1.1.1+MC_1.21.3|
+|JInventory |               |
+|JiFluid    |               |
+|JiEnergy   |               |
+|JiMachina  |               |
