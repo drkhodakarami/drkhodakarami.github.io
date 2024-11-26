@@ -300,7 +300,7 @@ When you want to register an entity, you can use this method to register the ent
 
 Example usage:
 ```java
-CustomMod SOME_ENTITY = Registers.Entities.register("some_entity", CustomMob::new);
+CustomEntity SOME_ENTITY = Registers.Entities.register("some_entity", CustomEntity::new);
 ```
 
 ### Item Sub Class
