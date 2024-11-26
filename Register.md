@@ -109,18 +109,31 @@ This sub class handles registering every `item` into the Minecraft's registry sy
 
 This sub class handles registering every `block item` into the Minecraft's registry system.
 
+###### register(Block block)
+###### register(Block block, IBlockItemFactory<Item.Settings, T> factory)
+###### register(Block block, Item.Settings settings, IBlockItemFactory<Item.Settings, T> factory)
+
 ### Recipe Sub Class
 
 This sub class handles registering every custom `recipe` into the Minecraft's registry system.
+
+###### register(String name, RecipeSerializer<?> serializer)
+###### register(String name, RecipeType<?> recipeType)
 
 ### ComponentType Sub Class
 
 This sub class handles registering every custom `data component` type into the Minecraft's registry system.
 
+###### register(String name, UnaryOperator<ComponentType.Builder<T>> buildOperator)
+
 ### StatusEffect Sub Class
 
 This sub class handles registering every custom `status effect` into the Minecraft's registry system.
 
+###### register(String name, StatusEffectCategory category, int color, BiFunction<StatusEffectCategory, Integer, StatusEffect> factory)
+
 ### Datagen Sub Class
 
 This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to `datagen`.
+
+###### registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)
