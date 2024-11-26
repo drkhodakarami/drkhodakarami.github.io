@@ -146,7 +146,7 @@ This sub class does not register anything into the Minecraft's registry system h
 ###### buildHumanoidAndHorse(String name)
 ###### register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)
 ###### register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)
-###### `register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`
+###### register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)
 ###### modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)
 ###### modifiersWithCount(int count, PlacementModifier heightModifier)
 ###### modifiersWithRarity(int chance, PlacementModifier heightModifier)
