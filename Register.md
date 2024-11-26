@@ -118,7 +118,13 @@ Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings
 
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
+If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call.
 
+Example usage:
+```java
+List<Text> tooltips = ... //Create the list of tooltips here.
+Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey), tooltips);
+```
 
 > ##### ***`register(String name, Function<AbstractBlock.Settings, T> factory)`***
 
