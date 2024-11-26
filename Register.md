@@ -109,7 +109,12 @@ Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, toolt
 
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
+You can use this method to register a simple block with provided custom settings.
 
+Example usage:
+```java
+Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey));
+```
 
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
