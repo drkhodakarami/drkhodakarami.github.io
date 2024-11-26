@@ -41,7 +41,7 @@ public class Main implements ModInitializer
 
 The registers class has many sub classes, each handling dedicated section of registry entry.
 
-
+---
 
 > ##### ***`getKey(String name, RegistryKey<? extends Registry<T>> registryKey)`***
 
@@ -52,7 +52,6 @@ You can get any registry key like this:
 ```java
 RegistryKey<Block> key = getKey(name, RegistryKeys.BLOCK);
 ```
-
 
 Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys class.
 
