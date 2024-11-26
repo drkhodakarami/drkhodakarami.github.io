@@ -279,7 +279,7 @@ CustomBlock SOME_BLOCK = Registers.Block.registerTrapdoor("some_trap_door", Bloc
 
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
-In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModEntities class and you should register the blocks in that class. In the ModBlocks class you can add `import static jiraiyah.register.Registers.Block.*` and by adding this import, you can drop the `Registers.Block.` section from all the examples provided for this sub class.
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModEntities class and you should register the block entities or any other entity in that class. In the ModEntities class you can add `import static jiraiyah.register.Registers.Entities.*` and by adding this import, you can drop the `Registers.Entities.` section from all the examples provided for this sub class.
 
 ---
 ---
