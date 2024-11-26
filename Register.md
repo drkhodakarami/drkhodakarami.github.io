@@ -280,23 +280,25 @@ CustomBlock SOME_BLOCK = Registers.Block.registerTrapdoor("some_trap_door", Bloc
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
 ---
+---
 > ##### ***`register(String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)`***
 
-text
+When you want to register a `block entity` that is associated with a block, you can call the register method and provide the block entity class as the factory.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlockEntity SOME_BLOCK_ENTITY = Registers.Entities.register("some_block_entity", ModBlocks.SOME_BLOCK, SomeBlockEntity::new);
 ```
 
 ---
+---
 > ##### ***`register(String name, EntityType.EntityFactory<T> factory)`***
 
-text
+When you want to register an entity, you can use this method to register the entity.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomMod SOME_ENTITY = Registers.Entities.register("some_entity", CustomMob::new);
 ```
 
 ### Item Sub Class
