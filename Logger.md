@@ -47,4 +47,4 @@ public void onInitialize(){
 }
 ```
 
-The result will be a log entry in your consol with pink color background and yellow font color with this text ">>> Initializing".
+The result will be a log entry in your consol with pink color background and yellow font color with this text "> > > Initializing".
