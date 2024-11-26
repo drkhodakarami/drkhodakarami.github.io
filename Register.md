@@ -52,3 +52,19 @@ RegistryKey<Block> key = getKey(name, RegistryKeys.BLOCK);
 ```
 
 Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys class.
+
+### Block Sub Class
+
+### Entities Sub Class
+
+### Item Sub Class
+
+### BlockItem Sub Class
+
+### Recipe Sub Class
+
+### ComponentType Sub Class
+
+### StatusEffect Sub Class
+
+### Datagen Sub Class
