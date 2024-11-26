@@ -62,6 +62,7 @@ This sub class handles registering every `block` into the Minecraft's registry s
 
 In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModBlocks class and you should register the blocks in that class. In the ModBlocks class you can add `import static jiraiyah.register.Registers.Block.*` and by adding this import, you can drop the `Registers.Block.` section from all the examples provided for this sub class.
 
+---
 > ##### ***`registerSimple(String name, T block)`***
 
 This is the old fasion way of registering a block. To use this method, you should provide an instance of a block that will cover the creation of the settings. 
