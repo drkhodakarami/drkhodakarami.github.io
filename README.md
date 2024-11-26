@@ -1,21 +1,15 @@
-# git-wiki-skeleton
+# Ji Libs
 
-NOTE: it's fully supported by github platform, you don't need to install anything locally
+This is the wiki pages for all of my library system developed for Fabric MC Modding. I call the collection JiLibs but they are modular libraries that can be used separately (with some of them depending on others) or side by side each other in a project.
 
-This is a [skeleton](skeleton) repository that can be used as a template to bootstrap your wiki using "[remote_theme](https://github.com/benbalter/jekyll-remote-theme)" config
+These libraries include:
 
-For documentation, installation guide and demo of git-wiki-theme visit [THIS PAGE](http://drassil.github.io/git-wiki/)
-
-To report an issue, please use the [git-wiki-theme issues](https://github.com/Drassil/git-wiki-theme/issues)
-
-## The git-wiki project
-
-The git-wiki project is composed by 3 different repository:
-
-- [git-wiki-theme](https://github.com/Drassil/git-wiki-theme): This is the repository of the theme that implements the wiki functionalities. You would have not fork it unless you need to send a Pull Request or create your wiki project from scratch.
-
-- [git-wiki-skeleton](https://github.com/Drassil/git-wiki-skeleton): This is the repo that you should fork or use as a template. It uses the [jekyll remote theme](https://github.com/benbalter/jekyll-remote-theme) functionality that allows you to create your own wiki based on git-wiki-theme. By using the remote functionality you can automatically keep your wiki always updated with latest features from the **git-wiki-theme**, but you can also fully customize it.
-
-- [git-wiki](https://github.com/Drassil/git-wiki): This is the documentation repository and website of the **git-wiki-theme** project. You would have not fork it unless you want to contribute to the git-wiki project documentation.
-
-Version: 1.0.9
+- Ji Logger: A wrapper library around logging system provided by minecraft. This wrapper and it's helper methods lets you log information with more style flexibility and with ease.
+- Ji Register: This library is all about registring Items, Blocks, and other entries into Minecraft Registry System.
+- Ji Config: A wrapper library around [Simple Config]() with more flexibility and more methods that will let you fully customize the look of your config ini files for your mod.
+- Ji Reference: This library is the main reference for most of my mods. It will produce some base methods like translate, and identifier that I use in almost all of the mods I develop.
+- Jira Lib: This library adds the base abstraction layer for most of the mods I develop.
+- Ji Inventory: As the name suggests, this library is a wrapper around the Item Inventory API provided by fabric for Minecraft Modding.
+- Ji Fluid: The wrapper around the fluid API provided by fabric for Minecraft Modding.
+- Ji Energy: The wrapper around the Energy API provided by Tech Reborn Team for Fabric MC
+- Ji Machina: This library uses the wrappers provided by JInventory, JiFluid, and JiEnergy to add more abstraction on top for most of the advanced block entity use cases.
