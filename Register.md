@@ -118,152 +118,331 @@ Block SOME_BLOCK = Registers.Block.register("some_block", Blocks.OBSIDIAN, toolt
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
 
-You can use this method to register a simple block with provided custom settings.
+You can use this method to register a simple block with provided custom settings. Take not that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey));
+Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create());
 ```
 
 ---
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
 
-If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call.
+If you want to register a simple instance of block class with custom settings and tooltips, you can use this method call. Take not that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
 List<Text> tooltips = ... //Create the list of tooltips here.
-Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create().registryKey(someKey), tooltips);
+Block SOME_BLOCK = Registers.Block.register("some_block", AbstractBlock.Settings.create(), tooltips);
 ```
 
 ---
 > ##### ***`register(String name, Function<AbstractBlock.Settings, T> factory)`***
 
+When you want to register an instance of a custom block class you can use the provided method with factory as parameter. This method will register the custom block with default settings.
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerStair(String name, Block stateBlock, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerSlab(String name, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerFence(String name, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerWall(String name, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerDoor(String name, BlockSetType blockType, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerTrapdoor(String name, BlockSetType blockType, Block copyBlock)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### Entities Sub Class
 
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
+---
 > ##### ***`register(String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, EntityType.EntityFactory<T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### Item Sub Class
 
 This sub class handles registering every `item` into the Minecraft's registry system.
 
+---
 > ##### ***`register(String name)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, List<Text> tooltips)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, int stackCount)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, int stackCount, List<Text> tooltips)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, Function<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, int stackCount, Function<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, IToolFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, IToolFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, Item.Settings settings, IArmorFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### BlockItem Sub Class
 
@@ -271,15 +450,32 @@ This sub class handles registering every `block item` into the Minecraft's regis
 
 > ##### ***`register(Block block)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(Block block, IBlockItemFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(Block block, Item.Settings settings, IBlockItemFactory<Item.Settings, T> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### Recipe Sub Class
 
@@ -287,11 +483,22 @@ This sub class handles registering every custom `recipe` into the Minecraft's re
 
 > ##### ***`register(String name, RecipeSerializer<?> serializer)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(String name, RecipeType<?> recipeType)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### ComponentType Sub Class
 
@@ -299,7 +506,12 @@ This sub class handles registering every custom `data component` type into the M
 
 > ##### ***`register(String name, UnaryOperator<ComponentType.Builder<T>> buildOperator)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### StatusEffect Sub Class
 
@@ -307,7 +519,12 @@ This sub class handles registering every custom `status effect` into the Minecra
 
 > ##### ***`register(String name, StatusEffectCategory category, int color, BiFunction<StatusEffectCategory, Integer, StatusEffect> factory)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
 ### Datagen Sub Class
 
@@ -315,56 +532,139 @@ This sub class does not register anything into the Minecraft's registry system h
 
 > ##### ***`registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item, float min, float max)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`registerCubeVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`buildHumanoid(String name)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`buildHumanoidAndHorse(String name)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`modifiersWithCount(int count, PlacementModifier heightModifier)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
 
+---
 > ##### ***`modifiersWithRarity(int chance, PlacementModifier heightModifier)`***
 
+text
 
+Example usage:
+```java
+CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+```
