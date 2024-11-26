@@ -59,11 +59,19 @@ This sub class handles registering every `block` into the Minecraft's registry s
 
 > ##### ***`registerSimple(String name, T block)`***
 
+This is the old fasion way of registering a block. To use this method, you should provide an instance of a block that will cover the creation of the settings. Example usage:
 
+```java
+registerSimple("some_block", new Block(AbstractBlock.Settings.creat().registryKey(someKey));
+registerSimple("some_other_block", new CustomBlock(AbstractBlock.Settings.copy(Blocks.STONE).registryKey(someKey));
+```
 
 > ##### ***`register(String name)`***
 
-
+When you want to register a decorative block that has nothing other than the default settings as a block, what you need to do is just register an instance of a vanilla block with default settings. This method will register your block as such a block. Example usage:
+```java
+register("some_block");
+```
 
 > ##### ***`register(String name, List<Text> tooltips)`***
 
