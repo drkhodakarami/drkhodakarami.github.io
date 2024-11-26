@@ -41,7 +41,7 @@ public class Main implements ModInitializer
 
 The registers class has many sub classes, each handling dedicated section of registry entry.
 
-##### getKey(String name, RegistryKey<? extends Registry<T>> registryKey)
+###### getKey(String name, RegistryKey<? extends Registry<T>> registryKey)
 
 This method will return a RegistryKey for the given type. This value is needed for registering anything in the Minecraft registry system (from 1.21.3).
 
@@ -57,50 +57,53 @@ Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys cl
 
 This sub class handles registering every `block` into the Minecraft's registry system.
 
-##### registerSimple(String name, T block)
-##### register(String name)
-##### register(String name, List<Text> tooltips)
-##### register(String name, Block blockCopy)
-##### register(String name, Block blockCopy, List<Text> tooltips)
-##### register(String name, AbstractBlock.Settings settings)
-##### register(String name, AbstractBlock.Settings settings, List<Text> tooltips)
-##### register(String name, Function<AbstractBlock.Settings, T> factory)
-##### register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)
+###### registerSimple(String name, T block)
+###### register(String name)
+###### register(String name, List<Text> tooltips)
+###### register(String name, Block blockCopy)
+###### register(String name, Block blockCopy, List<Text> tooltips)
+###### register(String name, AbstractBlock.Settings settings)
+###### register(String name, AbstractBlock.Settings settings, List<Text> tooltips)
+###### register(String name, Function<AbstractBlock.Settings, T> factory)
+###### register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)
 ###### register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)
-##### registerStair(String name, Block stateBlock, Block copyBlock)
-##### registerSlab(String name, Block copyBlock)
-##### registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)
-##### registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)
-##### registerFence(String name, Block copyBlock)
-##### FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)
+###### registerStair(String name, Block stateBlock, Block copyBlock)
+###### registerSlab(String name, Block copyBlock)
+###### registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)
+###### registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)
+###### registerFence(String name, Block copyBlock)
+###### FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)
+###### registerWall(String name, Block copyBlock)
+###### registerDoor(String name, BlockSetType blockType, Block copyBlock)
+###### registerTrapdoor(String name, BlockSetType blockType, Block copyBlock)
 
 ### Entities Sub Class
 
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
-##### register(String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)
-##### register(String name, EntityType.EntityFactory<T> factory)
+###### register(String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)
+###### register(String name, EntityType.EntityFactory<T> factory)
 
 ### Item Sub Class
 
 This sub class handles registering every `item` into the Minecraft's registry system.
 
-##### register(String name)
-##### register(String name, List<Text> tooltips)
-##### register(String name, int stackCount)
-##### register(String name, int stackCount, List<Text> tooltips)
-##### register(String name, Function<Item.Settings, T> factory)
-##### register(String name, int stackCount, Function<Item.Settings, T> factory)
-##### register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)
-##### register(String name, Item.Settings settings, Function<Item.Settings, T> factory)
+###### register(String name)
+###### register(String name, List<Text> tooltips)
+###### register(String name, int stackCount)
+###### register(String name, int stackCount, List<Text> tooltips)
+###### register(String name, Function<Item.Settings, T> factory)
+###### register(String name, int stackCount, Function<Item.Settings, T> factory)
+###### register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)
+###### register(String name, Item.Settings settings, Function<Item.Settings, T> factory)
 ###### registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, IToolFactory<Item.Settings, T> factory)
 ###### registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, IToolFactory<Item.Settings, T> factory)
-##### registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)
-##### registerArmor(String name, ArmorMaterial material, EquipmentType equipment, Item.Settings settings, IArmorFactory<Item.Settings, T> factory)
-##### registerSnackFood(String name, int stackCount, int nutrition, float saturation)
-##### registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)
-##### registerFood(String name, int stackCount, int nutrition, float saturation)
-##### registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)
+###### registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)
+###### registerArmor(String name, ArmorMaterial material, EquipmentType equipment, Item.Settings settings, IArmorFactory<Item.Settings, T> factory)
+###### registerSnackFood(String name, int stackCount, int nutrition, float saturation)
+###### registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)
+###### registerFood(String name, int stackCount, int nutrition, float saturation)
+###### registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)
 
 ### BlockItem Sub Class
 
