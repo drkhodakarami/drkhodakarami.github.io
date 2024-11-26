@@ -137,3 +137,16 @@ This sub class handles registering every custom `status effect` into the Minecra
 This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to `datagen`.
 
 ###### registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)
+###### registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)
+###### customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item, float min, float max)
+###### customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item)
+###### registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)
+###### registerCubeVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)
+###### buildHumanoid(String name)
+###### buildHumanoidAndHorse(String name)
+###### register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)
+###### register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)
+###### `register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`
+###### modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)
+###### modifiersWithCount(int count, PlacementModifier heightModifier)
+###### modifiersWithRarity(int chance, PlacementModifier heightModifier)
