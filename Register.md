@@ -58,67 +58,188 @@ Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys cl
 This sub class handles registering every `block` into the Minecraft's registry system.
 
 > ##### ***`registerSimple(String name, T block)`***
+
+
+
 > ##### ***`register(String name)`***
+
+
+
 > ##### ***`register(String name, List<Text> tooltips)`***
+
+
+
 > ##### ***`register(String name, Block blockCopy)`***
+
+
+
 > ##### ***`register(String name, Block blockCopy, List<Text> tooltips)`***
+
+
+
 > ##### ***`register(String name, AbstractBlock.Settings settings)`***
+
+
+
 > ##### ***`register(String name, AbstractBlock.Settings settings, List<Text> tooltips)`***
+
+
+
 > ##### ***`register(String name, Function<AbstractBlock.Settings, T> factory)`***
+
+
+
 > ##### ***`register(String name, Block blockCopy, Function<AbstractBlock.Settings, T> factory)`***
+
+
+
 > ##### ***`register(String name, AbstractBlock.Settings settings, Function<AbstractBlock.Settings, T> factory)`***
+
+
+
 > ##### ***`registerStair(String name, Block stateBlock, Block copyBlock)`***
+
+
+
 > ##### ***`registerSlab(String name, Block copyBlock)`***
+
+
+
 > ##### ***`registerButton(String name, BlockSetType blockType, int pressureTicks, Block copyBlock)`***
+
+
+
 > ##### ***`registerPressurePlate(String name, BlockSetType blockType, Block copyBlock)`***
+
+
+
 > ##### ***`registerFence(String name, Block copyBlock)`***
+
+
+
 > ##### ***`FenceGateBlock registerFenceGate(String name, WoodType woodType, Block copyBlock)`***
+
+
+
 > ##### ***`registerWall(String name, Block copyBlock)`***
+
+
+
 > ##### ***`registerDoor(String name, BlockSetType blockType, Block copyBlock)`***
+
+
+
 > ##### ***`registerTrapdoor(String name, BlockSetType blockType, Block copyBlock)`***
+
+
 
 ### Entities Sub Class
 
 This sub class handles registering every `entity` (including block entity) into the Minecraft's registry system.
 
 > ##### ***`register(String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)`***
+
+
+
 > ##### ***`register(String name, EntityType.EntityFactory<T> factory)`***
+
+
 
 ### Item Sub Class
 
 This sub class handles registering every `item` into the Minecraft's registry system.
 
 > ##### ***`register(String name)`***
+
+
+
 > ##### ***`register(String name, List<Text> tooltips)`***
+
+
+
 > ##### ***`register(String name, int stackCount)`***
+
+
+
 > ##### ***`register(String name, int stackCount, List<Text> tooltips)`***
+
+
+
 > ##### ***`register(String name, Function<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`register(String name, int stackCount, Function<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`register(String name, Item.Settings settings, Function<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, IToolFactory<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, IToolFactory<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, Item.Settings settings, IArmorFactory<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation)`***
+
+
+
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
+
+
+
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation)`***
+
+
+
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
+
+
 
 ### BlockItem Sub Class
 
 This sub class handles registering every `block item` into the Minecraft's registry system.
 
 > ##### ***`register(Block block)`***
+
+
+
 > ##### ***`register(Block block, IBlockItemFactory<Item.Settings, T> factory)`***
+
+
+
 > ##### ***`register(Block block, Item.Settings settings, IBlockItemFactory<Item.Settings, T> factory)`***
+
+
 
 ### Recipe Sub Class
 
 This sub class handles registering every custom `recipe` into the Minecraft's registry system.
 
 > ##### ***`register(String name, RecipeSerializer<?> serializer)`***
+
+
+
 > ##### ***`register(String name, RecipeType<?> recipeType)`***
+
+
 
 ### ComponentType Sub Class
 
@@ -126,27 +247,72 @@ This sub class handles registering every custom `data component` type into the M
 
 > ##### ***`register(String name, UnaryOperator<ComponentType.Builder<T>> buildOperator)`***
 
+
+
 ### StatusEffect Sub Class
 
 This sub class handles registering every custom `status effect` into the Minecraft's registry system.
 
 > ##### ***`register(String name, StatusEffectCategory category, int color, BiFunction<StatusEffectCategory, Integer, StatusEffect> factory)`***
 
+
+
 ### Datagen Sub Class
 
 This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to `datagen`.
 
 > ##### ***`registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)`***
+
+
+
 > ##### ***`registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)`***
+
+
+
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item, float min, float max)`***
+
+
+
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item)`***
+
+
+
 > ##### ***`registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
+
+
+
 > ##### ***`registerCubeVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
+
+
+
 > ##### ***`buildHumanoid(String name)`***
+
+
+
 > ##### ***`buildHumanoidAndHorse(String name)`***
+
+
+
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)`***
+
+
+
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)`***
+
+
+
 > ##### ***`register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`***
+
+
+
 > ##### ***`modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)`***
+
+
+
 > ##### ***`modifiersWithCount(int count, PlacementModifier heightModifier)`***
+
+
+
 > ##### ***`modifiersWithRarity(int chance, PlacementModifier heightModifier)`***
+
+
