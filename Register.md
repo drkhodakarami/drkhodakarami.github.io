@@ -625,11 +625,17 @@ Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMate
 ---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item, float min, float max)`***
 
-text
+This method is related to the LootTableProvider for datagen. It's responsible of providing the information needed to creating the loot drop for custom ore when an ore block is broken. You can directly call this method and give it as a param for the addDrop method. Normally you should call this inside the `generate` method of a class that extends `FabricBlockLootTableProvider`. Take note, `this` in the method call example, is refering to the extended class that you are writing the code in it's generate method.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+public class ModLootTableProvider extends FabricBlockLootTableProvider
+{
+        public void generate()
+        {
+                addDrop(ModBlocks.SOME_ORE, Registers.Datagen.customOreDrops(this, this.registries, ModBlocks.SOME_ORE, ModItems.SOME_ORE_DROP, 2.0f, 3.0f);
+        }
+}
 ```
 
 ---
