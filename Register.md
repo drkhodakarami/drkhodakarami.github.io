@@ -498,26 +498,28 @@ Item SOME_FOOD = Registers.Item.registerFood("some_food", 16, 4, 0.55f, tooltips
 
 ### BlockItem Sub Class
 
-This sub class handles registering every `block item` into the Minecraft's registry system.
+This sub class handles registering every `block item` into the Minecraft's registry system. keep in mind that the methods provided in the item sub class are not suitable for registering any block item. From Minecraft version 1.21.3 and forward, block items need to have a flag set on the settings. The methods on the item sub class will not set this flag for any of the registered items. If you want to register a block item, you need to use methods in the block item sub class.
+
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModBlockItems class and you should register the block items in that class. In the ModBlockItems class you can add `import static jiraiyah.register.Registers.BlockItem.*` and by adding this import, you can drop the `Registers.BlockItem.` section from all the examples provided for this sub class.
 
 > ##### ***`register(Block block)`***
 
-text
+This will register a simple block item for the given block. The block item will have the default settings.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+BlockItem SOME_BLOCK_ITEM = Registers.BlockItem.register(ModBlocks.SOME_BLOCK);
 ```
 
 ---
 ---
 > ##### ***`register(Block block, IBlockItemFactory<Item.Settings, T> factory)`***
 
-text
+This method will register a custom block item type for the given block. Using this method, you should provide the custom block item class (that extends block item class) as the factory. The registerd block item will have default settings.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlockItem SOME_BLOCK_ITEM = Registers.BlockItem.register(ModBlocks.SOME_BLOCK, CustomBlockItem::new);
 ```
 
 ---
