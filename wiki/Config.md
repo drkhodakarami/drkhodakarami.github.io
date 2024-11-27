@@ -76,7 +76,7 @@ This method will return a string containing all the config comments, key/pair va
 This is the config provider for the system. This class is responsible of keeping the string of the whole config file and a list of key/value pairs for the config.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod but you will call it's methods when you want to add your entries to the config system. To see how you should do this, check the [Your Mod's Config Class] section bellow.
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod but you will call it's methods when you want to add your entries to the config system. To see how you should do this, check the `Your Mod's Config Class` section bellow.
 </div>
 
 ---
