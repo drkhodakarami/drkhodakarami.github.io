@@ -792,9 +792,11 @@ List<PlacementModifier> modifiers = Registers.Datagen.modifiers(5,
 ---
 > ##### ***`modifiersWithRarity(int chance, PlacementModifier heightModifier)`***
 
-text
+This method is related to world generation and datagen related to spawning different world features that should use rarity instead of fixed number. The higher the chance number, the lower the rarity and more commong the feature will be.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<PlacementModifier> modifiers = Registers.Dategen.modifiersWithRarity(10,
+                                                                HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
+                                                                                                     YOffset.fixed(60)));
 ```
