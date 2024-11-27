@@ -684,11 +684,11 @@ Registers.Datagen.registerCubeVariantBlock(generator, ModBlocks.SOME_BLOCK, Some
 ---
 > ##### ***`registerCustomVariantBlock(BlockStateModelGenerator generator, Block block, BooleanProperty property, TexturedModel.Factory model)`***
 
-This method is related to the BlockModelProvider for datagen. It's responsible of registering a model for a block that has variants for a boolean property. This will create the json file in such a way that it will accept the boolean property as the variant changing factor. Remember, you need to have two textures in the resources section to handle two variants for the front face. The model is generated using `TexturedModel.ORIENTABLE` meaning that you should provide front, side, and top textures for the block. You can directly call this method from block model provider to create the json file. Take not `ACTIVATED` in the example bellow, is the boolean property sitting inside the `SomeBlock` class. In this example, the front texture should have two textures in the resource folder, one as `some_block_front` and one as `some_block_front_activated`.
+This method is related to the BlockModelProvider for datagen. It's responsible of registering a model for a block that has variants for a boolean property. This will create the json file in such a way that it will accept the boolean property as the variant changing factor. Remember, you need to have two textures in the resources section to handle two variants for the front face. The model is generated using your provided model type, meaning that you should provide textures for the block based on the model you use. You can directly call this method from block model provider to create the json file. Take not `ACTIVATED` in the example bellow, is the boolean property sitting inside the `SomeBlock` class. In this example, the front texture should have two textures in the resource folder, one as `some_block_front` and one as `some_block_front_activated`.
 
 Example usage:
 ```java
-Registers.Datagen.registerOrientableVariantBlock(generator, ModBlocks.SOME_BLOCK, SomeBlock.ACTIVATED);
+Registers.Datagen.registerCustomVariantBlock(generator, ModBlocks.SOME_BLOCK, SomeBlock.ACTIVATED, TexturedModel.CUBE_COLUMN);
 ```
 
 ---
