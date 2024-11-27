@@ -475,22 +475,23 @@ Item SOME_SNACK = Registers.Item.registerSnackFood("some_snack", 16, 4, 0.55f, t
 ---
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation)`***
 
-text
+This method will register an item as a food but it will not add `alwaysEdible` flag on the settings. In other words, the food item that is registered using this method is not a snack.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Item SOME_FOOD = Registers.Item.registerFood("some_food", 16, 4, 0.55f);
 ```
 
 ---
 ---
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
-text
+This method will register an item as a food but it will not add `alwaysEdible` flag on the settings. In other words, the food item that is registered using this method is not a snack. In addition, it will add the provided tootips to the item.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<Text> tooltips = ... //Create the list of tooltips here.
+Item SOME_FOOD = Registers.Item.registerFood("some_food", 16, 4, 0.55f, tooltips);
 ```
 
 ### BlockItem Sub Class
