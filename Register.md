@@ -644,11 +644,18 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 ---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item)`***
 
-text
+This is an overload for the customOreDrop method we explained above. This overload, will use minimum of 2 and maximum of 5 drops by default. The rest of the information is the same as above.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+public class ModLootTableProvider extends FabricBlockLootTableProvider
+{
+    public void generate()
+    {
+        addDrop(ModBlocks.SOME_ORE, Registers.Datagen.customOreDrops(this, this.registries,
+                                                                     ModBlocks.SOME_ORE, ModItems.SOME_ORE_DROP);
+    }
+}
 ```
 
 ---
