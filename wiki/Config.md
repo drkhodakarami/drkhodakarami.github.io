@@ -227,66 +227,91 @@ public class Configs extends jiraiyah.config.Config
     public int SOME_CONFIG_INT;
   
     @Override
-    public void createConfigs()
+    protected void createConfigs()
     {
         provider.add(new Pair<>("some.config", 128), "The Main Radius!", false, true);//marked as last entry!
     }
   
     @Override
+    protected void assignConfigValues()
     {
         SOME_CONFIG_INT = config.getOrDefault("some.config", 128);
     }
 }
 ```
 
-<div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, every registring of Items, Blocks, Block Entities, or any other entry into Minecraft's registry system, should happen after this call for the init method on Registers. If you mess things up for the order of operation, the default value for the Mod ID will be `default` and not only you will get warnings or errors about missing stuff in the consol, also the models and textures will not work properly any more.
-</div>
+---
+---
+> ##### ***`Config(String modId)`***
 
-The registers class has many sub classes, each handling dedicated section of registry entry.
+This is the main constructor. Your mod should instantiate the class providing the mod id. Check the `Your Mod's Config Class` for more instruction on this.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getConfig()`***
 
-Just change the RegistryKeys.BLOCK to anything you need from the RegistryKeys class.
+This method returns the internal `BaseConfig` instance just in case you need it anywhere else outside of the config system.
 
-Example usage:
+---
+---
+> ##### ***`load()`***
+
+This method will setup the whole config system. By default it will use ALL_UPPER_CASE for key letter casing.
+
+---
+---
+> ##### ***`load(ConfigKeyCasing casing)`***
+
+This is the main overload of the previous method. Take a look at the code snippet bellow:
+
 ```java
-
+this.config = BaseConfig.of(this.modId, "_config")
+  .provider(provider)
+  .request(this.modId, casing);
 ```
 
+As you see, this is how we internally instantiate the `BaseConfig` class. First we call the `of` static method that provides the bare minimum needed. Then we add the provider on top of it that will return a `ConfigRequest` instead of the desired `BasedConfig`. Finally, calling the `request` method on the provided `ConfigRequest`, we get the final instance of the `BasedConfig` with everything setup and ready to be used! This is all done internally and you don't need to worry about it. However, if for any reason, you want to utilize the base structure and create your own config system, it's nice to know this internal mechanic.
+
 ---
 ---
+> ##### ***`createConfigs()`***
+
+This method is responsible of creating the entries inside the `ConfigRequest` as provider. You need to override this method in every implementation of config file you have in your mod. Check the code snippet provided at the start of the `Config Class` section.
+
+---
+---
+> ##### ***`assingConfigValues()`***
+
+This method is responsible of reading the final values from the config system and assing it to your local public static variables. You need to override this method in every implementation of config file you have in your mod. Check the code snippet provided at the start of the `Config Class` section.
 
 ## Your Mod's Config Class
 
-text
+First, check the code snippet at the start of `Config Class` section. You need to have your own config class extending the `Config` class. Let's assume that you named it `Configs` as the provided example. Now, in your main mod initialization phase, you need to create an instance of this class and call the methods so that everything gets ready.
 
 ```java
 public class Main implements ModInitializer
 {
     public static String ModID = "your_mod_id";
+    public static Configs CONFIGS;
   
     @Override
     public void onInitialize()
     {
         Registers.init(ModID);
+      
+        CONFIGS = new Configs(ModID);
+        CONFIGS.load();
+      
+        registerItems();
+        registerBlocks();
+        registerBlockItems();
+        //other registring calls
     }
 }
 ```
 
-text
+In the example above, I intentionally let you see that we can initialize the JiRegister library before the config system. The init method of the JiRegister library does nothing other than setting the mod ID for future usage. As you see, the config initializtion is done by calling the `load()` method here. This overload is using ALL_UPPER_CASE by default. If you want to use any other casing, use the other load method from the Config class that accepts the casing enumeration.
 
-```java
-public class Main implements ModInitializer
-{
-    public static String ModID = "your_mod_id";
-  
-    @Override
-    public void onInitialize()
-    {
-        Registers.init(ModID);
-    }
-}
-```
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, it's really important when you create and initialize the config system in the mod initialization phase. For example, if you are going to use some config values for registering an Item with some configurable values, your config initialization should happen before item registration. A golden rule is to initialize your config at the start before anything else happens.
+</div>
