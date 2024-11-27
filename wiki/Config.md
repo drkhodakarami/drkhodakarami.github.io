@@ -32,7 +32,7 @@ This interface is used internally by the system.
 This class is the request for a config object. It holds different important values like the file, the file name, the provider that is instance of `IConfigProvider`, the final `BaseConfig` and the final config string.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod or call any methods from this class and store the return values. This class is for config system's internal use only.
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod but you will call it's methods when you want to add your entries to the config system. To see how you should do this, check the [Your Mod's Config Class] section bellow.
 </div>
 
 ---
@@ -76,12 +76,68 @@ This method will return a string containing all the config comments, key/pair va
 This is the config provider for the system. This class is responsible of keeping the string of the whole config file and a list of key/value pairs for the config.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod or call any methods from this class and store the return values. This class is for config system's internal use only.
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod but you will call it's methods when you want to add your entries to the config system. To see how you should do this, check the [Your Mod's Config Class] section bellow.
 </div>
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getConfigList()`***
+
+This method returns the `List<Pair<String, ?>>` that is the main key/value pair stored in the class for fast value retrieving.
+
+---
+---
+> ##### ***`get(String namespace)`***
+
+This method returns the cached string of the whole config file as a string.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair, String comment)`***
+
+This method adds a key/value pair with the addition of inline comment for the pair. By default it will add a new line at the end of the line.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair)`***
+
+This method adds a key/value pair without any inline comments. By default it will add a new line at the end of the line.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair, String comment, boolean addNewLine)`***
+
+This method adds a key/value pair with the addition of inline comment however, it checks the flag for addition of a new line at the end of the line of not.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair, boolean addNewLine)`***
+
+This method adds a key/value pair without any inline comment however, it checks the flag for addition of a new line at the end of the line of not.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair, String comment, boolean addNewLine, boolean isLast)`***
+
+This method is an overlay for the previous one with the addition of another flag to check if the current entry is the last entry in the whole system and file or not. If the entry is not the last one, the file will have an empty line after the entry if you have set the add new line flag to true. However, if it's not the last entry and you didn't want the empty line and set the add new line flag to false, after finishing the current line, it will simply return to the start of the new line without any empty line between entries. On the other hand, if it's the last entry in the file, there won't be any action to return to a new line when the current line is finished. Every overload method mentioned above, will internally call this method with the isLast as `false`. If you want to add the last entry to the config system, you should manually call this method and set the is last to true.
+
+---
+---
+> ##### ***`addPair(Pair<String, ?> pair, boolean addNewLine, boolean isLast)`***
+
+The overload for the previous method without the addition of inline comment. Read the previous method for the flags and how they work.
+
+---
+---
+> ##### ***`addComment(String comment)`***
+
+Simply adds a comment line in the config without any key/value pair as entry in that line.
+
+---
+---
+> ##### ***`addNewLine()`***
+
+Adds an extra empty line in the config structure for organizing your config file the way you want.
 
 ## BaseConfig class
 
@@ -93,9 +149,7 @@ text
 
 ---
 ---
-> ##### ***`getConfigList()`***
-
-This method returns the `List<Pair<String, ?>>` that is the main key/value pair stored in the class for fast value retrieving.
+> ##### ***``***
 
 ## Config class
 
