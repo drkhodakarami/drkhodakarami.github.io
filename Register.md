@@ -308,6 +308,7 @@ CustomEntity SOME_ENTITY = Registers.Entities.register("some_entity", CustomEnti
 This sub class handles registering every `item` into the Minecraft's registry system.
 
 ---
+---
 > ##### ***`register(String name)`***
 
 If you want to simply register a simple item with default settings, you can use this method. The method will register an instance of item class with given name and default settings.
@@ -317,6 +318,7 @@ Example usage:
 Item SOME_ITEM = Registers.Item.register("some_item");
 ```
 
+---
 ---
 > ##### ***`register(String name, List<Text> tooltips)`***
 
@@ -329,6 +331,7 @@ Item SOME_ITEM = Registers.Item.register("some_item", tooltips);
 ```
 
 ---
+---
 > ##### ***`register(String name, int stackCount)`***
 
 If you want to define the stack size for a simple item with default settings, you can use this method. The method will register an instance of item class with given stack size being added on top of default settings.
@@ -338,6 +341,7 @@ Example usage:
 Item SOME_ITEM = Registers.Item.register("some_item", 1);
 ```
 
+---
 ---
 > ##### ***`register(String name, int stackCount, List<Text> tooltips)`***
 
@@ -350,6 +354,7 @@ Item SOME_ITEM = Registers.Item.register("some_item", 1, tooltips);
 ```
 
 ---
+---
 > ##### ***`register(String name, Function<Item.Settings, T> factory)`***
 
 If you want to register an instance of a custom item class, you can use this method that will accept the custom class as factory.
@@ -359,6 +364,7 @@ Example usage:
 CustomItem SOME_ITEM = Registers.Item.register("some_item", CustomItem::new);
 ```
 
+---
 ---
 > ##### ***`register(String name, int stackCount, Function<Item.Settings, T> factory)`***
 
@@ -370,6 +376,7 @@ CustomItem SOME_ITEM = Registers.Item.register("some_item", 1, CustomItem::new);
 ```
 
 ---
+---
 > ##### ***`register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
 If you want to register an instance of a custom item class with definition of stack size and your own custom settings, you can call this method. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
@@ -379,6 +386,7 @@ Example usage:
 CustomItem SOME_ITEM = Registers.Item.register("some_item", 1, new Item.Settings(), CustomItem::new);
 ```
 
+---
 ---
 > ##### ***`register(String name, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
@@ -390,6 +398,7 @@ CustomItem SOME_ITEM = Registers.Item.register("some_item", new Item.Settings(),
 ```
 
 ---
+---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, IToolFactory<Item.Settings, T> factory)`***
 
 This method can be used to register any tool item. You will send in the material and other parameters of the tool item and the tool class as the factory.
@@ -397,13 +406,14 @@ This method can be used to register any tool item. You will send in the material
 Example usage:
 ```java
 AxeItem SOME_AXE = Registers.Item.registerTool("some_axe", ModToolMaterials.MATRERIAL, 0.5f, 0.5f, AxeItem::new);
-HoeItem SOME_Hoe = Registers.Item.registerTool("some_hoe", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, HoeItem::new);
+HoeItem SOME_HOE = Registers.Item.registerTool("some_hoe", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, HoeItem::new);
 PickaxeItem SOME_PICKAXE = Registers.Item.registerTool("some_pickaxe", ModToolMaterials.MATRERIAL, 0.1f, 0.1f, PickaxeItem::new);
 ShovelItem SOME_SHOVEL = Registers.Item.registerTool("some_shovel", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, ShovelItem::new);
 SwordItem SOME_SWORD = Registers.Item.registerTool("some_sword", ModToolMaterials.MATRERIAL, 1.5f, -2.0f, SwordItem::new);
 CustomTool SOME_TOOL = Registers.Item.registerTool("some_tool", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, CustomTool::new);
 ```
 
+---
 ---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, IToolFactory<Item.Settings, T> factory)`***
 
@@ -414,6 +424,7 @@ Example usage:
 AxeItem SOME_Axe = Registers.Item.registerTool("some_tool", ModToolMaterials.MATERIAL, 0.0f, 0.0f, new Item.Settings(), AxeItem::new);
 ```
 
+---
 ---
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)`***
 
@@ -428,15 +439,17 @@ ArmorItem SOME_BOOTS = Registers.Item.registerArmor("some_boots", ModArmorMateri
 ```
 
 ---
+---
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, Item.Settings settings, IArmorFactory<Item.Settings, T> factory)`***
 
-text
+If you want to register an armor item with your custom settings, you can use this method call. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+ArmorItem SOME_BOOTS = Registers.Item.registerArmor("some_boots", ModArmorMaterials.MATERIAL, new Item.Settings(), EquipmentType.BOOTS, ArmorItem::new);
 ```
 
+---
 ---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation)`***
 
@@ -447,6 +460,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
@@ -467,6 +481,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`registerFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
@@ -491,6 +506,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`register(Block block, IBlockItemFactory<Item.Settings, T> factory)`***
 
 text
@@ -500,6 +516,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`register(Block block, Item.Settings settings, IBlockItemFactory<Item.Settings, T> factory)`***
 
@@ -523,6 +540,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`register(String name, RecipeType<?> recipeType)`***
 
@@ -573,6 +591,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)`***
 
 text
@@ -582,6 +601,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item, float min, float max)`***
 
@@ -593,6 +613,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`customOreDrops(FabricBlockLootTableProvider provider, RegistryWrapper.WrapperLookup registries, Block drop, Item item)`***
 
 text
@@ -602,6 +623,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
@@ -613,6 +635,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`registerCubeVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
 text
@@ -622,6 +645,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`buildHumanoid(String name)`***
 
@@ -633,6 +657,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`buildHumanoidAndHorse(String name)`***
 
 text
@@ -642,6 +667,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)`***
 
@@ -653,6 +679,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)`***
 
 text
@@ -662,6 +689,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`***
 
@@ -673,6 +701,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)`***
 
 text
@@ -683,6 +712,7 @@ CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new
 ```
 
 ---
+---
 > ##### ***`modifiersWithCount(int count, PlacementModifier heightModifier)`***
 
 text
@@ -692,6 +722,7 @@ Example usage:
 CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
 ```
 
+---
 ---
 > ##### ***`modifiersWithRarity(int chance, PlacementModifier heightModifier)`***
 
