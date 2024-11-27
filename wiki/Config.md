@@ -21,35 +21,43 @@ SomeKeyString=....
 
 ## IConfigProvider
 
-This interface is used internally by the system. Normally you shouldn't have a need to implement it in any class or extend it for another interface. The interface if for providing configuration values in the system.
+This interface is used internally by the system.
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, normally you don't need to implement or extend this interface. This interface is for config system's internal use only.
+</div>
 
 ## ConfigRequest class
 
 This class is the request for a config object. It holds different important values like the file, the file name, the provider that is instance of `IConfigProvider`, the final `BaseConfig` and the final config string.
 
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod or call any methods from this class and store the return values. This class is for config system's internal use only.
+</div>
+
 ---
 ---
 > ##### ***`ConfigRequest(File file, String filename)`***
 
-The constructor of the class. Normally you don't need to instantiate this class in your mod's code because this class is being used internally by the system.
+The constructor of the class.
 
 ---
 ---
 > ##### ***`getFile()`***
 
-This method returns the `File` associated to the config system. Normally you don't need to call this method and save the return value because this method is being used internally by the system.
+This method returns the `File` associated to the config system.
 
 ---
 ---
 > ##### ***`getFilename()`***
 
-This method returns the `Filename` associated to the config system. Normally you don't need to call this method and save the return value because this method is being used internally by the system.
+This method returns the `Filename` associated to the config system.
 
 ---
 ---
 > ##### ***`provider(IConfigProvider provider)`***
 
-This will return an instance of `ConfigRequest` that is being instantiated in the system before hand. Normally you don't need to call this method and save the return value because this method is being used internally by the system.
+This will return an instance of `ConfigRequest` that is being instantiated in the system before hand.
 
 ---
 ---
@@ -61,7 +69,7 @@ This method will return an instance of `BaseConfig` that is being instantiated b
 ---
 > ##### ***`getConfig()`***
 
-This method will return a string containing all the config comments, key/pair values being set in it before hand. Normally you don't need to call this method and save the return value because this method is being used internally by the system.
+This method will return a string containing all the config comments, key/pair values being set in it before hand.
 
 ## Registers class
 
