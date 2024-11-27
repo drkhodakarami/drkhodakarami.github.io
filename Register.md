@@ -593,6 +593,8 @@ RegistryEntry<StatusEffect> SOME_EFFECT = Registers.StatusEffect.register("some_
 
 This sub class does not register anything into the Minecraft's registry system however, it's responsible of adding helper methods related to `datagen`.
 
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have different classes handling datagen in themselves. In each of these classes you can add `import static jiraiyah.register.Registers.Datagen.*` and by adding this import, you can drop the `Registers.Datagen.` section from all the examples provided for this sub class.
+
 > ##### ***`registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)`***
 
 text
