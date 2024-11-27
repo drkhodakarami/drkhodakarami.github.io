@@ -684,7 +684,7 @@ Registers.Datagen.registerCubeVariantBlock(generator, ModBlocks.SOME_BLOCK, Some
 ---
 > ##### ***`buildHumanoid(String name)`***
 
-This is related to ItemModelProvider for armor datagen. Normally you don't need to call this method directly because when you use the provided `registerArmor` or `registerAllArmor` methods, they internally use this method. This method is responsible of generating the humanoid models for the armor item and return `EquipmentModel` to be used for the model provider.
+This method is related to ItemModelProvider for armor datagen. Normally you don't need to call this method directly because when you use the provided `registerArmor` or `registerAllArmor` methods, they internally use this method. This method is responsible of generating the humanoid models for the armor item and return `EquipmentModel` to be used for the model provider.
 
 Example usage:
 ```java
@@ -695,22 +695,26 @@ EquipmentModel humanoid_model = Registers.Datagen.buildHumanoid("emerald");
 ---
 > ##### ***`buildHumanoidAndHorse(String name)`***
 
-text
+This method is related to ItemModelProvider for armor datagen. Normally you don't need to call this method directly because when you use the provided `registerArmor` or `registerAllArmor` methods, they internally use this method. This method is responsible of generating the humanoid and horse models for the armor item and return `EquipmentModel` to be used for the model provider.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+EquipmentModel humanoid_model = Registers.Datagen.buildHumanoidAndJorse("emerald");
 ```
 
 ---
 ---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)`***
 
-text
+This method is related to ore generation and datagen related to spawning ore in the world. The method will register a `placed feature` inside the registry system. You can directly call this method to register a placed feature.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
+                           lookup.getOrThrow(ModConfiguredFeatures.SOME_FEATURE),
+                           Registers.Datagen.modifiersWithCount(1,
+                                                                HeightRangePlacementModifier.uniform(YOffset.fixed(50),
+                                                                                                     YOffset.fixed(60))));
 ```
 
 ---
