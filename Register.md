@@ -712,8 +712,7 @@ Example usage:
 ```java
 Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
                            lookup.getOrThrow(ModConfiguredFeatures.SOME_FEATURE),
-                           Registers.Datagen.modifiersWithCount(1,
-                                                                HeightRangePlacementModifier.uniform(YOffset.fixed(50),
+                           Registers.Datagen.modifiersWithCount(1, HeightRangePlacementModifier.uniform(YOffset.fixed(50),
                                                                                                      YOffset.fixed(60))));
 ```
 
