@@ -706,14 +706,20 @@ EquipmentModel humanoid_model = Registers.Datagen.buildHumanoidAndJorse("emerald
 ---
 > ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers)`***
 
-This method is related to ore generation and datagen related to spawning ore in the world. The method will register a `placed feature` inside the registry system. You can directly call this method to register a placed feature.
+This method is related to ore generation and datagen related to spawning ore in the world. The method will register a `placed feature` inside the registry system. You can directly call this method from a bootstrap method to register a placed feature.
 
 Example usage:
 ```java
-Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
+public class ModPlacedFeatures
+{
+    public static void bootstrap(Registerable<PlacedFeature> context)
+    {
+        Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
                            lookup.getOrThrow(ModConfiguredFeatures.SOME_FEATURE),
                            Registers.Datagen.modifiersWithCount(1, HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
                                                                                                         YOffset.fixed(60))));
+    }
+}
 ```
 
 ---
