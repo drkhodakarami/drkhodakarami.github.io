@@ -1,3 +1,0 @@
-## Ji Reference
-
-text
