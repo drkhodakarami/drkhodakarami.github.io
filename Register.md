@@ -310,91 +310,98 @@ This sub class handles registering every `item` into the Minecraft's registry sy
 ---
 > ##### ***`register(String name)`***
 
-text
+If you want to simply register a simple item with default settings, you can use this method. The method will register an instance of item class with given name and default settings.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Item SOME_ITEM = Registers.Item.register("some_item");
 ```
 
 ---
 > ##### ***`register(String name, List<Text> tooltips)`***
 
-text
+If you want to register a simple item with default settings but with the addition of tooltips, you can use this method. The method will register an instance of item class with given name and tooltops and default settings.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<Text> tooltips = ... //Create the list of tooltips here.
+Item SOME_ITEM = Registers.Item.register("some_item", tooltips);
 ```
 
 ---
 > ##### ***`register(String name, int stackCount)`***
 
-text
+If you want to define the stack size for a simple item with default settings, you can use this method. The method will register an instance of item class with given stack size being added on top of default settings.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Item SOME_ITEM = Registers.Item.register("some_item", 1);
 ```
 
 ---
 > ##### ***`register(String name, int stackCount, List<Text> tooltips)`***
 
-text
+If you want to define the stack size and tooltips for a simple item with default settings, you can use this method. The method will register an instance of item class with given stack size being added on top of default settings with addition of tooltips being set for the instance.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<Text> tooltips = ... //Create the list of tooltips here.
+Item SOME_ITEM = Registers.Item.register("some_item", 1, tooltips);
 ```
 
 ---
 > ##### ***`register(String name, Function<Item.Settings, T> factory)`***
 
-text
+If you want to register an instance of a custom item class, you can use this method that will accept the custom class as factory.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomItem SOME_ITEM = Registers.Item.register("some_item", CustomItem::new);
 ```
 
 ---
 > ##### ***`register(String name, int stackCount, Function<Item.Settings, T> factory)`***
 
-text
+If you want to register an instance of a custom item class with definition of stack size, you can use this method call and send the stack size and the item class factory in.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomItem SOME_ITEM = Registers.Item.register("some_item", 1, CustomItem::new);
 ```
 
 ---
 > ##### ***`register(String name, int stackCount, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
-text
+If you want to register an instance of a custom item class with definition of stack size and your own custom settings, you can call this method. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomItem SOME_ITEM = Registers.Item.register("some_item", 1, new Item.Settings(), CustomItem::new);
 ```
 
 ---
 > ##### ***`register(String name, Item.Settings settings, Function<Item.Settings, T> factory)`***
 
-text
+If you want to register an instance of a custom item class with custom settings and default stack size, you can use this method call and provide the settings and the custom class as factory. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomItem SOME_ITEM = Registers.Item.register("some_item", new Item.Settings(), CustomItem::new);
 ```
 
 ---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, IToolFactory<Item.Settings, T> factory)`***
 
-text
+This method can be used to register any tool item. You will send in the material and other parameters of the tool item and the tool class as the factory.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+AxeItem SOME_AXE = Registers.Item.registerTool("some_axe", ModToolMaterials.MATRERIAL, 0.5f, 0.5f, AxeItem::new);
+HoeItem SOME_Hoe = Registers.Item.registerTool("some_hoe", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, HoeItem::new);
+PickaxeItem SOME_PICKAXE = Registers.Item.registerTool("some_pickaxe", ModToolMaterials.MATRERIAL, 0.1f, 0.1f, PickaxeItem::new);
+ShovelItem SOME_SHOVEL = Registers.Item.registerTool("some_shovel", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, ShovelItem::new);
+SwordItem SOME_SWORD = Registers.Item.registerTool("some_sword", ModToolMaterials.MATRERIAL, 1.5f, -2.0f, SwordItem::new);
+CustomTool SOME_TOOL = Registers.Item.registerTool("some_tool", ModToolMaterials.MATRERIAL, 0.0f, 0.0f, CustomTool::new);
 ```
 
 ---
