@@ -407,21 +407,24 @@ CustomTool SOME_TOOL = Registers.Item.registerTool("some_tool", ModToolMaterials
 ---
 > ##### ***`registerTool(String name, ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings, IToolFactory<Item.Settings, T> factory)`***
 
-text
+If you want to register a tool but instead of using the default settings, you want to set your custom settings, you can use this method. Take note that in the settings section we are not adding `.registryKey(someKey)` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+AxeItem SOME_Axe = Registers.Item.registerTool("some_tool", ModToolMaterials.MATERIAL, 0.0f, 0.0f, new Item.Settings(), AxeItem::new);
 ```
 
 ---
 > ##### ***`registerArmor(String name, ArmorMaterial material, EquipmentType equipment, IArmorFactory<Item.Settings, T> factory)`***
 
-text
+This method will register an armor item with default settings. You can simply send `ArmorItem` class as the factory or alternatively, you can send any custom class that is extending the armor item one.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+ArmorItem SOME_HELMET = Registers.Item.registerArmor("some_helmet", ModArmorMaterials.MATERIAL, EquipmentType.HELMET, ArmorItem::new);
+ArmorItem SOME_CHESTPLATE = Registers.Item.registerArmor("some_chestplate", ModArmorMaterials.MATERIAL, EquipmentType.CHESTPLATE, ArmorItem::new);
+ArmorItem SOME_LEGGINGS = Registers.Item.registerArmor("some_leggings", ModArmorMaterials.MATERIAL, EquipmentType.LEGGINGS, ArmorItem::new);
+ArmorItem SOME_BOOTS = Registers.Item.registerArmor("some_boots", ModArmorMaterials.MATERIAL, EquipmentType.BOOTS, ArmorItem::new);
 ```
 
 ---
