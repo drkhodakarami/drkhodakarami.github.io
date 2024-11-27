@@ -563,18 +563,22 @@ RecipeType<?> RECIPE_TYPE = Registers.Recipe.register("some_recipe_type", ModRec
 
 This sub class handles registering every custom `data component` type into the Minecraft's registry system.
 
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModComponents class and you should register the custom data components in that class. In the ModComponents class you can add `import static jiraiyah.register.Registers.ComponentType.*` and by adding this import, you can drop the `Registers.ComponentType.` section from all the examples provided for this sub class.
+
 > ##### ***`register(String name, UnaryOperator<ComponentType.Builder<T>> buildOperator)`***
 
-text
+This will register a custom data component type in the Minecraft registry system. Keep in mind, as standard, any custom data type should have a codec definition in itself and in the provided example, the `CustomData.CODEC` is that static codec definition field in the custom data class or record. Take note, this is the only method in the Registers class and it's sub classes that accepts a lambda builder.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+ComponentType<CustomData> SOME_DATA_TYPE = Registers.ComponentType.register("some_data_type", builder -> builder.codec(CustomData.CODEC));
 ```
 
 ### StatusEffect Sub Class
 
 This sub class handles registering every custom `status effect` into the Minecraft's registry system.
+
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModEffects class and you should register the status effect in that class. In the ModEffects class you can add `import static jiraiyah.register.Registers.StatusEffect.*` and by adding this import, you can drop the `Registers.StatusEffect.` section from all the examples provided for this sub class.
 
 > ##### ***`register(String name, StatusEffectCategory category, int color, BiFunction<StatusEffectCategory, Integer, StatusEffect> factory)`***
 
@@ -582,7 +586,7 @@ text
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+RegistryEntry<StatusEffect> SOME_EFFECT = Registers.StatusEffect.register("some_effect", StatusEffectCategory.BENEFICIAL, 0xFFFFFF, CustomEffect::new);
 ```
 
 ### Datagen Sub Class
