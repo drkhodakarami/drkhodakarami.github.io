@@ -779,7 +779,7 @@ List<PlacementModifier> modifiers = Registers.Datagen.modifiers(CountPlacementMo
 ---
 > ##### ***`modifiersWithCount(int count, PlacementModifier heightModifier)`***
 
-This is an overload for previous method. Instead of sending in the count modifier, we just send in the number. Remember, when it's used for placed features and configured features, this number represents the number of veins in a chunk.
+This is an overload for previous method. Instead of sending in the count modifier, we just send in the number. Remember, when it's used for placed features and configured features, this number represents the vein size per vein.
 
 Example usage:
 ```java
