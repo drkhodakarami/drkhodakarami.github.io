@@ -305,7 +305,9 @@ CustomEntity SOME_ENTITY = Registers.Entities.register("some_entity", CustomEnti
 
 ### Item Sub Class
 
-This sub class handles registering every `item` into the Minecraft's registry system.
+This sub class handles registering every `item` into the Minecraft's registry system. It has methods for registering tools, armor, food, and snack food as helper methods.
+
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModItems class and you should register the items in that class. In the ModItems class you can add `import static jiraiyah.register.Registers.Item.*` and by adding this import, you can drop the `Registers.Item.` section from all the examples provided for this sub class.
 
 ---
 ---
