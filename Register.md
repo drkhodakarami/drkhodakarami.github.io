@@ -662,7 +662,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 ---
 > ##### ***`registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
-This method is related to the BlockModelProvider for datagen. It's responsible of registering a model for a block that has variants for a boolean property. This will create the json file in such a way that it will accept the boolean property as the variant changing factor. Remember, you need to have two textures in the resources section to handle two variants for the front face. The model is generated using `TexturedModel.ORIENTABLE` meaning that you should provide front, side, and top textures for the block. You can directly call this method from block model provider to create the json file. Take not `ACTIVATED` in the example bellow, is the boolean property sitting inside the `SomeBlock` class.
+This method is related to the BlockModelProvider for datagen. It's responsible of registering a model for a block that has variants for a boolean property. This will create the json file in such a way that it will accept the boolean property as the variant changing factor. Remember, you need to have two textures in the resources section to handle two variants for the front face. The model is generated using `TexturedModel.ORIENTABLE` meaning that you should provide front, side, and top textures for the block. You can directly call this method from block model provider to create the json file. Take not `ACTIVATED` in the example bellow, is the boolean property sitting inside the `SomeBlock` class. In this example, the front texture should have two textures in the resource folder, one as `some_block_front` and one as `some_block_front_activated`.
 
 Example usage:
 ```java
@@ -673,11 +673,11 @@ Registers.Datagen.registerOrientableVariantBlock(generator, ModBlocks.SOME_BLOCK
 ---
 > ##### ***`registerCubeVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
-text
+This method is an overload for the above one. The difference is that, instead of using `TextureModel.ORIENTABLE` it uses `TexturedModel.CUBE_ALL`. Because of this, you need to provide only two textures for the block, one texture for the normal state of the block and one for the variant with the property. In this example, `ACTIVATED` is the boolean property sitting inside the block class. Because of this, you have to provide two textures in the resource section, one as `some_block` and one as `some_block_activated`.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Registers.Datagen.registerCubeVariantBlock(generator, ModBlocks.SOME_BLOCK, SomeBlock.ACTIVATED);
 ```
 
 ---
