@@ -32,7 +32,7 @@ This interface is used internally by the system.
 This class is the request for a config object. It holds different important values like the file, the file name, the provider that is instance of `IConfigProvider`, the final `BaseConfig` and the final config string.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod but you will call it's methods when you want to add your entries to the config system. To see how you should do this, check the [Your Mod's Config Class] section bellow.
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod or call any methods from this class and store the return values. This class is for config system's internal use only.
 </div>
 
 ---
