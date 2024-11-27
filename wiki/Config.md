@@ -61,6 +61,8 @@ This method will return an instance of `BaseConfig` that is being instantiated b
 ---
 > ##### ***`getConfig()`***
 
+This method will return a string containing all the config comments, key/pair values being set in it before hand. Normally you don't need to call this method and save the return value because this method is being used internally by the system.
+
 ## Registers class
 
 This is the main helper method in the library. Most of the registry calls for Minecraft need the Mod ID of your mod. This class is a helper one and shouldn't be instantiated. Because of this, it has an internal modID attribute and you need to call the init(String modID) from the start of your main mod's initialization class (alternatively, if you are concerned about race condition between different mods calling the class, you can initialize the Registers at the start of each registry call in different classes, more about this on another page):
