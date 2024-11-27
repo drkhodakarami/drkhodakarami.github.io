@@ -141,15 +141,77 @@ Adds an extra empty line in the config structure for organizing your config file
 
 ## BaseConfig class
 
-text
+This is the main class in the system that holds the `HashMap` for the key/value pairs and provides methods to get the values from the config system. Also, this class is responsible of creating, writing, and reading values of any config class.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod or call any methods from this class and store the return values. This class is for config system's internal use only.
+  :bulb:<strong>Remember</strong>, normally you don't need to instantiate this class in your mod, the instantiation is handled internally. When you are creating the config class for your mod, you will utilize methods of this class for reading the values for the config keys of your mod.
 </div>
 
 ---
 ---
-> ##### ***``***
+> ##### ***`of(String modid, String filename)`***
+
+This is a static helper method that is being used internally by the system to create the base instance with bare minimum settings. Check the `Config class` to see how the system is utilizing this method to instantiate the class.
+
+---
+---
+> ##### ***`get(String key)`***
+
+This method will return a value from the `HashMap`. It does not check for key validation and if the key is not valid, it will return `null` by default.
+
+---
+---
+> ##### ***`getOrDefault(String key, String def)`***
+
+This method will return a `string` from `HashMap` by the given key. If the key is wrong, it will produce a log error message and assign the provided def value as the default value for the entry. However, in case of using the default value, it will not set the config system's internal value and does not store this value on the file.
+
+---
+---
+> ##### ***`getOrDefault(String key, int def)`***
+
+This method will return an `integer` from `HashMap` by the given key. If the key is wrong, it will produce a log error message and assign the provided def value as the default value for the entry. However, in case of using the default value, it will not set the config system's internal value and does not store this value on the file.
+
+---
+---
+> ##### ***`getOrDefault(String key, boolean def)`***
+
+This method will return a `boolean` from `HashMap` by the given key. If the key is wrong, it will produce a log error message and assign the provided def value as the default value for the entry. However, in case of using the default value, it will not set the config system's internal value and does not store this value on the file.
+
+---
+---
+> ##### ***`getOrDefault(String key, double def)`***
+
+This method will return a `double` from `HashMap` by the given key. If the key is wrong, it will produce a log error message and assign the provided def value as the default value for the entry. However, in case of using the default value, it will not set the config system's internal value and does not store this value on the file.
+
+---
+---
+> ##### ***`isBroken()`***
+
+Returns the result of the creation and reading of the config file. If there was an error during the creation or loading of the file itself, this will return `true`, otherwise it will return `false`.
+
+---
+---
+> ##### ***`delete()`***
+
+text
+
+---
+---
+> ##### ***`createConfig()`***
+
+text
+
+---
+---
+> ##### ***`loadConfig()`***
+
+text
+
+---
+---
+> ##### ***`parseConfigEntry(String entry, int line)`***
+
+text
 
 ## Config class
 
