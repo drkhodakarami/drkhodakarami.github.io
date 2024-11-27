@@ -1,3 +1,0 @@
-## Ji Inventory
-
-text
