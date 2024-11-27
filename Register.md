@@ -766,11 +766,13 @@ public class ModConfiguredFeatures
 ---
 > ##### ***`modifiers(PlacementModifier countModifier, PlacementModifier heightModifier)`***
 
-text
+The method is related to world generation and datagen related to spawning in the world. This method will return a list of `PlacementModifier`. It accepts a count of placement, and height limiting factors. Normally you will call this method from within a placed feature registration.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<PlacementModifier> modifiers = Registers.Datagen.modifiers(CountPlacementModifier.of(5),
+                                                                HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
+                                                                                                     YOffset.fixed(60)));
 ```
 
 ---
