@@ -215,17 +215,26 @@ This is a private method responsible of parsing the content of a line in config 
 
 ## Config class
 
-This is the main helper method in the library. Most of the registry calls for Minecraft need the Mod ID of your mod. This class is a helper one and shouldn't be instantiated. Because of this, it has an internal modID attribute and you need to call the init(String modID) from the start of your main mod's initialization class (alternatively, if you are concerned about race condition between different mods calling the class, you can initialize the Registers at the start of each registry call in different classes, more about this on another page):
+This is the main entry for the config system that you should utilize in your mod. The class is `abstract` meaning that, you can't directly instantiate this class. Instead, you need to write your own class extending from this one.
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, your class should always overriding two methods: createConfigs and assignConfigValues. Normally you don't need to touch any other method from this class and they should work unless you want to expand and change the whole system's functionality.
+</div>
 
 ```java
-public class Main implements ModInitializer
+public class Configs extends jiraiyah.config.Config
 {
-    public static String ModID = "your_mod_id";
+    public int SOME_CONFIG_INT;
   
     @Override
-    public void onInitialize()
+    public void createConfigs()
     {
-        Registers.init(ModID);
+        provider.add(new Pair<>("some.config", 128), "The Main Radius!", false, true);//marked as last entry!
+    }
+  
+    @Override
+    {
+        SOME_CONFIG_INT = config.getOrDefault("some.config", 128);
     }
 }
 ```
