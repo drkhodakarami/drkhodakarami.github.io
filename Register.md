@@ -582,7 +582,7 @@ In the use cases provided here, we are addressing the methods with complete clas
 
 > ##### ***`register(String name, StatusEffectCategory category, int color, BiFunction<StatusEffectCategory, Integer, StatusEffect> factory)`***
 
-text
+This method will register a custom status effect into Minecraft's registry system. Keep in mind, the color provided here will be used for coloring the particle effects. Also, the category is a value from `StatusEffectCategory` enums.
 
 Example usage:
 ```java
