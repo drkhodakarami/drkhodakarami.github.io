@@ -614,11 +614,11 @@ Registers.Datagen.registerAllArmor(itemModelGenerator, new Item[]{ModItems.HELME
 ---
 > ##### ***`registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)`***
 
-text
+This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for a single armor item. You can directly call this method from item model provider and generate the sinle armor item json files.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMaterial.MATERIAL, EquipmentSlot.HEAD);
 ```
 
 ---
