@@ -779,13 +779,13 @@ List<PlacementModifier> modifiers = Registers.Datagen.modifiers(CountPlacementMo
 ---
 > ##### ***`modifiersWithCount(int count, PlacementModifier heightModifier)`***
 
-text
+This is an overload for previous method. Instead of sending in the count modifier, we just send in the number. Remember, when it's used for placed features and configured features, this number represents the number of veins in a chunk.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
-```
-
+List<PlacementModifier> modifiers = Registers.Datagen.modifiers(5,
+                                                                HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
+                                                                                                     YOffset.fixed(60)));
 ---
 ---
 > ##### ***`modifiersWithRarity(int chance, PlacementModifier heightModifier)`***
