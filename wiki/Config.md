@@ -193,25 +193,25 @@ Returns the result of the creation and reading of the config file. If there was 
 ---
 > ##### ***`delete()`***
 
-text
+This method will delete the config file from the system. Normally you should avoid calling this method unless you are sure of what you are doing.
 
 ---
 ---
 > ##### ***`createConfig()`***
 
-text
+This is a private method responsible of creating the config file on hard drive.
 
 ---
 ---
 > ##### ***`loadConfig()`***
 
-text
+This is a private method responsible of reading the config file from hard drive.
 
 ---
 ---
 > ##### ***`parseConfigEntry(String entry, int line)`***
 
-text
+This is a private method responsible of parsing the content of a line in config file and if the parsing was successful, adds the result to the `HashMap`.
 
 ## Config class
 
