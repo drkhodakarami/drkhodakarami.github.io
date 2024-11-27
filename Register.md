@@ -597,11 +597,11 @@ In the use cases provided here, we are addressing the methods with complete clas
 
 > ##### ***`registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)`***
 
-text
+This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for the armor items. You can directly call this method from item model provider and give an array of items that are armors sharing the same ArmorMaterial.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Registers.Datagen.registerAllArmor(itemModelGenerator, new Item[]{ModItems.HELMET, ModItems.CHESTPLATE, ModItems.LEGGINGS, ModItems.BOOTS}, ModArmorMaterials.MATERIAL);
 ```
 
 ---
