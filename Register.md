@@ -684,11 +684,11 @@ Registers.Datagen.registerCubeVariantBlock(generator, ModBlocks.SOME_BLOCK, Some
 ---
 > ##### ***`buildHumanoid(String name)`***
 
-text
+This is related to ItemModelProvider for armor datagen. Normally you don't need to call this method directly because when you use the provided `registerArmor` or `registerAllArmor` methods, they internally use this method. This method is responsible of generating the humanoid models for the armor item and return `EquipmentModel` to be used for the model provider.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+EquipmentModel humanoid_model = Registers.Datagen.buildHumanoid("emerald");
 ```
 
 ---
