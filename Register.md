@@ -526,35 +526,37 @@ CustomBlockItem SOME_BLOCK_ITEM = Registers.BlockItem.register(ModBlocks.SOME_BL
 ---
 > ##### ***`register(Block block, Item.Settings settings, IBlockItemFactory<Item.Settings, T> factory)`***
 
-text
+This method will register a custom block item type with custom settings for the given block. Take note that in the settings section we are not adding `.registryKey(someKey)` or `.useBlockPrefixedTranslationKey()` that is needed for 1.21.3 and forward. The library will handle it for you so that you don't need to be worried about this new change.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+CustomBlockItem SOME_BLOCK_Item = Registers.BlockItem.register(ModBLocks.SOME_BLOCK, new Item.Settings(), CustomBlockItem::new);
 ```
 
 ### Recipe Sub Class
 
 This sub class handles registering every custom `recipe` into the Minecraft's registry system.
 
+In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModRecipes class and you should register the recipes in that class. In the ModRecipes class you can add `import static jiraiyah.register.Registers.Recipe.*` and by adding this import, you can drop the `Registers.Recipe.` section from all the examples provided for this sub class.
+
 > ##### ***`register(String name, RecipeSerializer<?> serializer)`***
 
-text
+This method will register a given recipe serializer into the registry system using the given name.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+RecipeSerializer<?> RECIPE_SERIALIZER = Registers.Recipe.register("some_recipe_serializer", ModRecipes.SOME_SERIALIZER);
 ```
 
 ---
 ---
 > ##### ***`register(String name, RecipeType<?> recipeType)`***
 
-text
+This method will register a given recipe type into the registry system using the given name.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+RecipeType<?> RECIPE_TYPE = Registers.Recipe.register("some_recipe_type", ModRecipes.SOME_TYPE);
 ```
 
 ### ComponentType Sub Class
