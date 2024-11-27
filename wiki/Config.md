@@ -224,7 +224,7 @@ This is the main entry for the config system that you should utilize in your mod
 ```java
 public class Configs extends jiraiyah.config.Config
 {
-    public int SOME_CONFIG_INT;
+    public static int SOME_CONFIG_INT;
   
     @Override
     protected void createConfigs()
