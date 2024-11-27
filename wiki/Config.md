@@ -251,3 +251,33 @@ Example usage:
 ---
 
 ## Your Mod's Config Class
+
+text
+
+```java
+public class Main implements ModInitializer
+{
+    public static String ModID = "your_mod_id";
+  
+    @Override
+    public void onInitialize()
+    {
+        Registers.init(ModID);
+    }
+}
+```
+
+text
+
+```java
+public class Main implements ModInitializer
+{
+    public static String ModID = "your_mod_id";
+  
+    @Override
+    public void onInitialize()
+    {
+        Registers.init(ModID);
+    }
+}
+```
