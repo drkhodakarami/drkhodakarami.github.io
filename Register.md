@@ -601,7 +601,11 @@ This method is related to ItemModelProvider for datagen. It's responsible of pro
 
 Example usage:
 ```java
-Registers.Datagen.registerAllArmor(itemModelGenerator, new Item[]{ModItems.HELMET, ModItems.CHESTPLATE, ModItems.LEGGINGS, ModItems.BOOTS}, ModArmorMaterials.MATERIAL);
+Registers.Datagen.registerAllArmor(itemModelGenerator, new Item[]{ModItems.HELMET, 
+                                                                  ModItems.CHESTPLATE, 
+                                                                  ModItems.LEGGINGS, 
+                                                                  ModItems.BOOTS},
+                                   ModArmorMaterials.MATERIAL);
 ```
 
 ---
