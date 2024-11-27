@@ -1,3 +1,0 @@
-## Ji Machina
-
-text
