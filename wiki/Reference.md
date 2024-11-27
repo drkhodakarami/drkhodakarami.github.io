@@ -26,12 +26,12 @@ This class contains some static string values for different keys that can be use
 ## DirectionSuffix
 
 This class contains some static string values that can be used as suffix for directions to be added onto your original keys. The values contain:
-- NORTH 
-- SOUTH
-- WEST
-- EAST
-- TOP
-- BOTTOM
-- NO_DIRECTION
+- NORTH = `.north`
+- SOUTH = `.south`
+- WEST = `.west`
+- EAST = `.east`
+- TOP = `.top`
+- BOTTOM = `.bottom`
+- NO_DIRECTION = `.no.direction`
 
 ## JiReference
