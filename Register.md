@@ -595,6 +595,8 @@ This sub class does not register anything into the Minecraft's registry system h
 
 In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have different classes handling datagen in themselves. In each of these classes you can add `import static jiraiyah.register.Registers.Datagen.*` and by adding this import, you can drop the `Registers.Datagen.` section from all the examples provided for this sub class.
 
+---
+---
 > ##### ***`registerAllArmor(ItemModelGenerator generator, Item[] items, ArmorMaterial material)`***
 
 This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for the armor items. You can directly call this method from item model provider and give an array of items that are armors sharing the same ArmorMaterial.
