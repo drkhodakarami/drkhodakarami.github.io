@@ -453,22 +453,23 @@ ArmorItem SOME_BOOTS = Registers.Item.registerArmor("some_boots", ModArmorMateri
 ---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation)`***
 
-text
+This method will register an item as a food with the `alwaysEdible` flag on the settings that will make the food as a snack one.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Item SOME_SNACK = Registers.Item.registerSnackFood("some_snack", 16, 4, 0.55f);
 ```
 
 ---
 ---
 > ##### ***`registerSnackFood(String name, int stackCount, int nutrition, float saturation, List<Text> tooltips)`***
 
-text
+This method will register an item as a food with the `alwaysEdible` flag on the settings that will make the food as a snack one. In addition, it will add the provided tootips to the item.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+List<Text> tooltips = ... //Create the list of tooltips here.
+Item SOME_SNACK = Registers.Item.registerSnackFood("some_snack", 16, 4, 0.55f, tooltips);
 ```
 
 ---
