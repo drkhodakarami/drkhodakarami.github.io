@@ -714,6 +714,27 @@ public class ModPlacedFeatures
 {
     public static void bootstrap(Registerable<PlacedFeature> context)
     {
+        List<PlacementModifier> modifiers = ...;\\ Here you create the list of modifiers
+        Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
+                           lookup.getOrThrow(ModConfiguredFeatures.SOME_FEATURE),
+                           modifiers);
+    }
+}
+```
+
+---
+---
+> ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)`***
+
+This method is an overload for the previous one. Instead of accepting a list of modifiers, you should provide modifiers one after another with a `,` in between them. In the example bellow, we add a single modifier that changes the height limit of ore generation.
+
+Example usage:
+```java
+public class ModPlacedFeatures
+{
+    public static void bootstrap(Registerable<PlacedFeature> context)
+    {
+        List<PlacementModifier> modifiers = ...;\\ Here you create the list of modifiers
         Registers.Datagen.register(context, SOME_ORE_PLACED_KEY,
                            lookup.getOrThrow(ModConfiguredFeatures.SOME_FEATURE),
                            Registers.Datagen.modifiersWithCount(1, HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
@@ -724,24 +745,21 @@ public class ModPlacedFeatures
 
 ---
 ---
-> ##### ***`register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers)`***
-
-text
-
-Example usage:
-```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
-```
-
----
----
 > ##### ***`register(Registerable<ConfiguredFeature<?, ?>> context, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration)`***
 
-text
+This method is related to ore generation and datagen related to spawning ore in the world. The method will register a `configured feature` inside the registry system. You can directly call this method from a bootstrap method to register a placed feature.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+public class ModConfiguredFeatures
+{
+    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context)
+    {
+        RuleTest ruleTest = ...;// You will create the proper rule test for ore generation here.
+        Registers.Datagen.register(context, SOME_ORE_KEY, Feature.ORE,
+                           new OreFeatureConfig(ruleTest, 8));//8 here is the vein size
+    }
+}
 ```
 
 ---
