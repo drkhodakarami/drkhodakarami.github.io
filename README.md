@@ -20,7 +20,7 @@ These libraries include:
 |-----------|---------------|
 |JiLogger   |`1.0.0`          |
 |JiRegister |`1.1.2+MC_1.21.3`|
-|JiConfig   |`1.1.0`          |
+|JiConfig   |`1.1.2`          |
 |JiReference|`1.1.0`          |
 |JiraLib    |`1.1.1+MC_1.21.3`|
 |JInventory |`1.1.2+MC_1.21.3`|
