@@ -631,10 +631,10 @@ Example usage:
 ```java
 public class ModLootTableProvider extends FabricBlockLootTableProvider
 {
-        public void generate()
-        {
-                addDrop(ModBlocks.SOME_ORE, Registers.Datagen.customOreDrops(this, this.registries, ModBlocks.SOME_ORE, ModItems.SOME_ORE_DROP, 2.0f, 3.0f);
-        }
+    public void generate()
+    {
+        addDrop(ModBlocks.SOME_ORE, Registers.Datagen.customOreDrops(this, this.registries, ModBlocks.SOME_ORE, ModItems.SOME_ORE_DROP, 2.0f, 3.0f);
+    }
 }
 ```
 
