@@ -9,20 +9,29 @@ For installation guide on how to add the dependency, look into the [Readme](http
 ## BEKeys
 
 This class contains some static string values for different keys that can be used in read and write NBT methods for block entities. The values contain:
-- ENERGY_AMOUNT
-- ENERGY_CAPACITY
-- HAS_ENERGY
-- FLUID_AMOUNT
-- FLUID_CAPACITY
-- HAS_FLUID
-- PROGRESS_AMOUNT
-- PROGRESS_MAX
-- COOLDOWN_AMOUNT
-- COOLDOWN_MAX
-- BURN_AMOUNT
-- BURN_MAX
-- HAS_INVENTORY
+- ENERGY_AMOUNT = `.be.energy.amount`
+- ENERGY_CAPACITY = `.be.energy.capacity`
+- HAS_ENERGY = `.be.has.energy`
+- FLUID_AMOUNT = `.be.fluid.amount`
+- FLUID_CAPACITY = `.be.fluid.capacity`
+- HAS_FLUID = `.be.has.fluid`
+- PROGRESS_AMOUNT = `.be.progress.amount`
+- PROGRESS_MAX = `.be.progress.max`
+- COOLDOWN_AMOUNT = `.be.cooldown.amount`
+- COOLDOWN_MAX = `.be.cooldown.max`
+- BURN_AMOUNT = `.be.burn.amount`
+- BURN_MAX = `.be.burn.max`
+- HAS_INVENTORY = `.be.has.inventory`
 
 ## DirectionSuffix
+
+This class contains some static string values that can be used as suffix for directions to be added onto your original keys. The values contain:
+- NORTH 
+- SOUTH
+- WEST
+- EAST
+- TOP
+- BOTTOM
+- NO_DIRECTION
 
 ## JiReference
