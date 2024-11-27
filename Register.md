@@ -662,11 +662,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 ---
 > ##### ***`registerOrientableVariantBlock(BlockStateModelGenerator generator, Block machine, BooleanProperty property)`***
 
-text
+This method is related to the BlockModelProvider for datagen. It's responsible of registering a model for a block that has variants for a boolean property. This will create the json file in such a way that it will accept the boolean property as the variant changing factor. Remember, you need to have two textures in the resources section to handle two variants for the front face. The model is generated using `TexturedModel.ORIENTABLE` meaning that you should provide front, side, and top textures for the block. You can directly call this method from block model provider to create the json file. Take not `ACTIVATED` in the example bellow, is the boolean property sitting inside the `SomeBlock` class.
 
 Example usage:
 ```java
-CustomBlock SOME_BLOCK = Registers.Block.register("some_block", CustomBlock::new);
+Registers.Datagen.registerOrientableVariantBlock(generator, ModBlocks.SOME_BLOCK, SomeBlock.ACTIVATED);
 ```
 
 ---
