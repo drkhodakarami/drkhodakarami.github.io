@@ -25,13 +25,13 @@ This is the main helper method in the library. Most of the registry calls for Mi
 ```java
 public class Main implements ModInitializer
 {
-        public static String ModID = "your_mod_id";
+    public static String ModID = "your_mod_id";
   
-        @Override
-        public void onInitialize()
-        {
-                Registers.init(ModID);
-        }
+    @Override
+    public void onInitialize()
+    {
+        Registers.init(ModID);
+    }
 }
 ```
 
