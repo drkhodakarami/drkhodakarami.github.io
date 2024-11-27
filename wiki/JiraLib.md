@@ -5,3 +5,63 @@ The [JiraLib](https://github.com/drkhodakarami/JiraLib) is the main abstraction 
 ## Depending Your Mod
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiraLib) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/reference/) repository for the project.
+
+## IIngredientRenderer
+
+## IEnumStringRepresentable
+
+## IEnumTraversable
+
+## IEnumValueCacher
+
+## ISync
+
+## ITickBE
+
+## ITickSyncBE
+
+## NBTSerializable
+
+## BlockPos Payload
+
+## Float Payload
+
+## Hand Payload
+
+## Integer Payload
+
+## String Payload
+
+## Double Payload
+
+## CoordinateData Record
+
+## FluidStack Record
+
+## OutputItemStack Record
+
+## PosHelper Class
+
+## MathHelper Class
+
+## ExtraPacketCodecs Class
+
+## MouseHelper Class
+
+## InfoArea Class
+
+## NoScreenUpdatableBE Class
+
+## NoScreenUpdatableEndTickBE Class
+
+## UpdatableBE Class
+
+## UpdatableEndTickBE Class
+
+## AbstractActivatableBlock Class
+
+## AbstractFacingBlock Class
+
+## AbstractHorizontalFacingBlock Class
+
+## BlockWithBE Class
