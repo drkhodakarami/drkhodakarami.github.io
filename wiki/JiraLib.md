@@ -174,7 +174,7 @@ This is an interface for block entities that require syncronized ticking. This i
 Example Usage:
 ```java
 
-public class MyBlockEntity extends NoScreenUpdatableEndTickBE implements ITickSyncBE
+public class MyBlockEntity extends NoScreenUpdatableBE implements ITickSyncBE
 {
     @Override
     public void onTick()
@@ -188,47 +188,41 @@ public class MyBlockEntity extends NoScreenUpdatableEndTickBE implements ITickSy
 ---
 > ##### ***`getSyncables()`***
 
-text
+Retrieves a list of `ISync` instances associated with this block entity. This method is used to obtain the collection of syncronizable components that are part of the block entity. Each component in the list implements the ISync interface, allowing it to participate in the syncronization process during the tick cycle.
 
 ---
 ---
 > ##### ***`onTick()`***
 
-text
+Executes the tick logic for this block entity. This method is called during each tick cycle to perform any necessary updates or operations for the block entity. Implementers should define the specific actions that need to occure during each tick, such as updating state, interacting with other entities, calling `update` method or managing resources.
+
+The `onTick` method is crucial for maintaining the dynamic behavior of the block entity within the game world. It ensures that the entity's state is consistently updated in response to game events or changes in the environment. Implementers should ensure that the tick logic is efficient and does not introduce performance bottlenecks, as this method is called frequently.
 
 ---
 ---
 > ##### ***`tick()`***
 
-text
+Performs the default tick operation for this block entity. Normally you shouldn't override this method unless you want to change how the order of operations for ticking and syncronization logic is handled. This method is invoked during each tick cycle. First it will execute the `onTick` method. After the execution of the method, it will retrieve all the syncable elements by calling `getSyncables` method, and if there is any syncable element added to the block entity, it will call the `sync` method on each one of them. At the end, the method will check if the block entity is instance of `NoScreenUpdateBE` or any of it's inherited children. If so, it will call the `update` method on the block entity to sync the information of the block entity itself between client and server.
 
 ## NBTSerializable
 
-text
+An interface that allows for easy serialization and deserialization of objects to NBT. Any element that implements this interface should override `writeNBT` and `readNBT` to handle serialization and deserialization of itself.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`writeNbt(RegistryWrapper.WrapperLookup registryLookup)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Serializes the current state of the implementing object into an NBT element. This method is crucial for converting the object's data into a structured format that can be easily stored, transferred, and reconstructed within the Minecraft environment using the NBT system. The serialization process involves encoding the object's properties and any relevant metadata into an NBT element, which is a hierarchical data structure used extensively in Minecraft for data storage and manipulation.
+ 
+Implementers of this method should ensure that all relevant fields and properties of the object are included in the NBT element. Additionally, care should be taken to maintain compatibility with the NBT format and any versioning requirements that may exist within the application.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`readNbt(T nbt, RegistryWrapper.WrapperLookup registryLookup)`***
 
-text
+Deserializes the state of the implementing object from the provided NBT element. This method is responsible for reconstructing the object's state by extracting and interpreting the data stored within the NBT element. It is a critical part of the serialization process, allowing objects to be restored to their original state after being saved or transmitted. The deserialization process involves reading the hierarchical data structure of the NBT element and mapping its contents back to the object's fields and properties. This ensures that the object can be accurately reconstructed with all its original data intact.
 
----
----
-> ##### ***``***
-
-text
+Implementers of this method should ensure that all relevant fields and properties of the object are correctly populated from the NBT element. Additionally, care should be taken to handle any potential discrepancies or versioning issues that may arise from changes in the NBT format or the object's structure over time.
 
 ## BlockPos Payload
 
