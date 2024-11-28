@@ -169,29 +169,36 @@ This is a helper method that by default, returns a block state at the given posi
 
 ## ITickSyncBE
 
+This is an interface for block entities that require syncronized ticking. This interface extends `ITickBE`, inheriting its tick functionality, and is intended for block entities that need to perform syncronized updates accross multiple instances or with other game elements. Implementing classes should provide specific logic for syncronized ticking, ensuring that updates are consistent and coordinated within the game world. The block entity should not use the `tick` method for custom ticking logic any more because the tick method is used internally. Instead, they can override `onTick` method that is being called from the tick method internally and you should write your ticking logic inside onTick method.
+
+Example Usage:
+```java
+
+public class MyBlockEntity extends NoScreenUpdatableBE implements ITickSyncBE
+{
+    @Override
+    public void onTick()
+    {
+        //Your custom tick logic goes here
+    }
+}
+```
+
+---
+---
+> ##### ***`getSyncables()`***
+
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`onTick()`***
 
 text
 
 ---
 ---
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
+> ##### ***`tick()`***
 
 text
 
