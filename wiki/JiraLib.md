@@ -656,31 +656,77 @@ This method uses the previous one to produce a random boolean true or false resu
 
 ## ExtraPacketCodecs Class
 
-text
+This class in a helper class with static helper methods that will help you encode and decode `ByteBuf` using `integer provider type` and `float provider type`.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`registerIntProviderCodec(IntProviderType<T> type, PacketCodec<RegistryByteBuf, T> codec)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+This method will register a codec for an `IntProviderType` and add it to the internal cache for all the registered integer provider types.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`registerFloatProviderCodec(FloatProviderType<T> type, PacketCodec<RegistryByteBuf, T> codec)`***
 
-text
+This method will register a codec for a `FloatProviderType` and add it to the internal cache for all the registered fload provider types.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getIntProviderCodec(IntProviderType<?> type)`***
 
-text
+Retrieves a `PacketCodec<RegistryByteBuf, ? extends IntProvider>` from the integer provider type that is cached internally in the `Map` of cached integer provider types.
+
+---
+---
+> ##### ***`getFloatProviderCodec(FloatProviderType<?> type)`***
+
+Retrieves a `PacketCodec<RegistryByteBuf, ? extends FloatProvider>` from the float provider type that is cached internally in the `Map` of cached float provider types.
+
+---
+---
+> ##### ***`encode(ByteBuf buf, T intProvider)`***
+
+This method encodes an `IntProvider` into a `ByteBuf`.
+
+---
+---
+> ##### ***`decode(ByteBuf buf, IntProviderType<T> type)`***
+
+This method decodes an `IntProvider` from a `ByteBuf`.
+
+---
+---
+> ##### ***`encode(ByteBuf buf, T floatProvider)`***
+
+This method encodes an `FloatProvider` into a `ByteBuf`.
+
+---
+---
+> ##### ***`decode(ByteBuf buf, FloatProviderType<T> type)`***
+
+This method decodes an `FloatProvider` from a `ByteBuf`.
+
+---
+---
+> ##### ***`registerDefaults()`***
+
+Registers the default codecs for all `IntProviderType` and `FloatProviderType`. The types that are registered are:
+- IntProviderType.CONSTANT
+- IntProviderType.UNIFORM
+- IntProviderType.BIASED_TO_BOTTOM
+- IntProviderType.CLAMPED
+- IntProviderType.WEIGHTED_LIST
+- IntProviderType.CLAMPED_NORMAL
+- FloatProviderType.CONSTANT
+- FloatProviderType.UNIFORM
+- FloatProviderType.CLAMPED_NORMAL
+- FloatProviderType.TRAPEZOID
+
+---
+---
+> ##### ***`weightedListCodec(PacketCodec<B, E> elementCodec)`***
+
+Creates a codec for a weighted list of elements. The method returns `<B extends ByteBuf, E> PacketCodec<B, DataPool<E>>`.
 
 ## MouseHelper Class
 
