@@ -124,29 +124,46 @@ Syncronizes the state or data to ensure consistency. This method should be imple
 
 ## ITickBE
 
-text
+This is an interface for block entities that need to be ticked every game tick.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`tick()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The tick method that will be called every tick (20 times per second).
 
 ---
 ---
-> ##### ***``***
+> ##### ***`createTicker(World world)`***
 
-text
+A static helper method that creates a ticker for a block entity in the specific world. Normally you should call this method in the block class at `getTicker()` method override to handle the block entity's ticking logic.
+
+Example Usage:
+```java
+public class SomeBlock extends Block implements BlockEntityProvider
+{
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityTYpe<T> type)
+    {
+        return ITickBE.createTicker(world);
+    }
+}
+```
+
+The default implementation will call the tick method on the block entity only if the world is server side. In the client side world, the default implementation returns null preventing any tick logic on the client.
+
+```java
+static <T extends BlockEntity> BlockEntityTicker<T> createTicker(World world)
+{
+    return !world.isClient ? (pworld, pos, state, entity) -> ((ITickBE) entity).tick() : null;
+}
+```
+
+Remember, unlike many implementations of getTicker method you see on video tutorials or even in many mod github repository codes, you really don't need to send in any data to the tick method on block entity. There will be a blog post about this talk in the wiki.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getState(World world, BlockPos pos)`***
 
 text
 
