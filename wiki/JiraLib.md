@@ -546,31 +546,97 @@ This method returns the `ID` for a payload.
 
 ## PosHelper Class
 
-text
+This is a helper class that provides static helper methods all related to block position handling.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`positionDirectTo(BlockPos pos, Direction direction)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Returns the `BlockPos` with offset of one block from the given position in the given direction.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`positionNextTo(BlockPos pos)`***
 
-text
+Returns an array of `BlockPos` that are one block in each direction of the given position.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`positionSideTo(BlockPos pos)`***
 
-text
+Returns an array of `BlockPos` that are one block in each direction of the given position with the exception of top and bottom ones.
+
+---
+---
+> ##### ***`positionNextNotTop(BlockPos pos)`***
+
+Returns an array of `BlockPos` that are one block in each direction of the given position with the exception of top one.
+
+---
+---
+> ##### ***`positionNextNotBottom(BlockPos pos)`***
+
+Returns an array of `BlockPos` that are one block in each direction of the given position with the exception of bottom one.
+
+---
+---
+> ##### ***`left(Direction facing)`***
+
+Returns the `Direction` that is to the **left** of the given `facing` direction.
+
+---
+---
+> ##### ***`right(Direction facing)`***
+
+Returns the `Direction` that is to the **right** of the given `facing` direction.
+
+---
+---
+> ##### ***`front(Direction facing)`***
+
+Returns the `Direction` that is to the **front** of the given `facing` direction.
+
+---
+---
+> ##### ***`back(Direction facing)`***
+
+Returns the `Direction` that is to the **back** of the given `facing` direction.
+
+---
+---
+> ##### ***`leftBlock(BlockPos pos, Direction facing)`***
+
+Returns the `BlockPos` that is to the **left** of the given `facing` direction at the given position.
+
+---
+---
+> ##### ***`rightBlock(BlockPos pos, Direction facing)`***
+
+Returns the `BlockPos` that is to the **right** of the given `facing` direction at the given position.
+
+---
+---
+> ##### ***`backBlock(BlockPos pos, Direction facing)`***
+
+Returns the `BlockPos` that is to the **back** of the given `facing` direction at the given position.
+
+---
+---
+> ##### ***`frontBlock(BlockPos pos, Direction facing)`***
+
+Returns the `BlockPos` that is to the **front** of the given `facing` direction at the given position.
+
+---
+---
+> ##### ***`topBlock(BlockPos pos)`***
+
+Returns the `BlockPos` that is to the **top** of the given `facing` direction at the given position.
+
+---
+---
+> ##### ***`bottomBlock(BlockPos pos)`***
+
+Returns the `BlockPos` that is to the **bottom** of the given `facing` direction at the given position.
 
 ## MathHelper Class
 
