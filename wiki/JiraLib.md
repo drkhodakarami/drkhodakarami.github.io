@@ -48,31 +48,25 @@ This method returns the height of the rendering ingredient. By default it return
 
 ## IEnumStringRepresentable
 
-text
+An interface for enums that can be represented as a string. This interface provides methods to retrieve enum constants based on their string representation. It is useful for converting between enums and their string names, especially when dealing with serialization of user input. Implementing classes should ensure that the `getSerializedName` method returns a unique string for each enum constant.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getEnumByName(Class<T> enumClass, String serializedName)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Returns the enum object represented by the string. This method attempts to find an enum constant within the specific enum class that matches the given string representation.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getEnumByName(T[] enumConstants, String serializedName)`***
 
-text
+Returns the enum object represented by the string. This method iterates over the provided array of enum constants to find a match for given string representation.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getSerializedName()`***
 
-text
+Retrices the eunique string representation of this enum constant. This method is intended to provide a consistent and unique identifier for each enum constant, which can be used for serialization, deserialization, or display purposes.
 
 ## IEnumTraversable
 
