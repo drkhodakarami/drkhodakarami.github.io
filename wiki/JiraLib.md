@@ -114,13 +114,13 @@ Retrives the cached values of the enum as an array containing all the values of 
 
 ## ISync
 
-text
+This interface provides a contract for implementing syncronization mechanism. Classes that implement this interface should define the specific behavior for the `sync` method, which is intended to ensure that data or state is consistent across different parts of a system.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`sync()`***
 
-text
+Syncronizes the state or data to ensure consistency. This method should be implemented to define the specific synchronization logic required by the implementing class.
 
 ## ITickBE
 
