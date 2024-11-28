@@ -788,27 +788,48 @@ Represents an `abstract` base class for a `block entity` that requre periodic `u
 
 ---
 ---
-> ##### ***``***
+> ##### ***`NoScreenUpdatableBE(BlockEntityType<?> type, BlockPos pos, BlockState state)`***
 
-text
+The block entity constructor that mimics the vanilla constructor. If you want to have your custom constructor that is not accepting the type but reading it directly from a static constant attribute on a class, you can use the example bellow. In this example, we assume that you are registering a `BlockEntityType<?>` inside the `ModEntities` class as a static field attribtue.
 
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+```java
+public NoScreenUpdatableBE(BlockPos pos, BlockState state)
+{
+    this(ModEntities.SOME_BLOCK_ENTITY, pos, state);
+}
+```
 
 ---
 ---
-> ##### ***``***
+> ##### ***`update()`***
 
-text
+By default because we are returning `false` in the `shouldWaitEndTick`, the update function will mark the block entity as `dirty`, and then it will syncronize the information between server and client with a call to `updateListeners` method on the `world` object with `NOTIFY_ALL` flag. The result is not only syncronization of the data between server and client but the update listeners method handles some extra functionality that you can read from vanilla code yourself.
+
+Keep in mind, in the `EndTickBE` classes that inherit from this base class, we return `true` for the `shouldWaitEndTick` method. In those classes, the only thing that will happen in this method, is to mark the block entity for the one that is waiting for an update call and the update logic and syncroniztion will handled by the `endTick` method at the end of the tick cycle.
+
+---
+---
+> ##### ***`shouldWaitEndTick()`***
+
+This method will return a flag called that will indicate if the update should be deferred for the end of the tick cycle. By default, in this class it will return false. If you want the deferred functionality, take a look at `NoScreenUpdatableEndTickBE` class.
+
+---
+---
+> ##### ***`endTick()`***
+
+This is the base functionality implementation  ones to be used by the inherited `EndTickBE` classes. Basically, this method will check if we marked the block entity for update or not, if yes, then it will mark the block entity dirty and call the updateListeners.
+
+---
+---
+> ##### ***`toUpdatePacket()`***
+
+Creates a packet that is sent to the client to update the block entity's state. This packet includes all necessary data to syncronize the client with the current state of the block entity on the server. Normally, you shouldn't need to override this method any more because the base class handles the functionality for you.
+
+---
+---
+> ##### ***`toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries)`***
+
+Converts the initial chunk data of this block entity into an NBT compound and calls the writeNbt with this compound. This allows the block entity to serialize its initial state for sending to clients when the chunk is loaded. This includes the inventory and other relative data necessary for the client to replicate the block entity's state accurately. Normally, you shouldn't need to override this method any more because the base class handles the functionality for you.
 
 ## NoScreenUpdatableEndTickBE Class
 
