@@ -70,7 +70,25 @@ Retrices the eunique string representation of this enum constant. This method is
 
 ## IEnumTraversable
 
-text
+An interface for traversing through enum values. This interface provides methods to navigate to the next and previous values in an enum sequence.
+
+Example Usage:
+```java
+public enum LimitedDirection implements IEnumTraversable<LimitedDirection>
+{
+    NORTH, EAST, SOUTH, WEST;
+  
+    public LimitedDirection next()
+    {
+        return values()[(ordinal() + 1) % values().legth];
+    }
+  
+    public LimitedDirection previous()
+    {
+        return values()[(ordinal() - 1 + values().legth) % values().legth];
+    }
+}
+```
 
 ---
 ---
