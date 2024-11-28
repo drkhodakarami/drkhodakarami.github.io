@@ -244,7 +244,7 @@ A `Codec` for serializing and deserializing instances of `BlockPosPayload`. This
 ---
 > ##### ***`PACKET_CODEC`***
 
-The static `PacketCodec` field of a siginle payload used for handling serialization for the network in Minecraft system.
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
 
 ---
 ---
@@ -272,7 +272,7 @@ A `Codec` for serializing and deserializing instances of `FloatPayload`. This co
 ---
 > ##### ***`PACKET_CODEC`***
 
-The static `PacketCodec` field of a siginle payload used for handling serialization for the network in Minecraft system.
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
 
 ---
 ---
@@ -282,33 +282,61 @@ This method returns the `ID` for a payload.
 
 ## Hand Payload
 
-text
+A custom payload for sending a player's `hand` information over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
 
 ---
 ---
-> ##### ***``***
+> ##### ***`ID`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The static ID field of a single payload.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`CODEC`***
 
-text
+A `Codec` for serializing and deserializing instances of `HandPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PACKET_CODEC`***
 
-text
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
 
 ## Integer Payload
+
+A custom payload for sending an `integer` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+
+---
+---
+> ##### ***`ID`***
+
+The static ID field of a single payload.
+
+---
+---
+> ##### ***`CODEC`***
+
+A `Codec` for serializing and deserializing instances of `IntegerPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
+
+---
+---
+> ##### ***`PACKET_CODEC`***
+
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
+
+## SingleStack Payload
 
 text
 
@@ -338,59 +366,87 @@ text
 
 ## String Payload
 
-text
+A custom payload for sending a `string` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
 
 ---
 ---
-> ##### ***``***
+> ##### ***`ID`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The static ID field of a single payload.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`CODEC`***
 
-text
+A `Codec` for serializing and deserializing instances of `StringPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PACKET_CODEC`***
 
-text
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
 
 ## Double Payload
 
-text
+A custom payload for sending a `double` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
 
 ---
 ---
-> ##### ***``***
+> ##### ***`ID`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The static ID field of a single payload.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`CODEC`***
 
-text
+A `Codec` for serializing and deserializing instances of `DoublePayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PACKET_CODEC`***
 
-text
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
+
+## Boolean Payload
+
+A custom payload for sending a `boolean` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+
+---
+---
+> ##### ***`ID`***
+
+The static ID field of a single payload.
+
+---
+---
+> ##### ***`CODEC`***
+
+A `Codec` for serializing and deserializing instances of `BooleanPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
+
+---
+---
+> ##### ***`PACKET_CODEC`***
+
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
 
 ## CoordinateData Record
 
