@@ -226,31 +226,25 @@ Implementers of this method should ensure that all relevant fields and propertie
 
 ## BlockPos Payload
 
-text
+A custom payload for sending a `BlockPos` over the network.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`ID`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The static ID field of a single payload.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PACKET_CODEC`***
 
-text
+The static packet codec field of a siginle payload used for handling serialization for the network in Minecraft system.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getId()`***
 
-text
+This method returns the `ID` for a payload.
 
 ## Float Payload
 
