@@ -640,31 +640,19 @@ Returns the `BlockPos` that is to the **bottom** of the given `facing` direction
 
 ## MathHelper Class
 
-text
+This is a helper class that provides static helper methods with various math functions.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getChance(int value)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Returns a random chance float number based on the given value. In other words, if you provide `5` as the `value` the result will be `0.95` as a float.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getChance(World world, int value)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+This method uses the previous one to produce a random boolean true or false result based on the value. The method will use the random number generator provided by the world you send to the method. For example, if you send `5` as the value, the method will try to generate a random float number between 0 and 1. Only if the generated number is greater than or equal to `0.95` the method will return `true`. If the generated number is smaller than 0.95, the method will return `false`. The result is a perfect `chance` system that you can use anywhere is your code.
 
 ## ExtraPacketCodecs Class
 
