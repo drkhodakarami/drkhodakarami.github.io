@@ -863,112 +863,26 @@ By default, this method makes it so that the block position will be sent to the 
 
 ## AbstractActivatableBlock Class
 
-text
+This class extends the `Block` class from vanilla and adds a `BooleanProperty` called `ACTIVATED` on top of the block. It appends this property and sets it to false in the constructor.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+The implementation here is a biler plate example for you to see how you can utilize the boolean property. The default implementation will check if we are on the server world and if so, without any extra check, it will cycle the boolean property between true and false effectively flip flopping between two states.
 
 ## AbstractFacingBlock Class
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+This class in extending from `FacingBlock` from vanilla and adds a little flag on top of the class to see if we should rotate the block to the opposite side (look toward player) when we face it down or not. It overrides the functionality for appending the properties, handling the rotate and mirror method calls and finally, handles the `getPlacementState` so that when you put the block down it will check the internal flag to see if it should rotate the block to the opposite facing direction or not. Normally, if you extend your class from this one, you shouldn't find a need to override any of the implemented methods other than `appendProperty` if you have extra properties on top of the provided `FACING` one.
 
 ## AbstractHorizontalFacingBlock Class
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+This class extends from HorizontalFacingBlock and the main concept is the same as `AbstractFacingBlock`. The only difference is that instead of using `EnumProperty<Direction> FACING = Properties.FACING`, now we are using `Properties.HORIZONTAL_FACING` for the value of `FACING` property. Other than this difference, the behaviour should be the same for rotating the block to the opposite direction as the `AbstractFacingBlock`.
 
 ## BlockWithBE Class
 
-text
+This class extends vanilla `Block` class and implements BlockEntityProvider. Although we have similar class inside vanilla called `BlockWithEntity`, we wrote our own implementation because the vanilla one has some unwanted bioler plate code. Also, in the getTicker method we are utilizing `ITickBE`. In other words, any block that extends this class and has a block entity, the corresponding block entity should implement either the `ITickBE` or `ITickSyncBE` interfaces. If the block entity will not implement one of these two interfaces, the getTicker method should be override by yourself to handle proper tick method generation and call.
 
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, unlike vanilla's <strong>BlockWithEntity</strong> class, this class is not touching the <strong>getRenderType</strong> and by default has the <strong>BlockRenderType.MODEL</strong> value and if you don't want to change it to <strong>INVISIBLE</strong> or <strong>ENTITYBLOCK_ANIMATED</strong>, you don't need to override this method.
+</div>
