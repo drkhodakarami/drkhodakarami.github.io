@@ -490,31 +490,31 @@ This method returns the `ID` for a payload.
 
 ## SingleStack Payload
 
-text
+A custom payload for sending a `ItemStack` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
 
 ---
 ---
-> ##### ***``***
+> ##### ***`ID`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The static ID field of a single payload.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`CODEC`***
 
-text
+A `Codec` for serializing and deserializing instances of `SingleStackPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PACKET_CODEC`***
 
-text
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
 
 ## String Payload
 
@@ -543,34 +543,6 @@ The static `PacketCodec` field of a single payload used for handling serializati
 > ##### ***`getId()`***
 
 This method returns the `ID` for a payload.
-
-## OutputItemStack Record
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
 
 ## PosHelper Class
 
