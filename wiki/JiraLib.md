@@ -758,31 +758,25 @@ Checks if the mouse cursure is over a boundary. The boundary is provided by top 
 
 ## InfoArea Class
 
-text
+This `abstract` class extends `DrawContext` to provide a specialized area for rendering information within a specific rectangular region. The base usage of this class is to render fluid/energy inside the GUI of a container. 
 
 ---
 ---
-> ##### ***``***
+> ##### ***`InfoArea(MinecraftClient client, VertexConsumerProvider.Immediate vertexConsumers)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The base constructor that will set the `Rect2i` area as zero with, height, and in the top left (0, 0) coordinates.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`InfoArea(MinecraftClient client, VertexConsumerProvider.Immediate vertexConsumers, Rect2i area)`***
 
-text
+The constructor that will set the internal `Rect2i` with the provided area values.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`draw()`***
 
-text
+Draws the content withing the specific `DrawContext`. This method is intended to be overridden to provide custom drawing logic within the defined area. By default this method does not perform any drawing operation.
 
 ## NoScreenUpdatableBE Class
 
