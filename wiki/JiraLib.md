@@ -839,85 +839,27 @@ Converts the initial chunk data of this block entity into an NBT compound and ca
 
 This class extends the `NoScreenUpdatableBE` and the only main difference is that it overrides the `shouldWaitEndTick` that returns `true` by default. By returning true in the method, we mark this block entity as the one that should handle the update call at the end of tick cycle.
 
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+One use case for this class is to inherite your block entity from this class and implement the `ITickSyncBE` interface. At this point, you will implement your tick logic in the `onTick` method and instead of calling `markDirty` whenever you need, you should call `update` and the whole system will work without a problem.
 
 ## UpdatableBE Class
 
-text
+This class extends from `NoScreenUpdatableBE` however, it implements `ExtendedScreenHandlerFactory<BlockPosPayload>` and because of this implementation, it handles GUI screen for the block entity. Becase we are not overriding `shouldWaitEndTick` in this class, it's functionality remains the same as `NoScreenUpdatableBE`. If you want the screen handling but with the functionality for the end tick deffered call, take a look at `UpdatableEndTickBE` class.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+By default, this method makes it so that the block position will be sent to the screen handler as a payload. Normally you don't need to override this method unless you want to change the payload type and send your own custom payload.
 
 ## UpdatableEndTickBE Class
 
-text
+This class extends from `NoScreenUpdatableEndTickBE` however it implements `ExtendedScreenHandlerFactory<BlockPosPayload>` and because of this implementation, it handles GUI screen for the block entity. Because we are extending from `EndTick` version of the `NoScreen` block entity class we already have set the `shouldWaitEndTick` flag to `true`. For more information about how this works, take a look at `endTick` method explanation on the `NoScreenUpdatableBE` class information above.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+By default, this method makes it so that the block position will be sent to the screen handler as a payload. Normally you don't need to override this method unless you want to change the payload type and send your own custom payload.
 
 ## AbstractActivatableBlock Class
 
