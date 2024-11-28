@@ -124,7 +124,7 @@ Syncronizes the state or data to ensure consistency. This method should be imple
 
 ## ITickBE
 
-This is an interface for block entities that need to be ticked every game tick.
+This is an interface for block entities that need to be ticked every game tick. This interface is dedicated for block entities that don't need to sync data between client and server or on any element at the ticking state. If you need to sync data, use `ITickSyncBE` instead.
 
 ---
 ---
