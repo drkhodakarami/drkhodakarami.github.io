@@ -2,6 +2,10 @@
 
 The [JiraLib](https://github.com/drkhodakarami/JiraLib) is the main abstraction layer for more advanced blocks and block entities in any mod that wants to handle network sync, inventory, energy, or fluid. It also provides nice payloads and some records that can be used in other projects. It contains 13 classes, 8 interfaces, 5 network payloads, and 3 records. There are 4 other libraries that are depending on this library [JiFluid](https://github.com/drkhodakarami/JiFluid), [JInventory](https://github.com/drkhodakarami/JInventory), [JiEnergy](https://github.com/drkhodakarami/JiEnergy), [JiMachina](https://github.com/drkhodakarami/JiMachina).
 
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, when we talk about different payload records bellow, you should know that these records **has** the ability to be used as a payload. All of these records are providing a `Codec` and because of this, they can be used as payloads, normal records, or even custom `DataComponentType`.
+</div>
+
 ## Depending Your Mod
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiraLib) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/reference/) repository for the project.
@@ -226,7 +230,7 @@ Implementers of this method should ensure that all relevant fields and propertie
 
 ## BlockPos Payload
 
-A custom payload for sending a `BlockPos` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+A custom payload for sending a `BlockPos` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
 
 ---
 ---
@@ -254,7 +258,7 @@ This method returns the `ID` for a payload.
 
 ## Boolean Payload
 
-A custom payload for sending a `boolean` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+A custom payload for sending a `boolean` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
 
 ---
 ---
@@ -282,7 +286,11 @@ This method returns the `ID` for a payload.
 
 ## CoordinateData Payload
 
-A custom payload for sending a `BlockPos` and a `String` (dimension) over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+A custom payload for sending a `BlockPos` and a `String` (dimension) over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the normal use case for this record, is to use this record as custom component data. The ability to use this record as a payload is extra functionality.
+</div>
 
 ---
 ---
@@ -310,7 +318,7 @@ This method returns the `ID` for a payload.
 
 ## Double Payload
 
-A custom payload for sending a `double` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+A custom payload for sending a `double` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
 
 ---
 ---
@@ -338,7 +346,7 @@ This method returns the `ID` for a payload.
 
 ## Float Payload
 
-A custom payload for sending a `fload` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+A custom payload for sending a `fload` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
 
 ---
 ---
@@ -351,6 +359,34 @@ The static ID field of a single payload.
 > ##### ***`CODEC`***
 
 A `Codec` for serializing and deserializing instances of `FloatPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
+
+---
+---
+> ##### ***`PACKET_CODEC`***
+
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
+
+## FluidStack Payload
+
+A custom payload for sending a `FluidVariant` and a `long` (fluid amount) over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
+
+---
+---
+> ##### ***`ID`***
+
+The static ID field of a single payload.
+
+---
+---
+> ##### ***`CODEC`***
+
+A `Codec` for serializing and deserializing instances of `FluidStackPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
 
 ---
 ---
@@ -395,6 +431,38 @@ This method returns the `ID` for a payload.
 ## Integer Payload
 
 A custom payload for sending an `integer` over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type)
+
+---
+---
+> ##### ***`ID`***
+
+The static ID field of a single payload.
+
+---
+---
+> ##### ***`CODEC`***
+
+A `Codec` for serializing and deserializing instances of `IntegerPayload`. This codec utilizes the `RecordCodecBuilder` to define the structure of the payload object for encoding and decoding operations.
+
+---
+---
+> ##### ***`PACKET_CODEC`***
+
+The static `PacketCodec` field of a single payload used for handling serialization for the network in Minecraft system.
+
+---
+---
+> ##### ***`getId()`***
+
+This method returns the `ID` for a payload.
+
+## OutputItemStack Payload
+
+A custom payload for sending an `item`, `integer` (item count), and `FloatProvider` (chance) over the network. Although the record is named as payload, it provides a CODEC and can be used for other perpouses utilizing this codec (for example a custom data type).
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the normal use case for this record, is to provide an output item stack that can be outputted from a machine using a chance value for production. The ability to use this record as a payload is extra functionality.
+</div>
 
 ---
 ---
@@ -475,34 +543,6 @@ The static `PacketCodec` field of a single payload used for handling serializati
 > ##### ***`getId()`***
 
 This method returns the `ID` for a payload.
-
-## FluidStack Record
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
 
 ## OutputItemStack Record
 
