@@ -174,7 +174,7 @@ This is an interface for block entities that require syncronized ticking. This i
 Example Usage:
 ```java
 
-public class MyBlockEntity extends NoScreenUpdatableBE implements ITickSyncBE
+public class MyBlockEntity extends NoScreenUpdatableEndTickBE implements ITickSyncBE
 {
     @Override
     public void onTick()
