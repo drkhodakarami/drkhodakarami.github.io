@@ -730,31 +730,31 @@ Creates a codec for a weighted list of elements. The method returns `<B extends 
 
 ## MouseHelper Class
 
-text
+This is a utility class for handling mouse interactions and provides static helper methods to handle mouse cursure on client side.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`isMouseOver(double mouseX, double mouseY, int x, int y, int width, int height, int offsetX, int offsetY)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Checks if the mouse cursure is over a boundary. The boundary is provided by top left corner, width and height of the boundary and the offset values for x and y directions.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`isMouseOver(double mouseX, double mouseY, int x, int y)`***
 
-text
+Checks if the mouse cursure is over a boundary. The boundary is provided by top left corner. This method uses fixed values of 16 pixels for both width and height of the boundary. This method will not accept any offset values for the rectangular area.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`isMouseOver(double mouseX, double mouseY, int x, int y, int size)`***
 
-text
+Checks if the mouse cursure is over a boundary. The boundary is provided by top left corner, and the same size value for both width and height of the boundary. This method will not accept any offset values for the rectangular area.
+
+---
+---
+> ##### ***`isMouseOver(double mouseX, double mouseY, int x, int y, int width, int height)`***
+
+Checks if the mouse cursure is over a boundary. The boundary is provided by top left corner, width and height of the boundary. This method will not accept any offset values for the rectangular area.
 
 ## InfoArea Class
 
