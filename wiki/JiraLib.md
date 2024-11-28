@@ -819,6 +819,10 @@ This method will return a flag called that will indicate if the update should be
 
 This is the base functionality implementation  ones to be used by the inherited `EndTickBE` classes. Basically, this method will check if we marked the block entity for update or not, if yes, then it will mark the block entity dirty and call the updateListeners.
 
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, to find the use case of the end tick call, you can take a look at `tick` method inside `ITickSyncBE` interface. In this interface, after syncronizing every syncable object, we check if the block entity is instance of `NoScreenUpdatableBE` and if it's the case, we call the endTick() on the block entity. The beauty of this system is that, if you block entity is not called for an `update` at this point, the endTick will do nothing. However, if you have called for the update any place in the onTick method and the class is marked to return true for `shouldWaitEndTick`, now it will call for the update logic at the execution of `endTick` method. The same approach can be used at your will whenever you think you need to handle the update at the end of tick cycle. Just remember, other than the mentioned example, there is no other usages in the library and if you are implementing your own logic separated from ITickSyncBE, you need to call the endTick manually yourself when you see appropriate.
+</div>
+
 ---
 ---
 > ##### ***`toUpdatePacket()`***
@@ -833,7 +837,7 @@ Converts the initial chunk data of this block entity into an NBT compound and ca
 
 ## NoScreenUpdatableEndTickBE Class
 
-text
+This class extends the `NoScreenUpdatableBE` and the only main difference is that it overrides the `shouldWaitEndTick` that returns `true` by default. By returning true in the method, we mark this block entity as the one that should handle the update call at the end of tick cycle.
 
 ---
 ---
