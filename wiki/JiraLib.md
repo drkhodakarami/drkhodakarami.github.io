@@ -92,55 +92,25 @@ public enum LimitedDirection implements IEnumTraversable<LimitedDirection>
 
 ---
 ---
-> ##### ***``***
+> ##### ***`next()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Retrieves the next enum value in the sequence. If the current value is the last in the sequence, this method should return the first enum value.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`previous()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Retrieves the previous enum value in the sequence. If the current value is the first in the sequence, this method should return the last enum value.
 
 ## IEnumValueCacher
 
-text
+Interface for enums that cache the values of the enum. This interface provides a method to retrieve cached values of an enum type. Implementing enums should ensure that the enum values are cached efficiently to improve performance when accessing them multiple times.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`values()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+Retrives the cached values of the enum as an array containing all the values of the enum that have been cached. The caching mechanism should ensure that the values are stored in a way that allows quick retrieval.
 
 ## ISync
 
