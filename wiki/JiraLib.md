@@ -165,7 +165,7 @@ Remember, unlike many implementations of getTicker method you see on video tutor
 ---
 > ##### ***`getState(World world, BlockPos pos)`***
 
-text
+This is a helper method that by default, returns a block state at the given position inside the given world. You can call this anywhere in the block entity to get the block state related to any position. By default, if the world is null, the method will return null.
 
 ## ITickSyncBE
 
