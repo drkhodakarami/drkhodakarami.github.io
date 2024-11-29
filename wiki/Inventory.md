@@ -205,50 +205,6 @@ This method will mark the inventory as dirty but will not call `markDirty` on th
 
 This method provides access to the block entity that is responsible for handling updates and syncronization between the server and client whenever the inventory changes.
 
-## WrappedInventoryStorage Class
-
-The wrapped inventory is a collection of multiple inventories that can be accessed and managed collectively. It supports operations such as retrieving the inventory storage for sprecific direction and accessing the output inventory. Wrapped inventory provides the needed flexibility in the types of inventories that can be wrapped and managed.
-
-<div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the current implementation, version 1.1.2+MC_1.21.3, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper inventory based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
-</div>
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
 ## PredicateSimpleInventory Class
 
 text
@@ -372,6 +328,50 @@ text
 ## OutputSlot Class
 
 text
+
+---
+---
+> ##### ***``***
+
+text
+
+---
+---
+> ##### ***``***
+
+text
+
+---
+---
+> ##### ***``***
+
+text
+
+---
+---
+> ##### ***``***
+
+text
+
+---
+---
+> ##### ***``***
+
+text
+
+---
+---
+> ##### ***``***
+
+text
+
+## WrappedInventoryStorage Class
+
+The wrapped inventory is a collection of multiple inventories that can be accessed and managed collectively. It supports operations such as retrieving the inventory storage for sprecific direction and accessing the output inventory. Wrapped inventory provides the needed flexibility in the types of inventories that can be wrapped and managed.
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the current implementation, version 1.1.2+MC_1.21.3, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper inventory based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
+</div>
 
 ---
 ---
