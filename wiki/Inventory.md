@@ -151,39 +151,27 @@ If you want your block entity to use the `WrappedInventoryStorage` system, you c
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addOutputInventory(int size, Direction direction)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Adds an output inventory to this block entity. This method initializes an output inventory of the specific size, allowing items to be extracted or transferred from the block entity in the specified direction. The output inventory facilitates item management and interactions with neighboring blocks or entities.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getInventory()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+It's the same method as the parent `IWrappedInventory`.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getInventoryStorage(@Nullable Direction direction)`***
 
-text
+It's the same method as the parent `IWrappedInventory`.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getOutputInventory()`***
 
-text
+It's the same method as the parent `IWrappedInventory`.
 
 ## RecipeSimpleInventory Class
 
