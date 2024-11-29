@@ -175,83 +175,35 @@ It's the same method as the parent `IWrappedInventory`.
 
 ## RecipeSimpleInventory Class
 
-text
+A specialized inventory class that extends `SimpleInventory` and implements `RecipeInput`. This class is designed to handle inventory operations specifically for recipes. It provides constructors to initialize the inventory with a specified size or with an array of `ItemStack` items.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getStackInSlot(int slot)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+Overrides the same method from `RecipeInput` interface to retrieve the `ItemStack` from a specified slot in the inventory.
 
 ## SyncingSimpleInventory Class
 
-text
+A specialized inventory class that extends `RecipeSimpleInventory` and syncronizes changes with an associated `NoScreenUpdatableBE` (or any of its inherited) block entity. This class ensures that any modifications to the inventory are reflected in the block entity, allowing for seamless updates between the server and client. This class provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items. It overrides the `markDirty` method to trigger an update on the associated block entity whenever the inventory is modified. Usage of this class is ideal in scenarios where inventory changes need to be syncronized with a block entity, ensuring that the client and server states remain consistent.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`sync()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+The default implementation that will check if the block entity is marked dirty and the world is server side and then it checks if the block entity is inherited from `NoScreenUpdatableBE` or not, if yes, it will call the `update` method and if not, it will call the `markDirty` on the block entity. Normally you don't need to override this method unless you want to change this functionality.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`markDirty()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+This method will mark the inventory as dirty but will not call `markDirty` on the block entity. Because we have the `sync` method, we the call on the block entity will be deferred to the sync mehtod. Normally you don't need to override this method unless you want to change this functionality.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`blockEntity()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+This method provides access to the block entity that is responsible for handling updates and syncronization between the server and client whenever the inventory changes.
 
 ## WrappedInventoryStorage Class
 
