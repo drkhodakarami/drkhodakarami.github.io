@@ -239,83 +239,27 @@ Retrieves the `BiPredicate` used for validating items in specific slots of the i
 
 ## OutputSimpleInventory Class
 
-text
+A specialized inventory class that extends `PredicateSimpleInventory` and is designed specifically for output-only slots. This class ensures that no items can be placed into the inventory slots by using a `BiPredicate` that always returns `false`.
 
----
----
-> ##### ***``***
+The `OutputSimpleInventory` class is useful in scenarios where inventory slots are intended solely for output purposes, preventing any manual insertion of items. It provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items, while enforcing the output-only restriction.
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+Usage of this class is ideal in cases where inventory slots should only be populated programmatically, such as in automated systems or processing machines.
 
 ## PredicateSlot Class
 
-text
+A custom slot implementation that allows for conditional item insertion based on a specified predicate. This class extends the `Slot` class and provides additional functionality to control which items can be inserted into the slot. Two constructors are provided, one that accepts a custom predicate to determine if an item can be inserted, and another that defaults to using the `SimpleInventory.canInsert()` method as the predicate. Usage of this class allows for more flexible inventory management by enabling custom rules for item insertion.
+
+Example Usage:
+```java
+//A slot that only accepts diamond
+PredicateSlot slot = new PredicateSlot(this.inventory, 1, 50, 100, itemStack -> itemStack.isOf(Items.DIAMOND));
+```
 
 ---
 ---
-> ##### ***``***
+> ##### ***`canInsert(ItemStack stack)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+Determines whether the specified `ItemStack` can be inserted into this slot. This method uses the predicate defined for this slot to evaluate if the given item stack is allowed to be placed in the slot. The predicate provides custom logic for item insertion, allowing for flexible inventory management.
 
 ## OutputSlot Class
 
