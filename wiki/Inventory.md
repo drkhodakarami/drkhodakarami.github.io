@@ -257,49 +257,37 @@ PredicateSlot slot = new PredicateSlot(this.inventory, 1, 50, 100, itemStack -> 
 
 ---
 ---
+> ##### ***`PredicateSlot(Inventory inventory, int index, int x, int y, Predicate<ItemStack> predicate)`***
+
+Constructs a new instance of the class with a specified inventory, slot index, position in the GUI and item insertion predicate.
+
+---
+---
+> ##### ***`PredicateSlot(SimpleInventory inventory, int index, int x, int y)`***
+
+Constructs a new instance of the class with a specified inventory, slot index and position in the GUI. For predicate, the constructor is using `SimpleInventory.canInsert()`.
+
+---
+---
 > ##### ***`canInsert(ItemStack stack)`***
 
 Determines whether the specified `ItemStack` can be inserted into this slot. This method uses the predicate defined for this slot to evaluate if the given item stack is allowed to be placed in the slot. The predicate provides custom logic for item insertion, allowing for flexible inventory management.
 
 ## OutputSlot Class
 
-text
+A specialized slot implementation that extends `PredicateSlot` to create an output-only slot. This class is designed to prevent any item from being inserted into the slot by using a predicate that always returns `false`. This makes it suitable for use in scenarios where items should only be extracted from the slot, such as crafting or processing outputs. This example creates an output slot at index 0 that does not allow any item insertion.
+  
+Example usage:
+```java
+Inventory inventory = new SimpleInventory(9);
+OutputSlot outputSlot = new OutputSlot(inventory, 0, 10, 30);
+```
 
 ---
 ---
-> ##### ***``***
+> ##### ***`OutputSlot(Inventory inventory, int index, int x, int y)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
-
----
----
-> ##### ***``***
-
-text
+Constructs an instance of the class with the specified inventory, slot index, and position in the GUI. This constructor initializes an output-only slot that does not allow any item insertion by using `itemStack -> false` as the predicate.
 
 ## WrappedInventoryStorage Class
 
@@ -311,39 +299,135 @@ The wrapped inventory is a collection of multiple inventories that can be access
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addInventory(@NotNull SimpleInventory inventory)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Creates a new wrapped inventory storage with the given inventories. The inventory will be assigned to no directions because we didn't set a specific direction for the inventory.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addInventory(@NotNull SimpleInventory inventory, Direction direction)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Creates a new wrapped inventory storage with the given inventory and the direction.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addSyncInventory(NoScreenUpdatableBE blockEntity, int size)`***
 
-text
+Creates a new wrapped inventory storage with a new synced inventory of the given size. The inventory will be assigned to no directions because we didn't set a specific direction for the inventory.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addSyncInventory(NoScreenUpdatableBE blockEntity, int size, Direction direction)`***
 
-text
+Creates a new wrapped inventory storage with a new synced inventory of the given size and direction.
+
+---
+---
+> ##### ***`getInventories()`***
+
+Retrieves the list of inventories wrapped by this storage. Each inventory in the list is an instance of `SimpleInventory`. This mehtod provides access to the underlying inventories, allowing for direct interaction with each inventory's content.
+
+---
+---
+> ##### ***`getStorages()`***
+
+Retrieves the list of `InventoryStorage` instances corresponding to each inventory in the inventories list. This list is used to handle the storage operations for each inventory, allowing for individual management of each inventory's storage capabilities.
+
+---
+---
+> ##### ***`getSidedStorageMap()`***
+
+Retrieves the map that associates each `Direction` with its corresponding `InventoryStorage`. This map is used to manage and access inventories that are accessible from specific directions, allowing for direction-based inventory operations.
+
+---
+---
+> ##### ***`getCombinedStorage()`***
+
+Retrieves the combined storage that aggregates all `InventoryStorage` instances in this wrapper. This combined storage allows for unified operations across all wrapped inventories, providing a single interface to interact with multiple inventories as if they were one.
+
+---
+---
+> ##### ***`getSlot(int slot, Direction direction)`***
+
+Retrieves the storage slot at the specific index for the given direction.
+
+---
+---
+> ##### ***`getSlots(Direction direction)`***
+
+Retrieves all storage slots for the given direction.
+
+---
+---
+> ##### ***`getStorage(Direction direction)`***
+
+Retrieves the `InventoryStorage` for the given direction.
+
+---
+---
+> ##### ***`getInventory(int index)`***
+
+Retrieves the `SimpleInventory` for the given index.
+
+---
+---
+> ##### ***`getStacks()`***
+
+Retrieves a list of `ItemStack` instances representing the contents of all inventories wrapped by this storage. This method provides a unified view of all item stacks across the multiple inventories allowing for easy access and manipulation of the itemns stored within.
+
+---
+---
+> ##### ***`getStacks(int index)`***
+
+Retrieves a list of `ItemStack` instances representing the contents of the inventory at the specified index. This method provides access to the item stacks within a specified inventory, allowing for easy manipulation and retrieval of items stored in that particular inventory.
+
+---
+---
+> ##### ***`getRecipeInventory()`***
+
+Retrieves a `RecipeSimpleInventory` instance that represents the inventory used for crafting recipes. This method provides access to a specialized inventory designed to interact with crafting mechanics, allowing for retrieval and manipulation of items specifically for recipe processing.
+
+---
+---
+> ##### ***`checkSize(int size)`***
+
+Validates that the specified size is appropriate for the inventory. This method ensures that the inventory can be accommodate the given number of slots. This is typically used to enforce constraints on inventory size during initialization or resizing operations.
+
+---
+---
+> ##### ***`onOpen(@NotNull PlayerEntity player)`***
+
+Handles the event when a player opens the inventory. This method is typically used to perform actions such as updating the inventory state, notifying listeners, or triggering specific behaviors when a player interacts with the inventory. It ensures that any necessary setup or state changes occure when the inventory is accessed by a player.
+
+---
+---
+> ##### ***`onClose(@NotNull PlayerEntity player)`***
+
+Handles the event when a player closes the inventory. This method is typically used to perform actions such as saving the inventory state, notifying listeners, or triggering specific behaviors when a player stops interacting with the inventory. It ensures that any necessary cleanup or state updates occure when the inventory is closed by a player.
+
+---
+---
+> ##### ***`dropContents(@NotNull World world, @NotNull BlockPos pos)`***
+
+Drops the contents of the inventory into the world at the specified position. This method is typically used when an inventory block is broken or needs to release its items into the world. It ensures that all items contained within the inventory are scattered around the given position in the world.
+
+---
+---
+> ##### ***`addDefaultOutputInventory(NoScreenUpdatableBE blockEntity, int size, Direction direction)`***
+
+Adds a default output inventory to the specified `NoScreenUpdateBE` block entity. This method initializes an inventory with the given size and associates it with a specific direction. It is typically used to set up the output storage for a block entity, allowing items to be output in a specified direction.
+
+---
+---
+> ##### ***`writeNbt(RegistryWrapper.WrapperLookup registryLookup)`***
+
+Serializes the inventory data into an `NbtList` using the provided `RegistryWrapper.WrapperLookup`. This method is used to convert the current state of the inventory into `NBT` format, which can be stored or transferred as needed. The serialization process involves writing each inventory's contents into the NBT structure.
+
+---
+---
+> ##### ***`readNbt(NbtList nbt, RegistryWrapper.WrapperLookup registryLookup)`***
+
+Deserializes the inventory data from the provided `NbtList` using the given `RegistryWrapper.WrapperLookup`. This method is used to restore the state of the inventory from `NBT` format, allowing the inventory to be reconstructed with its previous contents. The deserialization process involves reading each inventory's contents from the NBT structure.
 
 ## AbstractInventoryBE Class
 
