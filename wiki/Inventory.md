@@ -431,7 +431,7 @@ Deserializes the inventory data from the provided `NbtList` using the given `Reg
 
 ## AbstractInventoryBE Class
 
-text
+Abstract class that represents a block entity with funtionalities like a screen handler, ticking, updating, and syncronizing data, that contains a wrapped inventory storage.
 
 <div class="alert alert-dismissible alert-danger">
   :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from <strong>NOScreenUpdatableBE</strong> and implemets the <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. <p/><p/>In the next versions this will change and it will extend <strong>UpdateEndTickBE</strong> because normally when you have inventories, you want to have screens and by implementing <strong>ITickSyncBE</strong> we want to syncronize these inventories so the update should automatically deferred to the end of the tick cycle.
@@ -439,36 +439,54 @@ text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addOutputInventory(int size, Direction direction)`***
+
+Adds an output inventory to this block entity. This method initializes an output inventory of the specified size, allowing items to be extracted or transferred from the block entity in the specified direction. The output invventory facilitates item management and interactions with neighboring blocks or entities.
+
+---
+---
+> ##### ***`getInventory()`***
+
+Retrieves the wrapped inventory storage of this block entity. The inventory storage contains all inventories associated with the block entity and allows for various inventory operations.
+
+---
+---
+> ##### ***`getInventoryStorage(@Nullable Direction direction)`***
+
+Retrieves the storage for the inventory associated with this block entity in the specified direction. This method allows for accessing the inventory storage in relation to the block entity's orientation, enabling proper interactions with neighboring blocks or entities.
+
+---
+---
+> ##### ***`getOutputInventory()`***
 
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getDisplayName()`***
 
 text
 
 ---
 ---
-> ##### ***``***
+> ##### ***`createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)`***
 
 text
