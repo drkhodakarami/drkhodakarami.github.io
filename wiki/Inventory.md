@@ -211,7 +211,7 @@ A specialized inventory class that extends `SyncingSimpleInventory` and incorpor
  
 This class provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items, along with a predicate for validation. It overrides the `isValid` method to utilize the predicate for determining the validity of items in slots.
  
-Usage of this class is ideal in scenarios where inventory slots require specific validation logic, such as restricting certain items to specific slots based on custom rules.</p>
+Usage of this class is ideal in scenarios where inventory slots require specific validation logic, such as restricting certain items to specific slots based on custom rules.
 
 ---
 ---
