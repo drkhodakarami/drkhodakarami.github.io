@@ -123,43 +123,31 @@ This is an interface representing a wrapped inventory that provides access to it
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getInventory()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Retrieves the wrapped inventory storage. This method returns an instance of `WrappedInventoryStorage` that contains the wrapped inventories.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getInventoryStorage(@Nullable Direction direction)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+This method allows access to the inventory storage from a specific direction. If the direction is null, the default storage is returned. The inventory storage provides methods to interact with the inventory's contents and manage it's storage capabilities.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getOutputInventory()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Retrieves the `SimpleInventory` assigned as the output inventory that is associated with this wrapped inventory. The output inventory is a specialized inventory used for output operations.
 
 ## IWrappedInventoryProvider
 
-text
+This interface extends the `IWrappedInventory` with addition information, methods and default constant values for the output inventory. The default values for the output inventory that his interface provides are:
+
+- DEFAULT_OUTPUT_INDEX = 0
+- DEFAULT_OUTPUT_SIZE = 1
+- DEFAULT_OUTPUT_DIRECTION = Direction.DOWN
+
+If you want your block entity to use the `WrappedInventoryStorage` system, you can implement this interface and override the needed functionality. Alternatively, you can extend your block entity from `AbstractInventoryBE` that is already implementing this interface and adds the syncronization, update funtionality and GUI screen ability with the base implementation for using the wrapped inventory storage. Please read more about wrapped inventory from the class and look into abstract inventory information bellow.
 
 ---
 ---
@@ -280,6 +268,10 @@ text
 ## WrappedInventoryStorage Class
 
 The wrapped inventory is a collection of multiple inventories that can be accessed and managed collectively. It supports operations such as retrieving the inventory storage for sprecific direction and accessing the output inventory. Wrapped inventory provides the needed flexibility in the types of inventories that can be wrapped and managed.
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the current implementation does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper inventory based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
+</div>
 
 ---
 ---
@@ -480,6 +472,12 @@ text
 ## AbstractInventoryBE Class
 
 text
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from NOScreenUpdatableBE and implemets the screen and <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. 
+
+In the next version this will change and it will extend <strong>UpdateEndTickBE</strong> because normally when you have inventories, you want to have screens and by implementing <strong>ITickSyncBE</strong> we want to syncronize these inventories so the update should automatically deferred to the end of the tick cycle.
+</div>
 
 ---
 ---
