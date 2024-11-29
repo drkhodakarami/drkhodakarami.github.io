@@ -215,39 +215,27 @@ Usage of this class is ideal in scenarios where inventory slots require specific
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PredicateSimpleInventory(NoScreenUpdatableBE blockEntity, int size, BiPredicate<ItemStack, Integer> predicate)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Constructs a new instance of this class with the specified block entity, inventory size, and item validation predicate.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`PredicateSimpleInventory(NoScreenUpdatableBE blockEntity, BiPredicate<ItemStack, Integer> predicate, ItemStack... items)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Constructs a new instance of this class with the specified block entity, item validation predicate and initial set of items.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`isValid(int slot, ItemStack stack)`***
 
-text
+Determines whether the specified `ItemStack` is valid for the given slot index in the inventory or not utilizing the predefined `BiPredicate` to apply custom validation logic, ensuring that only items meeting certain criteria can be placed in specific slots.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`predicate()`***
 
-text
+Retrieves the `BiPredicate` used for validating items in specific slots of the inventory. This predicate allows for custom validation logic to be applied, ensuring that only items meeting certain criteria can be placed in specific slots.
 
 ## OutputSimpleInventory Class
 
