@@ -119,7 +119,7 @@ By default it returns true and can be overridden for any custom behavior check s
 
 ## IWrappedInventory
 
-text
+This is an interface representing a wrapped inventory that provides access to its underlying storage mechanism. This interface defines methods to retrieve the wrapped inventory, its storage, and the output inventory. For more information about wrapped inventory, check the `WrappedInventoryStorage` class.
 
 ---
 ---
@@ -279,7 +279,7 @@ text
 
 ## WrappedInventoryStorage Class
 
-text
+The wrapped inventory is a collection of multiple inventories that can be accessed and managed collectively. It supports operations such as retrieving the inventory storage for sprecific direction and accessing the output inventory. Wrapped inventory provides the needed flexibility in the types of inventories that can be wrapped and managed.
 
 ---
 ---
