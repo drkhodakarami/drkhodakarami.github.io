@@ -107,27 +107,15 @@ This method clears the inventory. The internal mechanic is to call on the `getIt
 
 ---
 ---
-> ##### ***``***
+> ##### ***`markDirty()`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+Handles the dirty state of the block entity. The default implementation does nothing and if you need to handle anything, you should override this method.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`canPlayerUse(PlayerEntity player)`***
 
-text
-
----
----
-> ##### ***``***
-
-text
+By default it returns true and can be overridden for any custom behavior check so that you can call this method and check if the inventory can be opened and used by player or not.
 
 ## IWrappedInventory
 
