@@ -14,25 +14,36 @@ For installation guide on how to add the dependency, look into the [Readme](http
 
 The interface extends Inventory and can be used anytime you need an implementation for a block entity that handles simple inventories in themselves. This interface produce many different methods related to the inventory and how to handle slots. You can add this interface on top of any abstraction provided by this library to get more flexibility in your block entity.
 
-Normally, if you want a simple inventory system, you can add a DefaultedList<ItemStack> in your block entity class and this list should behave as your inventory. You can use the code example as a starting point.
+Normally, if you want a simple inventory system, you can add a `DefaultedList<ItemStack>` in your block entity class and this list should behave as your inventory. You can use the code example as a starting point.
 
 Example Usage:
 ```java
-public enum LimitedDirection implements IEnumTraversable<LimitedDirection>
+public class SomeBlockEntity extends BlockEntity implements IInventory
 {
-    NORTH, EAST, SOUTH, WEST;
+    private final DefaultedList<ItemStack> inventory;
   
-    public LimitedDirection next()
+    public SomeBlockEntity(BlockEntityType type, BlockPos pos, BlockState state)
     {
-        return values()[(ordinal() + 1) % values().legth];
+        this.inventory = IInventory.ofSize(4);
     }
   
-    public LimitedDirection previous()
+    @Override
+    public DefaultedList<ItemStack> getItems()
     {
-        return values()[(ordinal() - 1 + values().legth) % values().legth];
+        return this.inventory;
+    }
+  
+    @Override
+    public void markDirty()
+    {
+        //Handle dirty state and what needs to be done here.
     }
 }
 ```
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, if you are using anything other than defaulted list of item stacks for the invenotry, like the <strong>WrappedInventoryStorage</strong> provided by the library, you need to handle <strong>getItem</strong> and <strong>clear</strong> methods and based on what you have, you may even need to override other methods like <strong>getStack</strong>, <strong>removeStack</strong>, <strong>setStack</strong>, and <strong>markDirty</strong>. Also, keep in mind if you are using the wrapped inventory system from this library, you may not need this interface anymore because the wrapped inventory storage class should be more than enough to handle all of your needs. This interface is for small cases that you need a very simple inventory system.
+</div>
 
 ---
 ---
@@ -44,13 +55,13 @@ Retrieves a defaulted list of all the item stacks inside this inventory.
 ---
 > ##### ***`of(DefaultedList<ItemStack> items)`***
 
-Creates an inventory from the given defaulted list of item stacks.
+This static helper method creates an inventory from the given defaulted list of item stacks.
 
 ---
 ---
 > ##### ***`ofSize(int size)`***
 
-Creates a new inventory with the given size and fills it with `empty` item stacks.
+This static helper method creates a new inventory with the given size and fills it with `empty` item stacks.
 
 ---
 ---
