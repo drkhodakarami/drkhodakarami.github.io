@@ -474,7 +474,7 @@ text
 text
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from NOScreenUpdatableBE and implemets the screen and <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. 
+  :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from <strong>NOScreenUpdatableBE</strong> and implemets the screen and <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. 
 
 In the next version this will change and it will extend <strong>UpdateEndTickBE</strong> because normally when you have inventories, you want to have screens and by implementing <strong>ITickSyncBE</strong> we want to syncronize these inventories so the update should automatically deferred to the end of the tick cycle.
 </div>
