@@ -207,7 +207,11 @@ This method provides access to the block entity that is responsible for handling
 
 ## PredicateSimpleInventory Class
 
-text
+A specialized inventory class that extends `SyncingSimpleInventory` and incorporates a `BiPredicate` to validate items in specific slots. This class allows for custom validation logic to be applied to inventory slots, ensuring that only items meeting certain criteria can be placed in specific slots.
+ 
+This class provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items, along with a predicate for validation. It overrides the `isValid` method to utilize the predicate for determining the validity of items in slots.
+ 
+Usage of this class is ideal in scenarios where inventory slots require specific validation logic, such as restricting certain items to specific slots based on custom rules.</p>
 
 ---
 ---
