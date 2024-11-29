@@ -270,7 +270,7 @@ text
 The wrapped inventory is a collection of multiple inventories that can be accessed and managed collectively. It supports operations such as retrieving the inventory storage for sprecific direction and accessing the output inventory. Wrapped inventory provides the needed flexibility in the types of inventories that can be wrapped and managed.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the current implementation does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper inventory based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
+  :bulb:<strong>Remember</strong>, the current implementation, version 1.1.2+MC_1.21.3, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper inventory based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
 </div>
 
 ---
@@ -474,7 +474,7 @@ text
 text
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from <strong>NOScreenUpdatableBE</strong> and implemets the <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. <p/><p/>In the next version this will change and it will extend <strong>UpdateEndTickBE</strong> because normally when you have inventories, you want to have screens and by implementing <strong>ITickSyncBE</strong> we want to syncronize these inventories so the update should automatically deferred to the end of the tick cycle.
+  :bulb:<strong>Remember</strong>, version 1.1.2+MC_1.21.3 is extending from <strong>NOScreenUpdatableBE</strong> and implemets the <strong>ITickSync</strong> and <strong>ExtendedScreenHandlerFactory</strong> by itself, meaning that you need to handle the deferred behavior for the end tick update manually. <p/><p/>In the next versions this will change and it will extend <strong>UpdateEndTickBE</strong> because normally when you have inventories, you want to have screens and by implementing <strong>ITickSyncBE</strong> we want to syncronize these inventories so the update should automatically deferred to the end of the tick cycle.
 </div>
 
 ---
