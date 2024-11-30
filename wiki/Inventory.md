@@ -185,13 +185,13 @@ Overrides the same method from `RecipeInput` interface to retrieve the `ItemStac
 
 ## SyncingSimpleInventory Class
 
-A specialized inventory class that extends `RecipeSimpleInventory` and syncronizes changes with an associated `NoScreenUpdatableBE` (or any of its inherited) block entity. This class ensures that any modifications to the inventory are reflected in the block entity, allowing for seamless updates between the server and client. This class provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items. It overrides the `markDirty` method to trigger an update on the associated block entity whenever the inventory is modified. Usage of this class is ideal in scenarios where inventory changes need to be syncronized with a block entity, ensuring that the client and server states remain consistent.
+A specialized inventory class that extends `RecipeSimpleInventory` and syncronizes changes with an associated [NoScreenUpdatableBE](https://drkhodakarami.github.io/JiraLib#noscreenupdatablebe-class) (or any of its inherited) block entity. This class ensures that any modifications to the inventory are reflected in the block entity, allowing for seamless updates between the server and client. This class provides constructors to initialize the inventory with a specified size or with a predefined set of `ItemStack` items. It overrides the `markDirty` method to trigger an update on the associated block entity whenever the inventory is modified. Usage of this class is ideal in scenarios where inventory changes need to be syncronized with a block entity, ensuring that the client and server states remain consistent.
 
 ---
 ---
 > ##### ***`sync()`***
 
-The default implementation that will check if the block entity is marked dirty and the world is server side and then it checks if the block entity is inherited from `NoScreenUpdatableBE` or not, if yes, it will call the `update` method and if not, it will call the `markDirty` on the block entity. Normally you don't need to override this method unless you want to change this functionality.
+The default implementation that will check if the block entity is marked dirty and the world is server side and then it checks if the block entity is inherited from [NoScreenUpdatableBE](https://drkhodakarami.github.io/JiraLib#noscreenupdatablebe-class) or not, if yes, it will call the `update` method and if not, it will call the `markDirty` on the block entity. Normally you don't need to override this method unless you want to change this functionality.
 
 ---
 ---
@@ -415,7 +415,7 @@ Drops the contents of the inventory into the world at the specified position. Th
 ---
 > ##### ***`addDefaultOutputInventory(NoScreenUpdatableBE blockEntity, int size, Direction direction)`***
 
-Adds a default output inventory to the specified `NoScreenUpdateBE` block entity. This method initializes an inventory with the given size and associates it with a specific direction. It is typically used to set up the output storage for a block entity, allowing items to be output in a specified direction.
+Adds a default output inventory to the specified [NoScreenUpdatableBE](https://drkhodakarami.github.io/JiraLib#noscreenupdatablebe-class) block entity. This method initializes an inventory with the given size and associates it with a specific direction. It is typically used to set up the output storage for a block entity, allowing items to be output in a specified direction.
 
 ---
 ---
@@ -459,34 +459,47 @@ Retrieves the storage for the inventory associated with this block entity in the
 ---
 > ##### ***`getOutputInventory()`***
 
-text
+Retrieves the output inventory of this block entity. The output inventory is specifically designed for holding items that can be extracted or tranderred from the block entity. If the inventory has been initialized and contains output storage, this method returns the corresponding simple inventory, otherwise, it returns null.
 
 ---
 ---
 > ##### ***`readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
-text
+Deserializes the state of this block entity from an NBT compound. This method is responsible for retrieving and reconstructing the essential data of the block entity, including its inventory, from the NBT format into memory. It extends the base behavior to ensure that the inventory is correctly restored when the block entity is loaded or initialized.
 
 ---
 ---
 > ##### ***`writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
-text
+Serializes the state of this block entity to an NBT compound for storage or transmission. This method is responsible for converting essential data of the block entity, including its inventory, into a format that can be saved in the game's NBT format. It extends the base behavior by adding the inventory data for later retrieval.
 
 ---
 ---
 > ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
-text
+Retrieves the data necessary for opening a screen on the client side. This method is used to provide the client with this block entity is opened. The position is encapsulated in a [BlockPosPayload](https://drkhodakarami.github.io/JiraLib#blockpos-payload) object, which is sent to the client to ensure that the correct block entity is referenced.
 
 ---
 ---
 > ##### ***`getDisplayName()`***
 
-text
+Retrieves the display name of this block entity. This name is used to represent the block entity in the user interface, such as in the title of a screen or in tooltips. By default, this method returns null, indicating that no specific display name is set for this block entity.
+     
+Subclasses can override this method to provide a custom display name that is more descriptive or context-specific, enhancing the user experience by providing meaningful information about the block entity.
 
 ---
 ---
 > ##### ***`createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)`***
 
-text
+Creates a screen handler for the block entity, which is used to manage the interaction between the player's inventory and the block entity's inventory. This method is called when a player opens the block entity's screen, allowing for the synchronization of inventory data between the client and server.
+
+By default, this method returns null, indicating that no specific menu is created for this block entity. Subclasses can override this method to provide a custom screen handler that facilitates interaction with the block entity's inventory or other functionalities.
+
+Example usage:
+```java
+@Override
+public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) 
+{
+    return new SomeScreenHandler(syncId, playerInventory, this);
+}
+```
