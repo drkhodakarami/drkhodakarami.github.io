@@ -5,3 +5,19 @@ The [JiFluid](https://github.com/drkhodakarami/JiFluid) is the main abstraction 
 ## Depending Your Mod
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiFluid) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/fluid/) repository for the project.
+
+## IWrappedFluidProvider
+
+## FluidTooltipMode
+
+## FluidStackRenderer Class
+
+## SyncedFluidStorage Class
+
+## WrappedFluidStorage Class
+
+## FluidHelper Class
+
+## AbstractFluidBlock Class
+
+## AbstractFluidBE Class
