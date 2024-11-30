@@ -68,19 +68,43 @@ The `tooltipMode` parameter, defined by the `FluidTooltipMode` enum, specifies h
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getCapacity()`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`setZOrder(int index)`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`drawFluid(DrawContext context, FluidStack fluid, int x, int y, int width, int height, long maxCapacity)`***
+
+This
+
+---
+---
+> ##### ***`getTooltip(FluidStack fluidStack, Item.TooltipContext tooltipFlag, String modid)`***
+
+This
+
+---
+---
+> ##### ***`getWidth()`***
+
+This
+
+---
+---
+> ##### ***`getHeight()`***
+
+This
+
+---
+---
+> ##### ***`isMouseAboveArea(int mouseX, int mouseY, int x, int y, int offsetX, int offsetY)`***
 
 This
 
