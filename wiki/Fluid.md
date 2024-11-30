@@ -2,6 +2,10 @@
 
 The [JiFluid](https://github.com/drkhodakarami/JiFluid) is the main abstraction layer for more advanced blocks and block entities in any mod that wants to handle fluid containers. It provides abstract classes, wrapped fluid containers, and helper methods that will handle more complex fluid transfer for you. It contains 6 classes, 1 interfaces, and 1 enum. The [JiMachina](https://github.com/drkhodakarami/JiMachina) library is depending on this one.
 
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the easiest way to use the library is to extend the block entity from <strong>AbstractFluidBE</strong>, extend your block from <strong>AbstractFluidBlock</strong> and use helper methods provided by FluidHelper class.
+</div>
+
 ## Depending Your Mod
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiFluid) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/fluid/) repository for the project.
@@ -106,91 +110,150 @@ Retrieves the height of the rendered fluid stack in pixels. This method returns 
 
 ## SyncedFluidStorage Class
 
-Represents a synchronized fluid storage system that is associated with a specific block entity. This class extends the functionality of `SingleFluidStorage` to manage fluid storage with a defined capacity while ensuring synchronization with the associated block entity. The fluid storage has a specified capacity, and upon committing changes to the storage, it informs the associated block entity to update its state. If the block entity implements the `UpdatableBE` interface, it will call the update method; otherwise, it will mark the block entity as dirty to prompt a save.
-  
----
----
-> ##### ***``***
+Represents a synchronized fluid storage system that is associated with a specific block entity. This class extends the functionality of `SingleFluidStorage` to manage fluid storage with a defined capacity while ensuring synchronization with the associated block entity. The fluid storage has a specified capacity, and upon committing changes to the storage, it informs the associated block entity to update its state. If the block entity implements the `NoScreenUpdatableBE` interface, it will call the update method; otherwise, it will mark the block entity as dirty to prompt a save.
 
-This
+Example Usage:
+```java
+UpdatableBE blockEntity = ...; // your block entity instance
+long capacity = FluidConstants.BUCKET;
+SyncedFluidStorage storage = new SyncedFluidStorage(blockEntity, capacity);
+```
 
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, this class is implementing ISync interface and should syncronize the storage. The default implementation should be more than enough for most use cases. If you don't need to change the default behavior, you don't need to override the sync method.
+</div>
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getCapacity(FluidVariant fluidVariant)`***
 
-This
-
----
----
-> ##### ***``***
-
-This
+Returns the maximum capacity of the fluid storage for the sepcified fluid variant.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`onFinalCommit()`***
 
-This
+This method is being called when the final commit has been made to the fluid storage. This method overrides the default implemntation in `SingleFluidStorage` to provide additional behavior. When this method is called, it will mark the storage as dirty. This flag will be checked later when the sync method is called to syncronize and update the container. Normally you shouldn't find a need to override this method. If you need to override this method, remember to call the super to make sure that this functionality remains intact.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`sync()`***
 
-This
+This method will syncronize the fluid storage with the client and calls the `update` method associated to block entity. If the block entity is not an instance of `NoScreenUpdatableBE`, then the block entity will simply call the `markDirty` method of itself.
+
+---
+---
+> ##### ***`getBlockEntity()`***
+
+Retrieves the block entity associated with this fluid storage.
 
 ## WrappedFluidStorage Class
 
+A wrapper class for managing multiple `SingleFluidStorage` instances. This class provides method to add, retrieve, and manage fluid storages associated with different directions or indices.
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the current implementation, version 1.1.2+MC_1.21.3, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper storage based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
+</div>
+
 ---
 ---
-> ##### ***``***
+> ##### ***`addStorage(SingleFluidStorage storage)`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addStorage(SingleFluidStorage storage, Direction direction)`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, long capacity)`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, long capacity, Direction direction)`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getStorages()`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getSidedStorageMap()`***
 
 This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getAmount(Direction direction)`***
+
+This
+
+---
+---
+> ##### ***`getCapacity(Direction direction)`***
+
+This
+
+---
+---
+> ##### ***`getType(Direction direction)`***
+
+This
+
+---
+---
+> ##### ***`getAmount(int index)`***
+
+This
+
+---
+---
+> ##### ***`getCapacity(int index)`***
+
+This
+
+---
+---
+> ##### ***`getType(int index)`***
+
+This
+
+---
+---
+> ##### ***`getStorage(Direction direction)`***
+
+This
+
+---
+---
+> ##### ***`getStorage(int index)`***
+
+This
+
+---
+---
+> ##### ***`getFluids()`***
+
+This
+
+---
+---
+> ##### ***`writeNbt(RegistryWrapper.WrapperLookup registryLookup)`***
+
+This
+
+---
+---
+> ##### ***`readNbt(NbtList nbt, RegistryWrapper.WrapperLookup registryLookup)`***
 
 This
 
