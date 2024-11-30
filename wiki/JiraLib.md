@@ -638,6 +638,12 @@ Returns the `BlockPos` that is to the **top** of the given `facing` direction at
 
 Returns the `BlockPos` that is to the **bottom** of the given `facing` direction at the given position.
 
+---
+---
+> ##### ***`getRelativeDirection(@Nullable Direction direction, @Nullable Direction facing)`***
+
+Calculates the relative direction based on the given `direction` and `facing`. This method determines the direction relative to a specific facing direction. If either `direction` or `facing` is null, the method will handle these cases appropriately, potentially returning null or a default value depending on the implementation details.
+
 ## MathHelper Class
 
 This is a helper class that provides static helper methods with various math functions.
