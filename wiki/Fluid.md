@@ -36,27 +36,35 @@ The possible cases are:
 
 ---
 ---
-> ##### ***``***
+> ##### ***`FluidStackRenderer()`***
 
-This
-
----
----
-> ##### ***``***
-
-This
+This constructor will create an intance of the class with one Bucket as the maximum capacity of the fluid stack, `true` as the flag to show the capacity and use milli-buckets, and 16 pixels as default for width and height values.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`FluidStackRenderer(long capacity, boolean showCapacity, int width, int height)`***
 
-This
+Constructs a `FluidStackRenderer` with specified capacity, tooltip display options, and UI dimensions. This constructor allows for customization of the fluid rendering by specifying the maximum capacity of the fluid stack, whether the capacity should be displayed in the tooltip, and the dimensions of the rendered fluid stack in the user interface. This constructor forces the fluid stack to use milli-bucket system.
+
+The `capacity` parameter defines the maximum amount of fluid stack, that the renderer can display. This is crucial for calculating the proportion of the fluid to render visually and for displaying accurate information in the tooltip.
+
+The `showCapacity` parameter determines whether the tooltip should include the fluid's capacity alongside its current amount. This provides users with a clearer understanding of how much fluid is present relative to the maximum capacity.
+
+The `width` and `height` parameters specify the dimensions of the fluid stack's visual representation in pixels. These dimensions allow for flexibility in how the fluid is displayed, accommodating different UI layouts and design requirements.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`FluidStackRenderer(long capacity, boolean showCapacity, boolean useMilliBuckets, int width, int height)`***
 
-This
+Constructs a `FluidStackRenderer` with specified capacity, tooltip display options, unit preference, and dimensions. This constructor provides extensive customization for rendering fluid stacks by allowing the specification of the fluid's maximum capacity, tooltip display preferences, unit of measurement, and the dimensions of the rendered fluid stack in the user interface.    
+
+---
+---
+> ##### ***`FluidStackRenderer(long capacity, FluidTooltipMode tooltipMode, int width, int height)`***
+
+Constructs a `FluidStackRenderer` with specified capacity, tooltip mode, and dimensions. This constructor provides detailed customization for rendering fluid stacks by allowing the specification of the fluid's maximum capacity, the mode for displaying tooltips, and the dimensions of the rendered fluid stack in the user interface.
+     
+The `tooltipMode` parameter, defined by the `FluidTooltipMode` enum, specifies how the fluid's amount and capacity should be displayed in the tooltip. This allows for flexibility in presenting fluid information according to user preferences or application requirements. The available modes include displaying amounts in both Fabric conventions and milli-buckets, with options to include or exclude capacity information.</p>
 
 ---
 ---
