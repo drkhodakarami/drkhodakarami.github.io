@@ -273,6 +273,22 @@ Constructs a new instance of the class with a specified inventory, slot index an
 
 Determines whether the specified `ItemStack` can be inserted into this slot. This method uses the predicate defined for this slot to evaluate if the given item stack is allowed to be placed in the slot. The predicate provides custom logic for item insertion, allowing for flexible inventory management.
 
+## TaggedSlot Class
+
+A specialized slot implementation that extends `PredicateSlot` to create a slot that accepts items that are assigned to a tag key. This class is designed to make sure only selected items can insert the slot. This makes it suitable for use in scenarios where items should only be added in certain slot, such as crafting or processing inputs. This example creates a tagged slot at index 0 that only accepts items which has been assinged to SOME_ITEM_TAG.
+  
+Example usage:
+```java
+Inventory inventory = new SimpleInventory(9);
+TaggedSlot taggedSlot = new TaggedSlot(inventory, 0, 10, 30, SOME_ITEM_TAG);
+```
+
+---
+---
+> ##### ***`TaggedSlot(Inventory inventory, int index, int x, int y, TagKey<Item> tagKey)`***
+
+Constructs an instance of the class with the specified inventory, slot index, and position in the GUI, and the predicate tag key.
+
 ## OutputSlot Class
 
 A specialized slot implementation that extends `PredicateSlot` to create an output-only slot. This class is designed to prevent any item from being inserted into the slot by using a predicate that always returns `false`. This makes it suitable for use in scenarios where items should only be extracted from the slot, such as crafting or processing outputs. This example creates an output slot at index 0 that does not allow any item insertion.
