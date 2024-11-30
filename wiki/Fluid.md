@@ -259,15 +259,73 @@ Deserializes the fluid storages from an NBT list.
 
 ## FluidHelper Class
 
----
----
-> ##### ***``***
+This class provides utility methods for handling fluid transfers and interactions within a Minecraft mod environment. It includes methods for transferring fluids between tanks and inventories, interacting with fluid storage blocks, and converting fluid measurements. This class utilizes the Fabric API for fluid handling and storage.
 
-This
+The constant values provided by this class:
+- DEFAULT_FLUID_CAPACITY = FluidConstants.BUCKET * 10
+- DEFAULT_FLUID_SMALL = FluidConstants.BUCKET * 5
+- DEFAULT_FLUID_MEDIUM = FluidConstants.BUCKET * 25
+- DEFAULT_FLUID_LARGE = FluidConstants.BUCKET * 50
+- DEFAULT_FLUID_EXTRA_LARGE = FluidConstants.BUCKET * 100
+
+- FLUID_CAPACITY_WOOD = FluidConstants.BUCKET * 4
+- FLUID_CAPACITY_STONE = FluidConstants.BUCKET * 16
+- FLUID_CAPACITY_COPPER = FluidConstants.BUCKET * 36
+- FLUID_CAPACITY_IRON = FluidConstants.BUCKET * 64
+- FLUID_CAPACITY_OBSIDIAN = FluidConstants.BUCKET * 100
+- FLUID_CAPACITY_GOLD = FluidConstants.BUCKET * 144
+- FLUID_CAPACITY_DIAMOND = FluidConstants.BUCKET * 196
+- FLUID_CAPACITY_EMERALD = FluidConstants.BUCKET * 256
+- FLUID_CAPACITY_STAR = FluidConstants.BUCKET * 324
+- FLUID_CAPACITY_NETHERITE = FluidConstants.BUCKET * 432
+- FLUID_CAPACITY_END = FluidConstants.BUCKET * 540
+- MILLI_BUCKET = FluidConstants.BUCKET / 1000
 
 ---
 ---
-> ##### ***``***
+> ##### ***`handleTankTransfer(World world, BlockPos pos, SingleVariantStorage<FluidVariant> tank, Inventory inputInventory, Inventory outputInventory, int inputSlot, int outputSlot)`***
+
+Facilitates the bidirectional transfer of fluids between two inventories and a fluid storage tank. This method first attempts to transfer fluid from the specified input inventory slot to the tank. If this transfer is not possible, it then attempts to transfer fluid from the tank to the specified output inventory slot. The method ensures that the transfer only occurs if there is sufficient fluid in the source and adequate space in the destination.
+
+---
+---
+> ##### ***`transferFromTank(World world, BlockPos pos, SingleVariantStorage<FluidVariant> tank, Inventory inputInventory, Inventory outputInventory, int inputSlot, int outputSlot)`***
+
+Transfers fluid from a fluid storage tank to a specified output slot in an inventory. This method checks if the output slot in the inventory can receive bucket items and if the tank has sufficient fluid to transfer. If both conditions are met, the fluid is transferred from the tank to the inventory. The method also handles playing the appropriate sound effects during the transfer.
+
+---
+---
+> ##### ***`transferToTank(World world, BlockPos pos, SingleVariantStorage<FluidVariant> tank, Inventory inputInventory, Inventory outputInventory, int inputSlot, int outputSlot)`***
+
+Transfers fluid from a specified input slot in an inventory to a fluid storage tank. This method checks if the input slot in the inventory contains full bucket items that can be transferred to the tank and if the tank has enough capacity to receive the fluid. If both conditions are met, the fluid is transferred from the inventory to the tank. The method also handles playing the appropriate sound effects during the transfer.
+
+---
+---
+> ##### ***`interactWithBlock(World world, BlockPos pos, PlayerEntity player, Hand hand)`***
+
+Allows a player to interact with a fluid storage block in the game world. This method checks each side of the block for a fluid storage capability and attempts to interact with it using the player's current item in hand. If a fluid storage is found, the method facilitates the interaction, which may involve transferring fluid between the player's item and the block's storage. The method also handles any necessary sound effects during the interaction.
+
+---
+---
+> ##### ***`isTankEmpty(SingleVariantStorage<FluidVariant> tank)`***
+
+Determines whether a given fluid storage tank is empty. This method checks the amount of fluid currently stored in the tank and returns true if the tank contains no fluid. It is useful for validating whether a tank can receive more fluid or if it needs to be refilled.
+
+---
+---
+> ##### ***`isTankEmpty(Storage<FluidVariant> tank)`***
+
+Determines whether a given fluid storage tank is empty. This method checks the amount of fluid currently stored in the tank and returns true if the tank contains no fluid. It is useful for validating whether a tank can receive more fluid or if it needs to be refilled.
+
+---
+---
+> ##### ***`isOutputReceivable(Inventory inventory, int slot, boolean shouldAcceptEmpty, FluidVariant variant)`***
+
+Determines whether a specified slot in an inventory can receive additional fluid items. This method checks the current contents of the slot and evaluates whether it can accept more items based on the specified fluid variant and conditions. It is useful for validating if a slot is ready to receive fluid items during a transfer operation.
+
+---
+---
+> ##### ***`isEmptyBucket(Inventory inventory, int slot)`***
 
 This
 
