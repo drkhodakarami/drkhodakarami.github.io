@@ -159,103 +159,103 @@ A wrapper class for managing multiple `SingleFluidStorage` instances. This class
 ---
 > ##### ***`addStorage(SingleFluidStorage storage)`***
 
-This
+Adds a storage to the list without associating it with a specific direction.
 
 ---
 ---
 > ##### ***`addStorage(SingleFluidStorage storage, Direction direction)`***
 
-This
+Adds a storage to the list and associates it with a specific direction.
 
 ---
 ---
 > ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, long capacity)`***
 
-This
+Adds a synced storage associated with a block entity and capacity.
 
 ---
 ---
 > ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, long capacity, Direction direction)`***
 
-This
+Adds a synced storage associated with a block entity, capacity, and direction.
 
 ---
 ---
 > ##### ***`getStorages()`***
 
-This
+Retrieves the list of all storages.
 
 ---
 ---
 > ##### ***`getSidedStorageMap()`***
 
-This
+Retrieves the map of storages associated with directions.
 
 ---
 ---
 > ##### ***`getAmount(Direction direction)`***
 
-This
+Retrives the amount of fluid in the storage associated with a direction.
 
 ---
 ---
 > ##### ***`getCapacity(Direction direction)`***
 
-This
+Retrieves the capacity of the storage associated with a direction.
 
 ---
 ---
 > ##### ***`getType(Direction direction)`***
 
-This
+Retrieves the fluid type in the storage associated with a direction.
 
 ---
 ---
 > ##### ***`getAmount(int index)`***
 
-This
+Retrieves the amount of fluid in the storage at a specific index.
 
 ---
 ---
 > ##### ***`getCapacity(int index)`***
 
-This
+Retrieves the capacity of the storage at a specific index.
 
 ---
 ---
 > ##### ***`getType(int index)`***
 
-This
+Retrieves the fluid type in the storage at a specific index.
 
 ---
 ---
 > ##### ***`getStorage(Direction direction)`***
 
-This
+Retrieves the storage associated with a direction.
 
 ---
 ---
 > ##### ***`getStorage(int index)`***
 
-This
+Retrieves the storage at a specific index.
 
 ---
 ---
 > ##### ***`getFluids()`***
 
-This
+Retrieves a list of fluid stacks representing the fluids in all storages.
 
 ---
 ---
 > ##### ***`writeNbt(RegistryWrapper.WrapperLookup registryLookup)`***
 
-This
+Serializes the fluid storages to an NBT list.
 
 ---
 ---
 > ##### ***`readNbt(NbtList nbt, RegistryWrapper.WrapperLookup registryLookup)`***
 
-This
+Deserializes the fluid storages from an NBT list.
 
 ## FluidHelper Class
 
