@@ -76,40 +76,38 @@ Retrieves the maximum capacity of the fluid stack. This method returns the capac
 ---
 > ##### ***`setZOrder(int index)`***
 
-This
+Sets the z-order for rendering the fluid stack, which affects the rendering depth. The z-order determines the stacking order of rendered elements, with higher values indicating that the fluid stack should be rendered on top of other elements with lower z-order values. Adjusting the z-order is useful in complex user interfaces where multiple elements are rendered in overlapping layers. By setting the z-order, you can control which elements appear in front of or behind others, ensuring that the fluid stack is displayed correctly within the intended visual hierarchy.
 
 ---
 ---
 > ##### ***`drawFluid(DrawContext context, FluidStack fluid, int x, int y, int width, int height, long maxCapacity)`***
 
-This
+Renders the specified `FluidStack` at a given position and with specified dimensions. This method is responsible for visually representing the fluid stack within the user interface, taking into account the fluid's current amount relative to its maximum capacity. The rendering process involves setting the appropriate texture and color for the fluid, and drawing the fluid's sprite in a vertical manner to accurately depict the fluid level. The method ensures that the fluid is rendered with the correct proportions and visual style, adhering to the game's graphical standards. The `context` parameter provides the drawing context, which includes the necessary rendering tools and settings. The `fluid` parameter specifies the `FluidStack` to be rendered, containing both the fluid type and its current amount. The `x` and `y` parameters define the top-left corner of the rendering area, while the `width` and `height` parameters specify the dimensions of the rendered fluid stack in pixels. These dimensions allow for flexibility in how the fluid is displayed, accommodating different UI layouts and design requirements. The `maxCapacity` parameter represents the maximum capacity of the fluid stack, and is used to calculate the proportion of the fluid to render. This ensures that the visual representation accurately reflects the fluid's current state.
 
 ---
 ---
 > ##### ***`getTooltip(FluidStack fluidStack, Item.TooltipContext tooltipFlag, String modid)`***
 
-This
+Generates a tooltip for the specified `FluidStack`, providing detailed information about the fluid's type, amount, and optionally its capacity, formatted according to the current tooltip mode. This method constructs a list of `Text` components that represent the tooltip for a given `FluidStack`. The tooltip includes the fluid's display name and its amount, with the option to also display the capacity based on the `FluidTooltipMode` configuration. The tooltip is designed to be informative and user-friendly, aiding players in understanding the fluid's properties at a glance.
+
+The `fluidStack` parameter specifies the `FluidStack` for which the tooltip is generated, containing both the fluid type and its current amount. The `tooltipFlag` parameter provides context for the tooltip, such as whether advanced tooltips are enabled. The `modid` parameter is used to localize the tooltip text, ensuring that it is consistent with the mod's language settings.
 
 ---
 ---
 > ##### ***`getWidth()`***
 
-This
+Retrieves the width of the rendered fluid stack in pixels. This method returns the width dimension that was set during the instantiation of the `FluidStackRenderer`. The width is a critical parameter for determining how the fluid stack is visually represented within the user interface. The width value is used to define the horizontal size of the fluid's visual representation, ensuring that it fits appropriately within the designated UI space. This allows for consistent and accurate rendering of the fluid stack, aligning with the overall design and layout of the interface. By providing access to the width value, this method enables other components or systems to query and utilize the fluid stack's width for various purposes, such as layout calculations, rendering adjustments, or collision detection.
 
 ---
 ---
 > ##### ***`getHeight()`***
 
-This
-
----
----
-> ##### ***`isMouseAboveArea(int mouseX, int mouseY, int x, int y, int offsetX, int offsetY)`***
-
-This
+Retrieves the height of the rendered fluid stack in pixels. This method returns the height dimension that was set during the instantiation of the `FluidStackRenderer`. The height is a crucial parameter for determining how the fluid stack is visually represented within the user interface. The height value is used to define the vertical size of the fluid's visual representation, ensuring that it fits appropriately within the designated UI space. This allows for consistent and accurate rendering of the fluid stack, aligning with the overall design and layout of the interface. By providing access to the height value, this method enables other components or systems to query and utilize the fluid stack's height for various purposes, such as layout calculations, rendering adjustments, or collision detection.
 
 ## SyncedFluidStorage Class
 
+Represents a synchronized fluid storage system that is associated with a specific block entity. This class extends the functionality of `SingleFluidStorage` to manage fluid storage with a defined capacity while ensuring synchronization with the associated block entity. The fluid storage has a specified capacity, and upon committing changes to the storage, it informs the associated block entity to update its state. If the block entity implements the `UpdatableBE` interface, it will call the update method; otherwise, it will mark the block entity as dirty to prompt a save.
+  
 ---
 ---
 > ##### ***``***
