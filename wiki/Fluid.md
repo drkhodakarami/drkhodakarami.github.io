@@ -152,7 +152,7 @@ Retrieves the block entity associated with this fluid storage.
 A wrapper class for managing multiple `SingleFluidStorage` instances. This class provides method to add, retrieve, and manage fluid storages associated with different directions or indices.
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the current implementation, version 1.1.2+MC_1.21.3, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper storage based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic (until we handle it properly ourselves in the library).
+  :bulb:<strong>Remember</strong>, the 1.1.2+MC_1.21.3 version, does not provide default behavior for handling the <strong>FACING</strong> of the block to retrieve proper storage based on the rotation and by default it assumes that the block is facing north. If you want to handle the rotational facing, you need to add your own logic. From 1.1.3+MC_1.21.3 and forward, the library is handling the FACING direction (look into <strong>AbstractFluidBE</strong>, the <strong>getProvider</strong> method is getting the directional relative storage for that block entity).
 </div>
 
 ---
@@ -343,71 +343,141 @@ Simulates the insertion of a specified amount of fluid type into a `FluidStorage
 
 ---
 ---
-> ##### ***``***
+> ##### ***`sameFluidInTank(Inventory inventory, int slot, SingleVariantStorage<FluidVariant> tank)`***
 
-This
-
----
----
-> ##### ***``***
-
-This
+Checks whether the fluid contained in a specified slot of an inventory is the same as the fluid stored in a given fluid storage tank. This method compares the fluid variant in the inventory slot with the fluid variant in the tank to determine if they match. It is useful for operations that require verifying fluid consistency between an inventory and a tank, such as ensuring compatibility before transferring fluids.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`sameFluidInTank(Inventory inventory, int slot, Storage<FluidVariant> tank)`***
 
-This
+Checks whether the fluid contained in a specified slot of an inventory is the same as the fluid stored in a given fluid storage tank. This method compares the fluid variant in the inventory slot with the fluid variant in the tank to determine if they match. It is useful for operations that require verifying fluid consistency between an inventory and a tank, such as ensuring compatibility before transferring fluids.
+
+---
+---
+> ##### ***`isTankFull(Inventory inventory, int slot, SingleVariantStorage<FluidVariant> tank)`***
+
+Determines whether a specified fluid storage tank is full based on the fluid contained in a given slot of an inventory. This method checks if the fluid variant in the inventory slot matches the fluid variant in the tank and if the tank has reached its maximum capacity for that fluid. It is useful for operations that require verifying if a tank can no longer accept additional fluid of the same type.
+
+---
+---
+> ##### ***`isTankFull(Inventory inventory, int slot, Storage<FluidVariant> tank)`***
+
+Determines whether a specified fluid storage tank is full based on the fluid contained in a given slot of an inventory. This method checks if the fluid variant in the inventory slot matches the fluid variant in the tank and if the tank has reached its maximum capacity for that fluid. It is useful for operations that require verifying if a tank can no longer accept additional fluid of the same type.
+
+---
+---
+> ##### ***`isTankFull(SingleVariantStorage<FluidVariant> tank)`***
+
+Determines whether a specified fluid storage tank is full. This method checks if the tank has reached its maximum capacity for the fluid it currently contains. It is useful for operations that require verifying if a tank can no longer accept additional fluid of the same type.
+
+---
+---
+> ##### ***`isTankFull(Storage<FluidVariant> tank)`***
+
+Determines whether a specified fluid storage tank is full. This method checks if the tank has reached its maximum capacity for the fluid it currently contains. It is useful for operations that require verifying if a tank can no longer accept additional fluid of the same type.
+
+---
+---
+> ##### ***`hasCapacityForBucket(Inventory inventory, int slot, SingleVariantStorage<FluidVariant> tank)`***
+
+Determines whether a specified fluid storage tank has enough capacity to accept a full bucket worth of fluid. This method checks if the tank can accommodate the additional fluid amount equivalent to a bucket, ensuring that the transfer can occur without exceeding the tank's capacity. It is useful for operations that involve transferring a bucket of fluid into the tank and verifying that there is sufficient space available.
+
+---
+---
+> ##### ***`hasCapacityForBucket(Inventory inventory, int slot, Storage<FluidVariant> tank)`***
+
+Checks whether a specified fluid storage tank has enough capacity to accept an additional amount of fluid equivalent to a full bucket. This method ensures that the tank can accommodate the fluid without exceeding its capacity, which is crucial for operations involving fluid transfer from an inventory to the tank.
+
+---
+---
+> ##### ***`getFluidStorage(World world, BlockPos pos, Set<BlockPos> exceptions, Direction direction)`***
+
+Retrieves the fluid storage at a specified position in the world, considering a given direction and a set of exceptions. This method attempts to access the fluid storage located at the specified `BlockPos` within the provided `World`. It takes into account the direction from which the storage is accessed, allowing for directional fluid interactions. Additionally, it considers a set of exception positions, which are locations that should be ignored during the search for fluid storage. This can be useful in scenarios where certain blocks should not be interacted with, such as when avoiding recursive or redundant checks.
+
+---
+---
+> ##### ***`getAllFluidStorages(World world, BlockPos pos, Set<BlockPos> exceptions)`***
+
+Retrieves all fluid storages surrounding a specified position in the world, excluding specified exceptions. This method scans the area around the given `BlockPos` within the provided `World` to find all available fluid storages. It returns a list of fluid storages that are accessible from the specified position, while excluding any positions listed in the `exceptions` set. This is useful for operations that require interaction with multiple fluid storages in the vicinity, such as fluid distribution or collection systems.
+
+---
+---
+> ##### ***`convertDropletsToMb(long droplets)`***
+
+Converts a specified amount of fluid measured in droplets to milli-buckets. In the context of Fabric MC, droplets are the base unit of fluid measurement, and this method provides a way to translate that measurement into milli-buckets, which are commonly used in fluid GUI information. This conversion is essential for ensuring consistency across mods for showing different fluid amounts in systems and APIs that may use varying units of measurement.
+
+---
+---
+> ##### ***`convertMbToDroplets(long mb)`***
+
+Converts a specified amount of fluid measured in milli-buckets to droplets. In the context of Fabric MC, milli-buckets are not a used unit of fluid measurement, and this method provides a way to translate that measurement into droplets, which are the base unit. This conversion is essential for ensuring compatibility and consistency across different fluid systems and APIs that may use varying units of measurement.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Storage<FluidVariant> storage)`***
+
+Spreads fluid from a `FluidStorage` to adjacent `FluidStorage` instances in the world, It checks each direction for available fluid storage and attempts to distribute fluid evenly. If the fluid amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Storage<FluidVariant> storage, boolean equalAmount)`***
+
+Spreads fluid from a `FluidStorage` to adjacent `FluidStorage` instances in the world, It checks each direction for available fluid storage and attempts to distribute fluid. The distribution can be equal or max possible per side, depending on the `equalAmount` flag. If the fluid amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Set<BlockPos> exceptions, Storage<FluidVariant> storage)`***
+
+Spreads fluid from a `FluidStorage` to adjacent `FluidStorage` instances in the world, excluding specific positions defined in the exceptions set. It checks each direction for available fluid storage and attempts to distribute fluid evenly. If the fluid amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Set<BlockPos> exceptions, Storage<FluidVariant> storage, boolean equalAmount)`***
+
+Spreads fluid from a `FluidStorage` to adjacent `FluidStorage` instances in the world, excluding specific positions defined in the exceptions set. It checks each direction for available fluid storage and attempts to distribute fluid. The distribution can be equal or max possible per side, depending on the `equalAmount` flag. If the fluid amount changes, it updates the block entity state accordingly.
 
 ## AbstractFluidBlock Class
 
----
----
-> ##### ***``***
+This class serves as a base class for blocks that interact with fluids within the game world. This class extends the `Block` class and implements the `BlockEntityProvider` interface, allowing it to provide block entities that can perform  additional logic or store data.
 
-This
+The class already has a CODEC attribute and handles returning that codec. Also, the this class already handles getTicker to tick an instance of ITickBE and handles syncronization of data over the network. The `createScreenHandlerFactory` is already implemented and normally you shouldn't need to override this method. Finally, it handles comparator by default with the implementation of `hasComparatorOutput` and `getComparatorOutput` methods. Under normal cases, you shouldn't need to override any of these methods.
 
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, this class is already handling the needed behavior to interact with a fluid container block when you have an empty bucket or a bucket of fluid in hand. The functionality is happening in the <strong>onUseWithItem</strong> method. In case you need to override this method, don't forget to call supe (preferably at the start of the method) to handle this interaction without a problem. 
+</div>
 
 ## AbstractFluidBE Class
 
+The `abstract` extension of `UpdatableEndTickBE` that implements `ITickSyncBE` and `IWrappedFluidProvider`. This block entity will handle fluid storage and syncronization of fluid storage data. The fluid storage is a wrapped storage that can handle directional storage.
+
 ---
 ---
-> ##### ***``***
+> ##### ***`addFluidStorage(long capacity)`***
+
+Adds a synced fluid storage with the given capacity and assign the block entity to this new storage.
+
+---
+---
+> ##### ***`getFluidStorage()`***
+
+Retrieves the wrapped fluid storage instance.
+
+---
+---
+> ##### ***`readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
+
+Reads the block entity's data from an NBT compound. This method is responsible for deserializing the block entity's state, including its fluid storage, from the provided NBT data.
+
+---
+---
+> ##### ***`writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
+
+This
+
+---
+---
+> ##### ***`Writes the block entity's data to an NBT compound. This method is responsible for serializing the block entity's state, including its fluid storage, into the provided NBT compound.`***
 
 This
 
@@ -425,24 +495,15 @@ This
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getProvider(Direction direction, Direction facing)`***
 
-This
+Retrieves a `SingleFluidStorage` related to a direction using the facing of the block.
 
----
----
-> ##### ***``***
+Example Usage:
+```java
+SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
+```
 
-This
-
----
----
-> ##### ***``***
-
-This
-
----
----
-> ##### ***``***
-
-This
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the tank should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that time. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
+</div>
