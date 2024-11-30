@@ -473,25 +473,34 @@ Reads the block entity's data from an NBT compound. This method is responsible f
 ---
 > ##### ***`writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
-This
+Writes the block entity's data to an NBT compound. This method is responsible for serializing the block entity's state, including its fluid storage, into the provided NBT compound.
 
 ---
 ---
-> ##### ***`Writes the block entity's data to an NBT compound. This method is responsible for serializing the block entity's state, including its fluid storage, into the provided NBT compound.`***
+> ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
-This
-
----
----
-> ##### ***``***
-
-This
+Retrieves the data necessary for opening a screen on the client side. This method is used to provide the client with the position of the block entity when a screen associated with this block entity is opened. The position is encapsulated in a `BlockPosPayload` object, which is sent to the client to ensure that the correct block entity is referenced.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`getDisplayName()`***
 
-This
+Retrieves the display name of this block entity. This name is used to represent the block entity in the user interface, such as in the title of a screen or in tooltips. By default, this method returns null, indicating that no specific display name is set for this block entity. Subclasses can override this method to provide a custom display name that is more descriptive or context-specific, enhancing the user experience by providing meaningful information about the block entity.
+
+---
+---
+> ##### ***`createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)`***
+
+Creates a screen handler for the block entity, which is used to manage the interaction between the player's inventory and the block entity's inventory. This method is called when a player opens the block entity's screen, allowing for the synchronization of inventory data between the client and server. By default, this method returns null, indicating that no specific menu is created for this block entity. Subclasses can override this method to provide a custom screen handler that facilitates interaction with the block entity's inventory or other functionalities.
+
+Example usage:
+```java
+@Override
+public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) 
+{
+    return new SomeScreenHandler(syncId, playerInventory, this);
+}
+```
 
 ---
 ---
@@ -505,5 +514,5 @@ SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(Some
 ```
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the tank should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that time. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
+  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the tank should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that placed configuration. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
 </div>
