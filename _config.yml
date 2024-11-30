@@ -5,7 +5,7 @@ title: "Ji Libs Wiki"
 # with your folder name, otherwise leave it empty
 baseurl: ""
 # (string) Description of your wiki
-description: "Ji Libs System for Fabric"
+description: "Library System for Fabric"
 # (boolean) disable edit functionalities (edit/delete/add pages)
 disable_edit: true
 # (boolean) Enable/disable wiki page list in sidebar
