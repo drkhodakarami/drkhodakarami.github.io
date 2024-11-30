@@ -327,19 +327,19 @@ Determines whether a specified slot in an inventory can receive additional fluid
 ---
 > ##### ***`isEmptyBucket(Inventory inventory, int slot)`***
 
-This
+Checks whether a specified slot in an inventory contains an empty bucket. This method evaluates the item present in the given slot and determines if it is an empty bucket item. It is useful for operations that require identifying empty buckets for fluid transfer or crafting purposes.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`simulateInsertion(Storage<FluidVariant> storage, FluidVariant resource, long amount, Transaction outer)`***
 
-This
+Simulates the insertion of a specified amount of fluid type into a `FluidStorage`. This method opens a nested transaction to determine the maximum amount of fluid that can be inserted without actually committing the transaction.
 
 ---
 ---
-> ##### ***``***
+> ##### ***`simulateInsertion(SingleVariantStorage<FluidVariant> storage, FluidVariant resource, long amount, Transaction outer)`***
 
-This
+Simulates the insertion of a specified amount of fluid type into a `FluidStorage`. This method opens a nested transaction to determine the maximum amount of fluid that can be inserted without actually committing the transaction.
 
 ---
 ---
