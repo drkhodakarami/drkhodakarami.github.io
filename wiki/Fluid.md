@@ -70,7 +70,7 @@ The `tooltipMode` parameter, defined by the `FluidTooltipMode` enum, specifies h
 ---
 > ##### ***`getCapacity()`***
 
-This
+Retrieves the maximum capacity of the fluid stack. This method returns the capacity value that was set during the instantiation of the `FluidStackRenderer`. The capacity is used to determine the proportion of the fluid that should be rendered and displayed in tooltips. The capacity is a crucial parameter for rendering fluid stacks, as it defines the upper limit of fluid that can be visually represented. This allows for accurate scaling of the fluid's visual representation and ensures that the tooltip information is consistent with the actual fluid content. By providing access to the capacity value, this method enables other components or systems to query and utilize the fluid stack's capacity for various purposes, such as calculations, comparisons, or display adjustments.
 
 ---
 ---
