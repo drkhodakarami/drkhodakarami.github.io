@@ -487,7 +487,7 @@ Retrieves the display name of this block entity. This name is used to represent 
 ---
 > ##### ***`createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)`***
 
-Creates a screen handler for the block entity, which is used to manage the interaction between the player's inventory and the block entity's inventory. This method is called when a player opens the block entity's screen, allowing for the synchronization of inventory data between the client and server. By default, this method returns null, indicating that no specific menu is created for this block entity. Subclasses can override this method to provide a custom screen handler that facilitates interaction with the block entity's inventory or other functionalities.
+Creates a screen handler for the block entity, which is used to manage the interaction between the player's inventory and the block entity's GUI. This method is called when a player opens the block entity's screen, allowing for the synchronization of fluid storage data between the client and server. By default, this method returns null, indicating that no specific menu is created for this block entity. Subclasses can override this method to provide a custom screen handler that facilitates interaction with the block entity's inventory or other functionalities.
 
 Example usage:
 ```java
