@@ -54,136 +54,263 @@ Retrieves the block entity associated with this energy storage.
 
 ## WrappedEnergyStorage Class
 
-text
+Theis class is a generic wrapper for managing multiple `SimpleEnergyStorage` instances. It provides methods to add, retrieve, and manage energy storages, including direction-specific storages. It also implements the `NBTSerializable` interface for serialization and deserialization of energy storage data to and from NBT format.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`addStorage(SimpleEnergyStorage storage)`***
 
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+Adds a new energy storage without specifying a direction.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`addStorage(SimpleEnergyStorage storage, Direction direction)`***
 
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+Adds a new storage and associates it with a specific direction.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`addSimpleStorage(int capacity, int maxInsert, int maxExtract)`***
 
-Adds
+Adds a new `SimpleEnergyStorage` to the specific block entity with the given capacity, max insert rate and max extract rate.
+
+---
+---
+> ##### ***`addSimpleStorage(int capacity, int maxInsert, int maxExtract, Direction direction)`***
+
+Adds a new `SimpleEnergeStorage` to the specific block entity with the given paramets and associates it with a specific direction.
+
+---
+---
+> ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, int capacity, int maxInsert, int maxExtract)`***
+
+Adds a new `SyncedEnergyStorage` to the specific block entity with the given capacity, max insert and extract rates.
+
+---
+---
+> ##### ***`addSyncedStorage(NoScreenUpdatableBE blockEntity, int capacity, int maxInsert, int maxExtract, Direction direction)`***
+
+Adds a new `SyncedEnergyStorage` to the specific block entity with the given parameters and associates it with a specific direction.
+
+---
+---
+> ##### ***`getStorages()`***
+
+Retrieves a list of all energy storages wrapped in this storage.
+
+---
+---
+> ##### ***`getSidedStorageMap()`***
+
+Retrieves a `HashMap` of direction-specific storages.
+
+---
+---
+> ##### ***`getAmount(Direction direction)`***
+
+Retrieves the amount of energy stored in the storage associated with the specified direction.
+
+---
+---
+> ##### ***`getCapacity(Direction direction)`***
+
+Retrieves the capacity of the storage associated with the specified direction.
+
+---
+---
+> ##### ***`getMaxInsert(Direction direction)`***
+
+Retrieves the maximum amount of energy that can be insertable into the storage associated with the specified direction.
+
+---
+---
+> ##### ***`getMaxExtract(Direction direction)`***
+
+Retrieves the maximum amount of energy that can be extractable from the storage associated with the specified direction.
+
+---
+---
+> ##### ***`getAmount(int index)`***
+
+Retrieves the amount of energy stored in the storage at the specified index.
+
+---
+---
+> ##### ***`getCapacity(int index)`***
+
+Retrieves the capacity of the storage at the specified index.
+
+---
+---
+> ##### ***`getMaxInsert(int index)`***
+
+Retrieves the maximum amount of energy that can be insertable into the storage at the specified index.
+
+---
+---
+> ##### ***`getMaxExtract(int index)`***
+
+Retrieves the maximum amount of energy that can be extractable from the storage at the specified index.
+
+---
+---
+> ##### ***`getStorage(@Nullable Direction direction)`***
+
+Retrieves the storage associated with the specified direction.
+
+---
+---
+> ##### ***`getStorage(int index)`***
+
+Retrieves the storage at the specified index.
+
+---
+---
+> ##### ***`writeNbt(RegistryWrapper.WrapperLookup registryLookup)`***
+
+Serializes the energy storage data to an NBT list. This method is used to save the current state of the energy storages so that it can be restored later.
+
+---
+---
+> ##### ***`readNbt(NbtList nbt, RegistryWrapper.WrapperLookup registryLookup)`***
+
+Deserializes the energy storage data from an NBT list. This method is used to restore the energy storage state from saved data.
+
+---
+---
+> ##### ***`getProvider(Direction direction, Direction facing)`***
+
+Retrieves a `SimpleEnergyStorage` related to a direction using the facing of the block.
+
+Example Usage:
+```java
+WrappedEnergyStorage energyStorage =...; //Creating an energy storage
+SingleEnergyStorage battery = energyStorage.getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
+```
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the energy storage should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that placed configuration. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
+</div>
 
 ## EnergyHelper Class
 
-text
+A helper class that provides static helper method that can handle spreading energy to adjacent blocks, retrieving a possible energy storage on a single direction, or retrieving all the possible energy storages around the block.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`simulateInsertion(EnergyStorage storage, long amount, Transaction outer)`***
 
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+Simulates the insertion of a specified amount of energy into an `EnergyStorage`. This method opens a nested transaction to determine the maximum amount of energy that can be inserted without actually committing the transaction.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, SimpleEnergyStorage storage)`***
 
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+Spreads energy from a `SimpleEnergyStorage` to adjacent `EnergyStorage` instances in the world, It checks each direction for available energy storage and attempts to distribute energy evenly. If the energy amount changes, it updates the block entity state accordingly.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, SimpleEnergyStorage storage, boolean equalAmount)`***
 
-Adds
+Spreads energy from a `SimpleEnergyStorage` to adjacent `EnergyStorage` instances in the world, It checks each direction for available energy storage and attempts to distribute energy. The distribution can be equal or max possible per side, depending on the `equalAmount` flag. If the energy amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Set<BlockPos> exceptions, SimpleEnergyStorage storage)`***
+
+Spreads energy from a `SimpleEnergyStorage` to adjacent `EnergyStorage` instances in the world, excluding specific positions defined in the exceptions set. It checks each direction for available energy storage and attempts to distribute energy evenly. If the energy amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`spread(BlockEntity blockEntity, World world, BlockPos pos, Set<BlockPos> exceptions, SimpleEnergyStorage storage, boolean equalAmount)`***
+
+Spreads energy from a `SimpleEnergyStorage` to adjacent `EnergyStorage` instances in the world, excluding specific positions defined in the exceptions set. It checks each direction for available energy storage and attempts to distribute energy. The distribution can be equal or max possible per side, depending on the `equalAmount` flag. If the energy amount changes, it updates the block entity state accordingly.
+
+---
+---
+> ##### ***`getEnergyStorage(World world, BlockPos pos, Set<BlockPos> exceptions, Direction direction)`***
+
+Retrieves the energy storage at a specified position in the world, considering a given direction and a set of exceptions. This method attempts to access the energy storage located at the specified `BlockPos` within the provided `World`. It takes into account the direction from which the storage is accessed, allowing for directional energy interactions. Additionally, it considers a set of exception positions, which are locations that should be ignored during the search for energy storage. This can be useful in scenarios where certain blocks should not be interacted with, such as when avoiding recursive or redundant checks.
+
+---
+---
+> ##### ***`getAllEnergyStorages(World world, BlockPos pos, Set<BlockPos> exceptions)`***
+
+Retrieves all energy storages surrounding a specified position in the world, excluding specified exceptions. This method scans the area around the given `BlockPos` within the provided `World` to find all available energy storages. It returns a list of energy storages that are accessible from the specified position, while excluding any positions listed in the `exceptions` set. This is useful for operations that require interaction with multiple energy storages in the vicinity, such as energy distribution or collection systems.
 
 ## AbstractEnergyBlock Class
 
-text
+Theis class serves as a base class for all energy-related blocks within the  JI Energy module. This abstract class extends the `Block` class and implements the  `BlockEntityProvider` interface, providing a foundation for blocks that require block entities to manage energy storage, transfer, or conversion. Subclasses of this class are expected to define specific behaviors and properties  related to energy management, such as energy capacity, input/output rates, and interaction with other energy systems. This class facilitates the integration of energy blocks into the Minecraft world by providing essential methods for block entity creation and management.
 
----
----
-> ##### ***`getEnergyStorage()`***
+Key responsibilities of this class include:
+- Providing a mechanism to create and manage block entities associated with energy blocks.
+- Defining common properties and behaviors shared by all energy blocks.
+- Facilitating interaction with other components of the JI Energy module and Minecraft's energy systems.
 
-Adds
+This class is already providing the needed `CODEC`, handling `getCodec`, `OnSyncedBlockEvent`, `getTicker`, `createScreenHandlerFactory`, `hasComparatorOutput`, and `getComparatorOutput` methods so that you can focus on your custom block without a need to override these methods
 
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the <strong>getTicker</strong> method is utilizing <strong>ITickBE</strong>'s <strong>createTicker</strong> method. Because of this, your block entity needs to implement <strong>ITickBE</strong> or <strong>ITickSyncBE</strong>. If you don't want to implement any of these methods, your block entity needs to override the getTicker method handling your own logic.
+</div>
 
 ## AbstractEnergyBE Class
 
-text
+The abstract extension of `UpdatableEndTickBE` handling energy related logic.
+
+---
+---
+> ##### ***`AddEnergyStorage(int capacity, int maxInsert, int maxExtract, Direction direction)`***
+
+Adds a new energy storage to this block entity with the specified capacity, maximum insertion rate, maximum extraction rate, and direction. This method allows the block entity to manage energy storage by adding a new {@link SyncedEnergyStorage} instance to the internal {@link WrappedEnergyStorage}. The energy storage can be configured to accept energy from a specific direction or from all directions if no direction is specified.
+
+Example usage:
+```java
+addEnergyStorage(10_000, 100, 100, Direction.NORTH);
+```
 
 ---
 ---
 > ##### ***`getEnergyStorage()`***
 
-Adds
+Retrieves the current energy storage associated with this block entity. This method allows other components of the system to access the energy storage configuration defined for this block entity. It returns an instance of `WrappedEnergyStorage` containing synchronized energy storage units, which can be used for operations related to energy management, such as checking current energy levels or manipulating energy within the storage.    
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
-Adds
-
----
----
-> ##### ***`getEnergyStorage()`***
-
-Adds
+Deserializes the state of this block entity from an NBT compound. This method is responsible for retrieving and reconstructing the essential data of the block entity, including its energy storage, from the NBT format into memory. It extends the base behavior to ensure that the energy storage is correctly restored when the block entity is loaded or initialized.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries)`***
 
-Adds
+Serializes the state of this block entity to an NBT compound for storage or transmission. This method is responsible for converting essential data of the block entity, including its energy storage, into a format that can be saved in the game's NBT format. It extends the base behavior by adding the energy storage data for later retrieval.
 
 ---
 ---
-> ##### ***`getEnergyStorage()`***
+> ##### ***`getScreenOpeningData(ServerPlayerEntity player)`***
 
-Adds
+Retrieves the data necessary for opening a screen on the client side. This method is used to provide the client with the position of the block entity when a screen associated with this block entity is opened. The position is encapsulated in a `BlockPosPayload` object, which is sent to the client to ensure that the correct block entity is referenced.
+
+---
+---
+> ##### ***`getDisplayName()`***
+
+Retrieves the display name of this block entity. This name is used to represent the block entity in the user interface, such as in the title of a screen or in tooltips. By default, this method returns `null`, indicating that no specific display name is set for this block entity. Subclasses can override this method to provide a custom display name that is more descriptive or context-specific, enhancing the user experience by providing meaningful information about the block entity.
+
+---
+---
+> ##### ***`createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)`***
+
+Creates a screen handler for the block entity, which is used to manage the interaction between the player's inventory and the block entity's GUI. This method is called when a player opens the block entity's screen, allowing for the synchronization of energy storage data between the client and server.
+
+By default, this method returns null, indicating that no specific menu is created for this block entity. Subclasses can override this method to provide a custom screen handler that facilitates interaction with the block entity's inventory or other functionalities.
+
+Example usage:
+```java
+@Override
+public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player)
+{
+    return new SomeScreenHandler(syncId, playerInventory, this);
+}
+```
