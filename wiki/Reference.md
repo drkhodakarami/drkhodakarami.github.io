@@ -23,6 +23,41 @@ This class contains some static string values for different keys that can be use
 - BURN_MAX = `.be.burn.max`
 - HAS_INVENTORY = `.be.has.inventory`
 
+## Constants Class
+
+This class provides some static contant values that we can use in many different projects. Here are the list of contant values provided by this class.
+
+### Inventory Constants
+- DEFAULT_INVENTORY_OUTPUT_INDEX = 0
+- DEFAULT_INVENTORY_OUTPUT_SIZE = 1
+- DEFAULT_INVENTORY_OUTPUT_DIRECTION = Direction.DOWNDEFAULT_INVENTORY_OUTPUT_DIRECTION = Direction.DOWN
+
+### Fluid Storage Constants
+- DEFAULT_FLUID_TANK = FluidConstants.BUCKET * 10
+- SMALL_FLUID_TANK = FluidConstants.BUCKET * 5
+- MEDIUM_FLUID_TANK = FluidConstants.BUCKET * 25
+- LARGE_FLUID_TANK = FluidConstants.BUCKET * 50
+- XLARGE_FLUID_TANK = FluidConstants.BUCKET * 100
+
+- FLUID_TANK_WOOD = FluidConstants.BUCKET * 4
+- FLUID_TANK_STONE = FluidConstants.BUCKET * 16
+- FLUID_TANK_COPPER = FluidConstants.BUCKET * 36
+- FLUID_TANK_IRON = FluidConstants.BUCKET * 64
+- FLUID_TANK_OBSIDIAN = FluidConstants.BUCKET * 100
+- FLUID_TANK_GOLD = FluidConstants.BUCKET * 144
+- FLUID_TANK_DIAMOND = FluidConstants.BUCKET * 196
+- FLUID_TANK_EMERALD = FluidConstants.BUCKET * 256
+- FLUID_TANK_STAR = FluidConstants.BUCKET * 324
+- FLUID_TANK_NETHERITE = FluidConstants.BUCKET * 432
+- FLUID_TANK_END = FluidConstants.BUCKET * 540
+
+- MILLI_BUCKET = FluidConstants.BUCKET / 1000
+
+### Energy Storage Constants
+- DEFAULT_ENERGY_CAPACITY = 100_000
+- DEFAULT_ENERGY_MAX_INSERT = 100
+- DEFAULT_ENERGY_MAX_EXTRACT = 100
+
 ## DirectionSuffix Class
 
 This class contains some static string values that can be used as suffix for directions to be added onto your original keys. The values contain:
