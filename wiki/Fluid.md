@@ -265,7 +265,8 @@ Retrieves a `SingleFluidStorage` related to a direction using the facing of the 
 
 Example Usage:
 ```java
-SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
+WrappedFluidStorage fluidStorage =...; //Creating a fluid storage
+SingleFluidStorage tank = fluidStorage.getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
 ```
 
 <div class="alert alert-dismissible alert-danger">
