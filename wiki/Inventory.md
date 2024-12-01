@@ -141,11 +141,7 @@ Retrieves the `SimpleInventory` assigned as the output inventory that is associa
 
 ## IWrappedInventoryProvider
 
-This interface extends the `IWrappedInventory` with addition information, methods and default constant values for the output inventory. The default values for the output inventory that his interface provides are:
-
-- DEFAULT_OUTPUT_INDEX = 0
-- DEFAULT_OUTPUT_SIZE = 1
-- DEFAULT_OUTPUT_DIRECTION = Direction.DOWN
+This interface extends the `IWrappedInventory` with addition methods.
 
 If you want your block entity to use the `WrappedInventoryStorage` system, you can implement this interface and override the needed functionality. Alternatively, you can extend your block entity from `AbstractInventoryBE` that is already implementing this interface and adds the syncronization, update funtionality and GUI screen ability with the base implementation for using the wrapped inventory storage. Please read more about wrapped inventory from the class and look into abstract inventory information bellow.
 
