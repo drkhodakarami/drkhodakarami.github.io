@@ -1,13 +1,13 @@
 ## Ji Machina
 
-The [JiMachina](https://github.com/drkhodakarami/JiMachina) is the main abstraction layer for more advanced blocks that can have activation state, horizontal directional property, and handles comparator output automatically. Also, the library adds a new `AbstractAadvancedBE` block entity that handles all the wrapped containers we provide from other libraries (inventory, fluid and energy). This library provides 4 classes.
+The [JiMachina](https://github.com/drkhodakarami/JiMachina) is the main abstraction layer for more advanced blocks that can have activation state, horizontal directional property, and handles comparator output automatically. Also, the library adds a new `AbstractAadvancedBE` block entity that handles all the wrapped containers we provide from other libraries (inventory, fluid and energy). This library provides 5 classes.
 
 <div class="alert alert-dismissible alert-danger">
   :bulb:<strong>Remember</strong>, the easiest way to use the library is to extend the block entity from <strong>AbstractAdvancedBE</strong>, extend your block from <strong>AbstractMachineBlock</strong>, implement and handle your custom methods for each one of these classes.
 </div>
 
 <div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the abstract classes for the blocks provided with this library are not capable of handling automatic interaction between items in hand and fluid container inside the corresponding block entity. If this function is desired, either use the <strong>AbstractFluidBlock</strong> (from JiFluid library) as a base and extend your own system from it or copy the code from the said class over to your custom block that extends the <strong>AbstractMachineBlock</strong> (The code snippet bellow is the said functionality).
+  :bulb:<strong>Remember</strong>, the only abstract block class in this library that is capable of handling fluid item interaction with block, is <strong>AbstractFluidMachineBlock</strong>. If you need to extend your class from another base (other than <strong>AbstractFluidMachineBlock</strong> or <strong>AbstractFluidBlock</strong>), you need to add the code bellow to handle interaction between fluid item and the fluid contrainer for the block.
 </div>
 
 ```java
@@ -41,6 +41,10 @@ This class is extending `AbstractMachineBase` adding the `BooleanProperty` named
 The main abstract class for the machine blocks that extends from `AbstractActivatableMachineBlock` adding the comparator output handling logic only. Normally, when you need an advanced block associated to a block entity, you need to extend this block. Remember, as we said at the start of the page, this class does not provide any logic for handling fluid interaction. Read the section at the top of the page for more guidance about this.
 
 Normally you shouldn't need to override the `hasComparatorOutput` and `getComparatorOutput`. The default implementation should be more than enough for most use cases.
+
+## AbstractFluidMachineBlock
+
+The main abstract class for the machine blocks that extends from `AbstractMachineBlock` adding the functionality for interaction between fluid items in hand and the fluid container in the block entity associated to the block itself. If your block entity does not have fluid storage, you should extend your block class from `AbstractMachineBlock` and not this one.
 
 ## AbstractAdvancedBE
 
