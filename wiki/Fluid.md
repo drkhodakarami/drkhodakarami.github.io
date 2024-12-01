@@ -276,26 +276,6 @@ SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(Some
 
 This class provides utility methods for handling fluid transfers and interactions within a Minecraft mod environment. It includes methods for transferring fluids between tanks and inventories, interacting with fluid storage blocks, and converting fluid measurements. This class utilizes the Fabric API for fluid handling and storage.
 
-The constant values provided by this class:
-- DEFAULT_FLUID_CAPACITY = FluidConstants.BUCKET * 10
-- DEFAULT_FLUID_SMALL = FluidConstants.BUCKET * 5
-- DEFAULT_FLUID_MEDIUM = FluidConstants.BUCKET * 25
-- DEFAULT_FLUID_LARGE = FluidConstants.BUCKET * 50
-- DEFAULT_FLUID_EXTRA_LARGE = FluidConstants.BUCKET * 100
-
-- FLUID_CAPACITY_WOOD = FluidConstants.BUCKET * 4
-- FLUID_CAPACITY_STONE = FluidConstants.BUCKET * 16
-- FLUID_CAPACITY_COPPER = FluidConstants.BUCKET * 36
-- FLUID_CAPACITY_IRON = FluidConstants.BUCKET * 64
-- FLUID_CAPACITY_OBSIDIAN = FluidConstants.BUCKET * 100
-- FLUID_CAPACITY_GOLD = FluidConstants.BUCKET * 144
-- FLUID_CAPACITY_DIAMOND = FluidConstants.BUCKET * 196
-- FLUID_CAPACITY_EMERALD = FluidConstants.BUCKET * 256
-- FLUID_CAPACITY_STAR = FluidConstants.BUCKET * 324
-- FLUID_CAPACITY_NETHERITE = FluidConstants.BUCKET * 432
-- FLUID_CAPACITY_END = FluidConstants.BUCKET * 540
-- MILLI_BUCKET = FluidConstants.BUCKET / 1000
-
 ---
 ---
 > ##### ***`handleTankTransfer(World world, BlockPos pos, SingleVariantStorage<FluidVariant> tank, Inventory inputInventory, Inventory outputInventory, int inputSlot, int outputSlot)`***
