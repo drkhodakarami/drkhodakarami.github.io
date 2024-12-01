@@ -257,6 +257,21 @@ Serializes the fluid storages to an NBT list.
 
 Deserializes the fluid storages from an NBT list.
 
+---
+---
+> ##### ***`getProvider(Direction direction, Direction facing)`***
+
+Retrieves a `SingleFluidStorage` related to a direction using the facing of the block.
+
+Example Usage:
+```java
+SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
+```
+
+<div class="alert alert-dismissible alert-danger">
+  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the tank should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that placed configuration. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
+</div>
+
 ## FluidHelper Class
 
 This class provides utility methods for handling fluid transfers and interactions within a Minecraft mod environment. It includes methods for transferring fluids between tanks and inventories, interacting with fluid storage blocks, and converting fluid measurements. This class utilizes the Fabric API for fluid handling and storage.
@@ -501,18 +516,3 @@ public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, Pla
     return new SomeScreenHandler(syncId, playerInventory, this);
 }
 ```
-
----
----
-> ##### ***`getProvider(Direction direction, Direction facing)`***
-
-Retrieves a `SingleFluidStorage` related to a direction using the facing of the block.
-
-Example Usage:
-```java
-SingleFluidStorage tank = getProvider(Direction.NORTH, getCachedState().get(SomeBlock.FACING));
-```
-
-<div class="alert alert-dismissible alert-danger">
-  :bulb:<strong>Remember</strong>, the <strong>direction</strong> that you send in to retrieve the storage, should be the same direction that you assigned when creating the storage and adding it to the wrapped storage. In other words, if the tank should be on the east side of the block because of it's rotation in the world, you should completely ignore this fact and simply use the same direction that you used to register the storage into the wrapped container (in this example we had originally used north). The easy way to understand what needs to be done, is to put the block in such a way that <strong>FACING</strong> property will return <strong>north</strong>. Then consider what should be on each side of the container and register the storages with the proper direction at that placed configuration. From that point forward, you can assume that the whole system will work even when you rotate the block by facing property.
-</div>
