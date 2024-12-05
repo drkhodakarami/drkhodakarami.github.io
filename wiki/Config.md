@@ -6,6 +6,27 @@ The [Config](https://github.com/drkhodakarami/JiConfig) library. This library co
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiConfig) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/config/) repository for the project.
 
+If You know what is going on in the code snippet bellow, you can use this:
+
+***`build.gradle`***
+```gradle
+repositories 
+{
+    mavenCentral()
+    maven { url 'https://repo.repsy.io/mvn/jiraiyah/jilibs' }
+}
+dependencies 
+{
+    modImplementation include("jiraiyah.logger:jilogger:${jilogger_version}")
+    modImplementation include("jiraiyah.config:jiconfig:${jiconfig_version}")
+}
+```
+***`gradle.properties`***
+```
+jilogger_version=x.x.x+MC-x.x.x
+jiconfig_version=x.x.x+MC-x.x.x
+```
+
 ## ConfigKeyCasing
 
 This enum is used internally to set the letter casing for the key section in your config file. If you use the `load(ConfigKeyCasing casing)` method on `Config` class, you can set your own letter casing instead of the default one.
