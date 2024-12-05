@@ -6,6 +6,25 @@ The [Register](https://github.com/drkhodakarami/JiRegister) library. This librar
 
 For installation guide on how to add the dependency, look into the [Readme](https://github.com/drkhodakarami/JiRegister) file of the repository dedicated for this library. You will find all the information you need on how to depend your mod project to this library there. To find the version of the library, you can check the table at the main page of the [wiki](https://drkhodakarami.github.io/) or the [Maven](https://repo.repsy.io/mvn/jiraiyah/jilibs/jiraiyah/register/) repository for the project.
 
+If You know what is going on in the code snippet bellow, you can use this:
+
+***`build.gradle`***
+```gradle
+repositories 
+{
+    mavenCentral()
+    maven { url 'https://repo.repsy.io/mvn/jiraiyah/jilibs' }
+}
+dependencies 
+{
+    modImplementation include("jiraiyah.register:jiregister:${jiregister_version}")
+}
+```
+***`gradle.properties`***
+```
+jiregister_version=x.x.x+MC-x.x.x
+```
+
 ## IArmorFactory
 
 This interface is used internally by the Registers class. Normally you shouldn't implement it into any other class. The perpouse of this interface is to provide a factory for registering armor items into the Minecraft's registry system.
@@ -539,24 +558,24 @@ This sub class handles registering every custom `recipe` into the Minecraft's re
 
 In the use cases provided here, we are addressing the methods with complete class address. However, normally you will have a ModRecipes class and you should register the recipes in that class. In the ModRecipes class you can add `import static jiraiyah.register.Registers.Recipe.*` and by adding this import, you can drop the `Registers.Recipe.` section from all the examples provided for this sub class.
 
-> ##### ***`register(String name, RecipeSerializer<?> serializer)`***
+> ##### ***`register(String name, RecipeSerializer<T> serializer)`***
 
 This method will register a given recipe serializer into the registry system using the given name.
 
 Example usage:
 ```java
-RecipeSerializer<?> RECIPE_SERIALIZER = Registers.Recipe.register("some_recipe_serializer", ModRecipes.SOME_SERIALIZER);
+RecipeSerializer<CustomRecipe> RECIPE_SERIALIZER = Registers.Recipe.register("some_recipe_serializer", ModRecipes.SOME_SERIALIZER);
 ```
 
 ---
 ---
-> ##### ***`register(String name, RecipeType<?> recipeType)`***
+> ##### ***`register(String name, RecipeType<T> recipeType)`***
 
 This method will register a given recipe type into the registry system using the given name.
 
 Example usage:
 ```java
-RecipeType<?> RECIPE_TYPE = Registers.Recipe.register("some_recipe_type", ModRecipes.SOME_TYPE);
+RecipeType<CustomRecipe> RECIPE_TYPE = Registers.Recipe.register("some_recipe_type", ModRecipes.SOME_TYPE);
 ```
 
 ### ComponentType Sub Class
@@ -612,13 +631,35 @@ Registers.Datagen.registerAllArmor(itemModelGenerator, new Item[]{ModItems.HELME
 
 ---
 ---
-> ##### ***`registerArmor(ItemModelGenerator generator, Item item, ArmorMaterial material, EquipmentSlot slot)`***
+> ##### ***`registerArmor(ItemModelGenerator generator, net.minecraft.item.Item item, ArmorMaterial material, EquipmentType slot)`***
 
-This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for a single armor item. You can directly call this method from item model provider and generate the sinle armor item json files.
+This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for a single armor item. You can directly call this method from item model provider and generate the sinle armor item json files. By default these armors will be registered with dye abibility as false.
 
 Example usage:
 ```java
-Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMaterial.MATERIAL, EquipmentSlot.HEAD);
+Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMaterial.MATERIAL, EquipmentType.HELMET);
+```
+
+---
+---
+> ##### ***`registerArmor(ItemModelGenerator generator, net.minecraft.item.Item item, ArmorMaterial material, EquipmentType slot)`***
+
+This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for a single armor item. You can directly call this method from item model provider and generate the sinle armor item json files. By default these armors will be registered with dye abibility as false.
+
+Example usage:
+```java
+Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMaterial.MATERIAL, EquipmentType.HELMET);
+```
+
+---
+---
+> ##### ***`registerArmor(ItemModelGenerator generator, net.minecraft.item.Item item, ArmorMaterial material, EquipmentType slot, boolean dyeable)`***
+
+This method is related to ItemModelProvider for datagen. It's responsible of providing the item model for a single armor item. You can directly call this method from item model provider and generate the sinle armor item json files. These armors will be registered with dye abibility using the flag. To make your armor being able to use dye, it should use DyedColorComponent (look into leather armor items).
+
+Example usage:
+```java
+Register.Datagen.registerArmor(itemModelGenerator, ModItems.HELMET, ModArmorMaterial.MATERIAL, EquipmentType.HELMET, true);
 ```
 
 ---
@@ -799,4 +840,19 @@ Example usage:
 List<PlacementModifier> modifiers = Registers.Dategen.modifiersWithRarity(10,
                                                                 HeightRangePlacementModifier.uniform(YOffset.fixed(50), 
                                                                                                      YOffset.fixed(60)));
+```
+
+### Screen Sub Class
+
+This sub class has register methods to register your custom `ExtendedScreenHandlerType`.
+
+---
+---
+> ##### ***`register(String name, ExtendedScreenHandlerType.ExtendedFactory<T, D> factory, PacketCodec<? super RegistryByteBuf, D> codec)`***
+
+Registers a new `ExtendedScreenHandlerType` with the specified name, factory, and codec. This method is used to create and register a custom screen handler type that can be used within the modding framework. The registration process involves associating a unique name with the screen handler type, along with a factory for creating instances and a codec for handling network communication. Normally, the packet codec belongs to the payload that you will sent to handler from the block entity.
+
+Example Usage:
+```java
+ExtendedScreenHandlerType<MyScreenHandler, MyCustomPayload> myHandler = register("my_handler", MyScreenHandler::new, MyCustomPayload.CODEC);
 ```
