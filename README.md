@@ -18,7 +18,7 @@ These libraries include:
 
 |Library    |Version        |
 |-----------|---------------|
-|JiLogger   |`1.0.0+MC-1.21.3`|
+|JiLogger   |`1.1.0+MC-1.21.4`|
 |JiConfig   |`1.0.0+MC-1.21.3`|
 |JiReference|`1.0.0+MC-1.21.3`|
 |JiRegister |`1.0.0+MC-1.21.3`|
