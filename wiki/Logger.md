@@ -12,7 +12,7 @@ If You know what is going on in the code snippet bellow, you can use this:
 ```gradle
 repositories 
 {
-	mavenCentral()
+    mavenCentral()
     maven { url 'https://repo.repsy.io/mvn/jiraiyah/jilibs' }
 }
 dependencies 
