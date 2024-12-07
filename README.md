@@ -19,10 +19,10 @@ These libraries include:
 |Library    |Version        |
 |-----------|---------------|
 |JiLogger   |`1.1.0+MC-1.21.4`|
-|JiConfig   |`1.0.0+MC-1.21.3`|
-|JiReference|`1.0.0+MC-1.21.3`|
-|JiRegister |`1.0.0+MC-1.21.3`|
-|JiraLib    |`1.0.0+MC-1.21.3`|
+|JiConfig   |`1.1.0+MC-1.21.4`|
+|JiReference|`1.1.0+MC-1.21.4`|
+|JiRegister |`1.1.0+MC-1.21.4`|
+|JiraLib    |`1.1.0+MC-1.21.4`|
 |JInventory |`1.0.0+MC-1.21.3`|
 |JiFluid    |`1.0.0+MC-1.21.3`|
 |JiEnergy   |`1.0.0+MC-1.21.3`|
