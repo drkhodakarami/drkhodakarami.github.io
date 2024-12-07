@@ -23,7 +23,7 @@ These libraries include:
 |JiReference|`1.1.0+MC-1.21.4`|
 |JiRegister |`1.1.0+MC-1.21.4`|
 |JiraLib    |`1.1.0+MC-1.21.4`|
-|JInventory |`1.0.0+MC-1.21.3`|
+|JInventory |`1.1.0+MC-1.21.4`|
 |JiFluid    |`1.0.0+MC-1.21.3`|
 |JiEnergy   |`1.0.0+MC-1.21.3`|
 |JiMachina  |`1.0.0+MC-1.21.3`|
